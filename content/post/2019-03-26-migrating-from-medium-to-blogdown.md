@@ -22,9 +22,9 @@ also to demonstrate projects and provide a brief biography. In short, I wanted
 a website instead of a blog, and `blogdown` seems to provide an appropriate 
 amount of versatility.
 
-Besides, `R` is one of my favorite work horse, and many of my articles are 
-about it. This makes `blogdown` even more attractive for me because now my 
-small experiments can be in exactly the same format as my blog entry: 
+Besides, `R` is one of my favorite work horses, and many of my articles are 
+naturally about it. This makes `blogdown` even more attractive for me because 
+now my small experiments can be in exactly the same format as my blog entry: 
 `R Markdown`.
 
 Medium provides a nice downloading service, which gives you all your posts in 
