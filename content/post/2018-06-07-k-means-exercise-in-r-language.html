@@ -1,0 +1,331 @@
+---
+title: K-means exercise in R language
+author: Yen-Chung Chen
+date: '2018-06-07'
+slug: k-means-exercise-in-r-language
+categories:
+  - R
+tags:
+  - R
+  - k-means
+  - statistics
+image:
+  caption: ''
+  focal_point: ''
+---
+
+
+
+<p>As a novice in genomic data analysis, one of my goal is to benchmark
+how well a clustering method works. I ran across <a href="https://www.r-exercises.com/2018/04/13/11256/">this practice of doing
+k-means at R-exercises</a>
+the other day and felt it might be a nice start because k-means is easy
+to perform and conceptually simple for me to correlate what is happening
+behind the clustering machinery.</p>
+<p>It starts with manipulating the built-in <code>iris</code> dataset as usual. (I
+would load <code>ggplot2</code> and <code>cowplot</code> first.) Now, let’s have some k-means
+done.</p>
+<pre class="r"><code>library(ggplot2)
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(cowplot)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;cowplot&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     ggsave</code></pre>
+<pre class="r"><code># Set random seed = 1
+set.seed(1)
+
+# Do k-means with 3 centers
+iris_k &lt;- kmeans(iris[, c(1,2)], 3)
+
+# Append cluster identity
+iris_df &lt;- iris
+iris_df$cluster &lt;- iris_k$cluster
+
+# Append cluster identity
+iris_df &lt;- iris
+iris_df$cluster &lt;- factor(iris_k$cluster)
+species &lt;- iris_df$Species
+sepal_only &lt;- iris_df$cluster
+
+# Check species proportion in each cluster
+print(table(species, sepal_only))</code></pre>
+<pre><code>##             sepal_only
+## species       1  2  3
+##   setosa     50  0  0
+##   versicolor  0 12 38
+##   virginica   0 35 15</code></pre>
+<pre class="r"><code>ggplot(iris_df, aes(x = Sepal.Length, y = Sepal.Width, 
+                    color = Species, pch = cluster)) +
+  geom_point() +
+  labs(x = &quot;Sepal Length&quot;, y = &quot;Sepal Width&quot;, pch = &quot;Cluster&quot;) +
+  ggtitle(&quot;Sepal Only&quot;)</code></pre>
+<p><img src="/post/2018-06-07-k-means-exercise-in-r-language_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>The cluster identities do not correspond well with species identity, and
+the result does not look so impressive. It is imaginable because the
+different species intermingle on the sepal dimensions, and <code>kmeans()</code>
+considering sepal dimensions only would have a hard time in telling them
+apart.</p>
+<pre class="r"><code># Include petal info into k-means
+iris_k2 &lt;- kmeans(iris[, c(1:4)], 3)
+iris_df$cluster_sp &lt;- factor(iris_k2$cluster)
+s_and_p &lt;- iris_df$cluster_sp
+
+# Check the proportion of species of each cluster
+print(table(species, s_and_p))</code></pre>
+<pre><code>##             s_and_p
+## species       1  2  3
+##   setosa      0 50  0
+##   versicolor  2  0 48
+##   virginica  36  0 14</code></pre>
+<pre class="r"><code>ggplot(iris_df, aes(x = Sepal.Length, y = Sepal.Width, 
+                    color = Species, pch = cluster_sp)) +
+  geom_point() +
+  labs(x = &quot;Sepal Length&quot;, y = &quot;Sepal Width&quot;, pch = &quot;Cluster&quot;) +
+  ggtitle(&quot;Sepal and Petal&quot;)</code></pre>
+<p><img src="/post/2018-06-07-k-means-exercise-in-r-language_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>After taking petal length and width, the clustering identities agreed
+more with the “real” species identities.</p>
+<div id="effect-of-linear-transformation-what-would-happen-if-we-multiply-petal.width-by-2" class="section level2">
+<h2>Effect of linear transformation: What would happen if we multiply <code>Petal.Width</code> by 2?</h2>
+<pre class="r"><code># Multiply Petal.width by 2 and do k-means again
+iris_df$Petal.Width &lt;- iris_df$Petal.Width * 2
+iris_k_2pw &lt;- kmeans(iris_df[, c(1:4)], 3)
+iris_df$cluster_pw2 &lt;- factor(iris_k_2pw$cluster)
+doubled &lt;- iris_df$cluster_pw2
+
+# Estimate how much cluster identity agrees with each other before
+# and after doubling petal width
+print(table(s_and_p, doubled))</code></pre>
+<pre><code>##        doubled
+## s_and_p  1  2  3
+##       1 36  0  2
+##       2  0 50  0
+##       3  9  0 53</code></pre>
+<pre class="r"><code>ggplot(iris_df, aes(x = Sepal.Length, y = Sepal.Width, 
+                    color = Species, pch = cluster_pw2)) +
+  geom_point() +
+  labs(x = &quot;Sepal Length&quot;, y = &quot;Sepal Width&quot;, pch = &quot;Cluster&quot;) +
+  ggtitle(&quot;2 x Petal Width&quot;)</code></pre>
+<p><img src="/post/2018-06-07-k-means-exercise-in-r-language_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Though the clustering result did not change too much, linear
+transformation indeed altered the clustering identity. I was not
+expecting that at first, but then <em>I realized k-means takes only
+distance into consideration, and linear transformation on one dimension
+does change relative distance.</em> So, while transforming one dimension
+would influence clustering result, multiplying everything at the same
+time should not change cluster identity.</p>
+<pre class="r"><code># Multiply everything by 2 and do k-means again
+iris_df2 &lt;- iris_df * 2</code></pre>
+<pre><code>## Warning in Ops.factor(left, right): &#39;*&#39; not meaningful for factors
+
+## Warning in Ops.factor(left, right): &#39;*&#39; not meaningful for factors
+
+## Warning in Ops.factor(left, right): &#39;*&#39; not meaningful for factors
+
+## Warning in Ops.factor(left, right): &#39;*&#39; not meaningful for factors</code></pre>
+<pre class="r"><code>iris_k_db &lt;- kmeans(iris_df2[, c(1:4)], 3)
+
+all_doubled &lt;- iris_k_2pw$cluster
+
+# Estimate how much cluster identity agrees with each other before
+# and after doubling petal width
+print(table(all_doubled, doubled))</code></pre>
+<pre><code>##            doubled
+## all_doubled  1  2  3
+##           1 45  0  0
+##           2  0 50  0
+##           3  0  0 55</code></pre>
+<p>And that’s definitely the case.</p>
+</div>
+<div id="scaling-data" class="section level2">
+<h2>Scaling data</h2>
+<p>One way to think of it might be that k-means considers Euclidean
+distance, and if we expand or shrink one dimension, the influence of
+that dimension on distance would change accordingly. To mitigate this
+asymmetry of influence, scaling might be a good way if we assume every
+dimension should have equal impact in clustering.</p>
+<pre class="r"><code># Doing z-transformation with scale()
+iris_df[, c(1:4)] &lt;- scale(iris_df[, c(1:4)])
+iris_k_z &lt;- kmeans(iris_df[, c(1:4)], 3)
+
+iris_df$cluster_kz &lt;- iris_k_z$cluster
+z_trans &lt;- iris_df$cluster_kz
+
+# Doing z-transformation with scale() of the original iris
+iris_ori &lt;- scale(iris[, c(1:4)])
+iris_k_zo &lt;- kmeans(iris_ori[, c(1:4)], 3)
+z_before_dbl &lt;- iris_k_zo$cluster
+
+# Before and after doubling with z-transformation
+print(table(z_before_dbl, z_trans))</code></pre>
+<pre><code>##             z_trans
+## z_before_dbl  1  2  3
+##            1 47  0  0
+##            2  0 50  0
+##            3  0  0 53</code></pre>
+<p>Scaling do a good job to give us consistent result regardless of whether
+there is linear transformation. It is thus advisable to scale the data
+in some way to make sure we could capture the diversity fairly and would
+not let the dimension largest in number dominate the whole clustering.</p>
+</div>
+<div id="yet-another-dataset" class="section level2">
+<h2>Yet another dataset</h2>
+<p>Now, we move on to another dataset from
+<a href="https://www.kaggle.com/c/titanic/data">Kaggle.com</a>. The author of this
+exercise suggested us to cluster passengers according to <em>sex, number of
+sibling or spouse on board (SibSp), number of children or parents on
+board (Parch), and ticket fare (fare)</em>, and see if the cluster could
+predict survival.</p>
+<pre class="r"><code># Playing with training dataset from Titanic@Kaggle
+csvurl &lt;- &quot;https://storage.googleapis.com/kaggle-competitions-data/kaggle/3136/train.csv?GoogleAccessId=web-data@kaggle-161607.iam.gserviceaccount.com&amp;Expires=1553899686&amp;Signature=eUG7kTwcd4FwTAPYZeKwgJafj6bF77hbvk8Exk%2BgM99szovTUfGsMh7%2F6zoYLlnVQ%2Fmf%2BNRHWKNcpyJpUDXBdf3Vr5UpETVUiOn5i90HV2%2FNfLeQ4uc%2Bap1KfmcyfHEojrDViahLWKrNUTaLvGrlrItZhoo9UWFyf6hn3n%2BZtC4Iior1S0mDk%2FrXb51sQJyzpIMy2d%2Fgzqtt7duZJcOxaX7EvHvefjGSc7ZJAKDumqGLxXKGaA4lUVa76ELsC53cqxLDC8oSHCMpj0afDcCUvSdbmCgvImWyINKKAWupHEmmNrKRDN%2FsL%2F0vS2MTvbEWC8%2B8C98lsSUlkxwxpqqFxA%3D%3D&quot;
+
+train &lt;- read.csv(csvurl, stringsAsFactors = F)
+print(head(train))</code></pre>
+<pre><code>##   PassengerId Survived Pclass
+## 1           1        0      3
+## 2           2        1      1
+## 3           3        1      3
+## 4           4        1      1
+## 5           5        0      3
+## 6           6        0      3
+##                                                  Name    Sex Age SibSp
+## 1                             Braund, Mr. Owen Harris   male  22     1
+## 2 Cumings, Mrs. John Bradley (Florence Briggs Thayer) female  38     1
+## 3                              Heikkinen, Miss. Laina female  26     0
+## 4        Futrelle, Mrs. Jacques Heath (Lily May Peel) female  35     1
+## 5                            Allen, Mr. William Henry   male  35     0
+## 6                                    Moran, Mr. James   male  NA     0
+##   Parch           Ticket    Fare Cabin Embarked
+## 1     0        A/5 21171  7.2500              S
+## 2     0         PC 17599 71.2833   C85        C
+## 3     0 STON/O2. 3101282  7.9250              S
+## 4     0           113803 53.1000  C123        S
+## 5     0           373450  8.0500              S
+## 6     0           330877  8.4583              Q</code></pre>
+<pre class="r"><code># Make Sex and Pclass dummy variable
+train$Sex &lt;- factor(train$Sex, levels = c(&quot;female&quot;, &quot;male&quot;),
+                    labels = c(&quot;0&quot;, &quot;1&quot;))
+train$Pclass &lt;- ifelse(train$Pclass == &quot;3&quot;, 1, 0)
+
+# K-means (k = 4) according to Sex, SibSp, Parch, Fare
+tita_k &lt;- kmeans(select(train, Sex, SibSp, Parch, Fare), centers = 4, nstart = 20)
+train$cluster_1 &lt;- tita_k$cluster
+
+# Survival of each cluster
+print(
+  table(train$Survived, train$cluster_1)[2, ]/colSums(table(train$Survived, train$cluster_1))
+  )</code></pre>
+<pre><code>##         1         2         3         4 
+## 1.0000000 0.6240602 0.3208333 0.7142857</code></pre>
+<p>It does look like the rate of survival differs between groups. To
+evaluate how big k should be to capture the most information from the
+dataset, variance explained could be calculated here. It was actually
+super-easy because <code>kmeans()</code> already prepared us <em>the sum of squares
+between clusters</em> (betweenss) and <em>total sum of squares</em> (totss) in its
+output.</p>
+<pre class="r"><code># Trying different k (2 - 20)
+## Initiate a list to store the results
+tita_km &lt;- list()
+
+for (i in c(2:20)) {
+  index &lt;- i - 1
+  tita_km[[index]] &lt;- kmeans(select(train, Sex, SibSp, Parch, Fare), centers = i, nstart = 20)
+}
+
+# Calculate variance explained by cluster
+ve &lt;- sapply(tita_km, function(x) x[[&quot;betweenss&quot;]]/x[[&quot;totss&quot;]])
+plot(ve ~ c(2:20), xlab = &quot;k&quot;,
+     ylab = &quot;SoS between clusters / Total SoS&quot;,
+     col = c(rep(&quot;black&quot;,3), &quot;red&quot;, rep(&quot;black&quot;,15)), pch = 16)</code></pre>
+<p><img src="/post/2018-06-07-k-means-exercise-in-r-language_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>With visualization, it seems the margin drops when k &gt; 5, and thus <a href="https://en.wikipedia.org/wiki/Elbow_method_%28clustering%29">the
+elbow
+method</a>
+would suggest k = 5 as the optimal cluster number.</p>
+<pre class="r"><code>train$cluster_5 &lt;- tita_km[[5]][[&quot;cluster&quot;]]
+print(
+  table(train$Survived, train$cluster_5)[2, ] /colSums(table(train$Survived, train$cluster_5))
+)</code></pre>
+<pre><code>##         1         2         3         4         5         6 
+## 0.2702170 0.4272727 0.7575758 1.0000000 0.6486486 0.6470588</code></pre>
+<p>This time, the difference of survival between clusters becomes even
+sharper. Does more variance explained necessarily lead to better
+correlation with outcome of interest? To test this notion, I went back
+to do the same thing for the iris dataset.</p>
+<pre class="r"><code># Testing different k in iris
+
+iris_km &lt;- list()
+
+for (i in c(2:20)) {
+  index &lt;- i - 1
+  iris_km[[index]] &lt;- kmeans(select(iris, -Species), centers = i, nstart = 20)
+}
+
+# Calculate variance explained
+ve_iris &lt;- sapply(iris_km, function(x) x[[&quot;betweenss&quot;]]/x[[&quot;totss&quot;]])
+plot(ve_iris ~ c(2:20), xlab = &quot;k&quot;,
+     ylab = &quot;SoS between clusters / Total SoS&quot;,
+     col = c(rep(&quot;black&quot;,2), &quot;red&quot;, rep(&quot;black&quot;,16)), pch = 16)</code></pre>
+<p><img src="/post/2018-06-07-k-means-exercise-in-r-language_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>It seems that the “elbow” is on k = 4.</p>
+<pre class="r"><code># k = 4
+iris$clus4 &lt;- iris_km[[3]][[&quot;cluster&quot;]]
+k4 &lt;- as.data.frame(table(iris$Species, iris$clus4))
+
+k4p &lt;- ggplot(k4, aes(x = Var2, y = Freq, fill = Var1)) +
+  geom_bar(stat = &quot;identity&quot;) +
+  labs(x = &quot;Cluster&quot;, fill = &quot;Species&quot;) +
+  ggtitle(&quot;k = 4 for iris&quot;)
+
+# k = 3
+iris$clus3 &lt;- iris_km[[2]][[&quot;cluster&quot;]]
+k3 &lt;- as.data.frame(table(iris$Species, iris$clus3))
+
+k3p &lt;- ggplot(k3, aes(x = Var2, y = Freq, fill = Var1)) +
+  geom_bar(stat = &quot;identity&quot;) +
+  labs(x = &quot;Cluster&quot;, fill = &quot;Species&quot;) +
+  ggtitle(&quot;k = 3 for iris&quot;)
+
+print(plot_grid(k4p, k3p, labels = &quot;AUTO&quot;))</code></pre>
+<p><img src="/post/2018-06-07-k-means-exercise-in-r-language_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>It seems that versicolor and virginica are hard to tell apart based on
+the information iris dataset provides, but k = 4 did a better job in
+identifying a subset of versicolor apart from the mixed population. In
+this case, k number indicated by elbow method seems to score again.</p>
+</div>
+<div id="take-home-message" class="section level2">
+<h2>Take home message</h2>
+<p>This exercise helped me learn the fundamental behaviors of k-means and
+how R implemented it among other things. It was a pleasant surprise to
+discover <code>scale()</code> , so I no longer have to reinvent the wheel. The
+detailed results in addition to cluster identity <code>kmeans()</code> provides by
+default not only make life easier and remind me of the things to look
+after clustering.</p>
+<ol style="list-style-type: decimal">
+<li>K-means sort of <em>summarizes</em> information of multiple
+dimension to categorize them.</li>
+<li>K-means is distance-based, so linear transformation
+would change the clustering result.</li>
+<li>To prevent the dimensions bigger in number dominate
+clustering, scaling is a recommended before k-means if we assume
+every dimension is equal in importance.</li>
+<li>Besides cluster identity, <code>kmeans()</code> also gives
+total sum of squares, sum of square between clusters, and in-cluster
+sum of squares, and many other information by default
+(check <code>?kmeans()</code>). This makes calculation of variance explained
+very intuitive.</li>
+<li>Elbow method is based on the marginal gain of
+variance explained with adding more and more cluster and could help
+us assess the preferable number of cluster.</li>
+</ol>
+</div>

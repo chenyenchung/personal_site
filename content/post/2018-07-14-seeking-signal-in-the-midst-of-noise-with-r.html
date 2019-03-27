@@ -1,0 +1,246 @@
+---
+title: Seeking signal in the midst of noise with R
+author: Yen-Chung Chen
+date: '2018-07-14'
+slug: seeking-signal-in-the-midst-of-noise-with-r
+categories:
+  - R
+tags:
+  - statistics
+  - genomics
+image:
+  caption: ''
+  focal_point: ''
+math: true
+---
+
+
+
+<p>Oftentimes, the sample I deal with is full of noise or confounding
+factors that I am not interested in. For example, human specimen is
+doomed noisy because the race, age, sex, occupation, or the life story
+of the subject would have influenced the results. Careful matching those
+statistics and increasing sample number would help a lot minimize known
+confounding factors and have a better chance to cancel other unknown
+factors, but sometimes sample number is just beyond our control.</p>
+<p>I become curious about <em>how well differential expression analysis works </em>
+<em>on this kind of dataset</em> and <em>whether other techniques could help us</em>
+<em>fish signal from noise</em>.</p>
+<p>Thus, I decided to make a dataset, in which 10 out of 100
+“genes” are informative. In this dataset, there are 8 samples, with
+their disease state being either 0 (healthy) or 1 (diseased); sex being
+either 0 or 1; age being a number between 0–1, which represents age/100;
+and other factors is represented by a random number between 0–1.</p>
+<pre class="r"><code>library(ggplot2)
+library(cowplot)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;cowplot&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     ggsave</code></pre>
+<pre class="r"><code># Generating subject characteristics
+
+# Disease state
+disease &lt;- c(0,0,0,0,1,1,1,1)
+
+# Sex
+set.seed(1629)
+sex &lt;- as.numeric(runif(n = 8, min = 0, max = 1) &gt; 0.5)
+
+# Hidden confounding factor for each N
+hcf &lt;- runif(n = 8, min = 0, max = 1)
+
+# Age
+age &lt;- round(runif(n = 8, min = 0, max = 1), digits = 2)
+
+# Meta data table
+meta_df &lt;- data.frame(disease, sex, &quot;hidden factor&quot; = hcf, age, 
+                      row.names = paste(&quot;object&quot;, seq(8)))
+
+print(meta_df)</code></pre>
+<pre><code>##          disease sex hidden.factor  age
+## object 1       0   0     0.1429998 0.64
+## object 2       0   1     0.3183128 0.98
+## object 3       0   1     0.1686106 0.57
+## object 4       0   0     0.1923663 0.21
+## object 5       1   0     0.1288493 0.53
+## object 6       1   1     0.5198558 0.64
+## object 7       1   1     0.9773168 0.09
+## object 8       1   0     0.4264767 0.07</code></pre>
+<p>Basic assumption of the simulated subjects is described as:</p>
+<p><span class="math display">\[[gene\ expression] = [disease]\times{}A+[sex]\times{}B+[age]\times{}C+[other\ factors]\times{}D+[noise]\]</span></p>
+<p>Then, the expression of “genes” are calculated considering the age, sex,
+other confounding factors combined, and technical variation represented
+by a noise term that varies between 0–0.5.</p>
+<p>In the equation above, <em>A</em> is 0.1 for gene #1, 0.2 for gene #2, and 1
+for gene #10. A is 0 for the rest of the 90 genes. <em>B, C,</em> and <em>D</em> are
+randomly generated with the sum of <em>A, B, C,</em> and <em>D</em> restricted to &lt;
+1. So, only the first 10 genes are relevant to disease state, and gene
+#10 is the most representative one.</p>
+<p>With these meta data, we can generate a dummy expression matrix:</p>
+<pre class="r"><code># Generate dummy data set
+## Saving the genes and the random generated coefficients in two lists
+feature &lt;- list()
+coef &lt;- list()
+
+## Generating 100 genes
+for (i in seq(100)) {
+  # Generate 10 genes that is related to disease
+  if (i &lt;= 10) {
+    coef_sex &lt;- runif(n = 1, min = 0, max = (1 - i/10))
+    coef_hcf &lt;- runif(n = 1, min = 0, max = (1 - i/10 - coef_sex))
+    coef_age &lt;- 1 - (i/10 + coef_sex + coef_hcf)
+    noise &lt;- runif(1, min = 0, max = 0.5)
+    ident &lt;- runif(1, min = 0, max = 2)
+    basal &lt;- rnorm(n = 8, sd = ident * 0.1, mean = ident)
+    feature[[i]] &lt;- disease * (i / 10) + sex * coef_sex + age * coef_age + hcf * coef_hcf + noise + basal
+    coef[[i]] &lt;- c(i/10, coef_sex, coef_age, coef_hcf, noise)
+    next
+  }
+  # The rest 90 genes are not related to disease state
+  coef_sex &lt;- runif(n = 1, min = 0, max = 1)
+  coef_hcf &lt;- runif(n = 1, min = 0, max = (1 - coef_sex))
+  coef_age &lt;- 1 - (coef_sex + coef_hcf)
+  noise &lt;- runif(1, min = 0, max = 0.5)
+  ident &lt;- runif(1, min = 0, max = 2)
+  basal &lt;- rnorm(n = 8, sd = ident * 0.1, mean = ident)
+  feature[[i]] &lt;- sex * coef_sex + age * coef_age + hcf * coef_hcf + noise + basal
+  coef[[i]] &lt;- c(0, coef_sex, coef_age, coef_hcf, noise)
+}
+
+# Formatting the expression matrix
+expression &lt;- do.call(&quot;rbind&quot;, feature)
+coefficient &lt;- do.call(&quot;rbind&quot;, coef)
+colnames(expression) &lt;- c(&quot;wt1&quot;, &quot;wt2&quot;, &quot;wt3&quot;, &quot;wt4&quot;, &quot;pt1&quot;, &quot;pt2&quot;, &quot;pt3&quot;, &quot;pt4&quot;)
+colnames(coefficient) &lt;- c(&quot;Disease&quot;, &quot;Sex&quot;, &quot;Age&quot;, &quot;HCF&quot;, &quot;Noise&quot;)
+expression &lt;- data.frame(expression)
+
+expression$gene &lt;- c(
+sapply(seq(10), function(x) paste(&quot;real&quot;, x, sep = &quot;_&quot;)),
+sapply(seq(90), function(x) paste(&quot;noise&quot;, x, sep = &quot;_&quot;)))</code></pre>
+<p>The script above generated something like this:</p>
+<pre class="r"><code># Transform the expression matrix for plotting
+expression_l &lt;- tidyr::gather(expression, key = &quot;Subject&quot;, 
+                              value = &quot;Expression&quot;, -gene
+)
+
+# Order the genes by hierarchical clustering
+row.names(expression) &lt;- expression$gene
+gene_dist &lt;- dist(expression[ , names(expression) != &quot;gene&quot;])
+gene_hc &lt;- hclust(gene_dist)
+
+expression_l$gene &lt;- factor(expression_l$gene, 
+                            levels = rev(gene_hc$labels[gene_hc$order]))
+
+ggplot(expression_l, aes(x = Subject, y = gene, fill = Expression)) +
+  geom_tile() +
+  scale_fill_gradientn(colours = c(&quot;green&quot;, &quot;black&quot;, &quot;magenta&quot;)) +
+  labs(x = &quot;&quot;, y = &quot;&quot;)</code></pre>
+<p><img src="/post/2018-07-14-seeking-signal-in-the-midst-of-noise-with-r_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>From the heatmap, it seems that the <em>other factors</em> is contributing a
+lot to the difference between samples. Is differential expression
+analysis capable of finding the genes that are really related to
+diseases?</p>
+<pre class="r"><code>library(limma)
+
+log_exp &lt;- log2(expression[, -9])
+log_exp$gene &lt;- expression$gene
+
+design &lt;- model.matrix(~ 0+factor(c(0,0,0,0,1,1,1,1)))
+colnames(design) &lt;- c(&quot;Ctrl&quot;,&quot;Patient&quot;)
+fit &lt;- lmFit(log_exp[, -9], design)
+fit$genes$ID &lt;- log_exp$gene
+
+cont.matrix &lt;- makeContrasts(PatientvsCtrl = Patient-Ctrl, levels=design)
+fit2 &lt;- contrasts.fit(fit, cont.matrix)
+fit2 &lt;- eBayes(fit2)
+volcanoplot(fit2, highlight = 5)</code></pre>
+<p><img src="/post/2018-07-14-seeking-signal-in-the-midst-of-noise-with-r_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>tt &lt;- topTable(fit2, number = 20, adjust = &quot;BH&quot;)
+print(head(tt))</code></pre>
+<pre><code>##              ID     logFC    AveExpr        t      P.Value   adj.P.Val
+## real_9   real_9 0.9692060  0.2966555 7.263496 5.343801e-05 0.005343801
+## real_5   real_5 1.1761718 -0.7116106 4.611329 1.348025e-03 0.061848855
+## real_8   real_8 0.6875499  0.7299697 4.385535 1.855466e-03 0.061848855
+## real_10 real_10 0.5617334  1.4676770 4.130614 2.685130e-03 0.067128249
+## real_7   real_7 0.5213747  1.1164215 3.843007 4.119657e-03 0.082393143
+## real_6   real_6 0.4883247  0.8115677 3.471073 7.284143e-03 0.121402376
+##                 B
+## real_9   2.338578
+## real_5  -1.010201
+## real_8  -1.342311
+## real_10 -1.725818
+## real_7  -2.168663
+## real_6  -2.755183</code></pre>
+<p>It turned out <code>limma</code> did a great job. It hit 3 significantly
+up-regulated genes (real_10, real_9, and real_8), and from the
+volcano plot, we could see the disease correlated genes (annotated as
+“real_<em>x</em>”) are quite visible even if they were not significant.</p>
+<p>Does fancier tools do a better job in finding real differentially
+expressed genes in a noisy dataset? I tried <code>caret</code> and <code>Boruta</code> to give
+machine learning a try.</p>
+<pre class="r"><code># Reverse feature selection with caret
+library(caret)
+exp_rfe &lt;- t(expression[, -9])
+colnames(exp_rfe) &lt;- expression$gene
+ctrl &lt;- rfeControl(functions = rfFuncs,
+                   method = &quot;repeatedCV&quot;,
+                   repeats = 10, verbose = FALSE)
+type_exp &lt;- factor(c(0,0,0,0,1,1,1,1), labels = c(&quot;0&quot;, &quot;1&quot;))
+lmProfile_exp &lt;- rfe(x=exp_rfe, y=type_exp,
+                     sizes = c(1:30),
+                     rfeControl = ctrl)
+plot(lmProfile_exp, type = c(&quot;g&quot;, &quot;o&quot;))</code></pre>
+<p><img src="/post/2018-07-14-seeking-signal-in-the-midst-of-noise-with-r_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>predictors(lmProfile_exp)</code></pre>
+<pre><code>## [1] &quot;real_10&quot; &quot;real_9&quot;  &quot;real_5&quot;  &quot;real_7&quot;  &quot;real_6&quot;</code></pre>
+<p>Reverse feature selection with <code>caret</code> gave me 4 genes (real_7–10),
+while <code>Boruta</code> rejected every single gene. It seemed that at least for
+this dataset, traditional differential expression performed at least as
+well as machine learning approaches.</p>
+<div id="increase-the-noise-term" class="section level2">
+<h2>Increase the noise term</h2>
+<p>Interestingly, when I gave noise term a coefficient of 10 instead of 1.
+<code>limma</code> identified more up-regulated genes (real_6–10), while the
+results from <code>caret</code> and <code>Boruta</code> remained the same. It was against my
+anticipation that the <em>real</em> difference would be buried in the noise, so
+I tried to use a coefficient of 10000. This time <code>limma</code> found even more
+up-regulated genes (real_4–10)…</p>
+</div>
+<div id="lower-the-effect-size-of-disease-state" class="section level2">
+<h2>Lower the effect size of disease state</h2>
+<p>On the other hand, When I made disease term 10 times smaller, <code>limma</code>
+could not find any significantly up-regulated gene, while <code>caret</code>
+managed to find one (real_9).</p>
+</div>
+<div id="increase-sample-number" class="section level2">
+<h2>Increase sample number</h2>
+<p>Finally, to see whether sample number could improve sensitivity when
+disease term is small, I tried to do the same analysis on 80 subjects
+(40 control and 40 diseased). I was expecting both differential
+expression analysis and machine learning would benefit from a larger
+sample number.</p>
+<p>With 80 samples, <code>limma</code> still could not find any significantly changed
+genes, <code>caret</code> found 5 (real_4, 6, 7, 8, 9) along with 5 false
+positive, and there was still no luck for <code>Boruta</code>.</p>
+<p>In this short experiment, my impression is that:</p>
+<ol style="list-style-type: decimal">
+<li>Effect size and consistency play the most important
+role in differential expression analysis. A small effect size gets
+overwhelmed by confounding factors and noise, while larger ones
+could be detected even with a large noise term.</li>
+<li>With a small sample size, result of reverse feature
+selection with <code>caret</code> and <code>limma</code> are not much different than each
+other.</li>
+<li>When effect size is small, increasing sample number
+helps a bit in <code>limma</code> (adjusted p value goes down with increased
+sample number). <code>caret</code> seems to benefit more from larger sample
+number (because it’s machine learning?), but even with more samples,
+false positive is quite concerning.</li>
+</ol>
+<p>I guess the difficult choice between sensitivity and specificity would
+still be an issue here. Though I hoped machine learning could work like
+magical black box, it performed similar to traditional approaches. I
+would need to learn more about the basics of machine learning before I
+could tell if there is some better way doing this.</p>
+</div>
