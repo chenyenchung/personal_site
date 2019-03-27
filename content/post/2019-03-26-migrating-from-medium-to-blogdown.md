@@ -17,7 +17,7 @@ After struggling for a while, I decided to move from Medium and switch to
 `blogdown`. While Medium is a beautiful platform for blogging, its philosophy 
 seems to fit less well when there are more than articles to host.
 
-I came to realize that My expectation of a blog is not only to keep notes, but 
+I came to realize that my expectation for a blog is not only to keep notes, but 
 also to demonstrate projects and provide a brief biography. In short, I wanted 
 a website instead of a blog, and `blogdown` seems to provide an appropriate 
 amount of versatility.
