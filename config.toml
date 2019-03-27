@@ -16,7 +16,7 @@ baseurl = "/"
 copyright = "&copy; Yen-Chung Chen 2015 - {year}"
 
 # Enable analytics by entering your Google Analytics tracking ID
-googleAnalytics = ""
+googleAnalytics = "UA-137049484-1"
 
 # Enable comments by entering your Disqus shortname
 disqusShortname = ""
