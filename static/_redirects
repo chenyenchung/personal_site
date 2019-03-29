@@ -2,3 +2,4 @@
 
 # Redirect default Netlify subdomain to primary domain
 https://yccbio.netlify.com/* https://www.yccbio.net/:splat 301!
+http://yccbio.netlify.com/* https://www.yccbio.net/:splat 301!
