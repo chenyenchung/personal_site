@@ -16,8 +16,9 @@ Recently, I noticed a LaTeX template,
 it to replace [Modern CV](https://launchpad.net/moderncv), which has 
 accompanied me for around three years.
 
-I soon realized that I am pretty bad at LaTeX, while customization requires 
-certain level of fluency on that language, so here comes my struggling with it.
+I soon realized that I am pretty bad at LaTeX, and customization requires 
+certain level of fluency on that language. As a result, I struggled quite a bit 
+with it.
 
 ## Support for a publication list
 
