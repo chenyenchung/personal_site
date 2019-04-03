@@ -24,13 +24,13 @@ with it.
 
 Awesome CV has a louder design than Modern CV. It caught my attention but at 
 the same time makes it harder to add content that was beyond its original 
-design and make it fit. The vanilla version looks quite software engineering 
-oriented and publication list seems not to be a major concern.
+design and to make it blend in. The vanilla version looks quite designed for 
+programmers and publication list seems not to be a major concern of the design.
 
 Nonetheless, people like me who tie their lives with publications have nothing 
 to worry about, because in the amazing and vast open source community, there is 
 almost always someone who is way better than you who sufferred and fixed your 
-issue years ago. Indeed, I soon find 
+issue years ago. Indeed, I soon found 
 [a fork](https://github.com/aminmkhan/Awesome-CV) that formats publications 
 beautifully.
 
@@ -52,7 +52,7 @@ is already defined in `fontawesome.sty`.
 
 Though there was a good looking PDF waiting for me after this, a warning 
 message refused to go away after several re-run:
-```
+```terminal
 Warning message:
 LaTeX Warning: There were undefined references.
 Package biblatex Warning: Please rerun LaTeX.
@@ -64,16 +64,17 @@ Package biblatex Warning: Please rerun LaTeX.
 According to the documentation, `lualatex()` is a wrapper for `latexmk()`, 
 which emulates the command `latexmk` in command line, so I tried to use 
 `latexmk` directly to see if my LaTeX environment was alright. Suprisingly, 
-`latexmk -lualatex cv.tex` ran sucessfully without warning, and even weirder 
-things happened: when I ran `lualatex("cv.tex", bib_engine = "biber")` again, 
-even in R, there was no longer warning.
+`latexmk -lualatex cv.tex` ran sucessfully without warning, and a thing that 
+was even more weird happened: when I ran 
+`lualatex("cv.tex", bib_engine = "biber")` again, even in R, there was no more 
+warning.
 
 I checked the directory to find the cause of the difference. `latexmk` left 
 several auxillary file in the folder (`cv.aux`, `cv.bbl`, `cv.bcf`, `cv.blg`, 
 `cv.fls`, `cv.fdb_latexmk`, `cv.out`, and `cv.run.xml`). Guessing one of them 
 might prevent `tinytex::lualatex()` from triggering the warning, I removed 
-these files one by one and run `tinytex::lualatex()` to see if the warning 
-comes back (All hail reverse genetics!)
+these files one by one and ran `tinytex::lualatex()` to see if the warning 
+would come back (All hail reverse genetics!)
 
 Indeed, if `cv.bbl` was in the folder, both `latexmk` and `tinytex::lualatex()` 
 ran smoothly, but if `cv.bbl` was renamed or removed, `tinytex::lualatex()` 
@@ -90,10 +91,11 @@ warning.
 ## Conclusion
 It seemed that sometimes LaTeX needs to run more than 4 times (the `lualatex` - 
 `biber` - `lualatex` - `lualatex` run by `latexmk` or `tinytex`) to make sure 
-`bibtex` is working properly, and the error message is in fact precise. Because 
-`tinytex::lualatex()` is being very considerate to remove all the intermediate 
-files, the suggestion from the warning, `Please rerun LaTeX`, is not effective 
-because everything is cleaned, so every run is like the first run.
+that `bibtex` works properly, and the error message is in fact informative. 
+Because `tinytex::lualatex()` is very considerate to remove all the 
+intermediate files, the suggestion from the warning, `Please rerun LaTeX`, is 
+no longer effective because everything is cleaned, and every run is like the 
+first run.
 
 I still don't know why does `bibtex` need `.bbl` file and why pagebreak 
 mysteriously changed in the example file, but it was quite fun.
