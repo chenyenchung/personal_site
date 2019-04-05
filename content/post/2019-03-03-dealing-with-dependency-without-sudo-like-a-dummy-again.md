@@ -7,7 +7,7 @@ categories:
   - R
 tags:
   - R
-  - complie
+  - compile
   - dependency
 image:
   caption: ''
