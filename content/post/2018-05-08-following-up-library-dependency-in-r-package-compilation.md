@@ -24,7 +24,7 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 
 This prompted to think again about the issues [I grunted about the other
-day](https://medium.com/@Hiko/run-seurat-a-r-package-in-a-notebook-interface-on-a-server-without-root-1724456fd34a).
+day](https://www.yccbio.net/post/run-seurat-an-r-package-in-a-notebook-interface-on-a-server-without-root/).
 Back then, I could not install some packages because R can not locate
 `libgfortran` during package compilation, and my work-around was install
 via Conda, which seems to provide compiled binary version.

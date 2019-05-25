@@ -26,7 +26,7 @@ also make learning new tools easier.
 
 So, [I decided to use Jupyter Notebook because I am not allowed to run
 RStudio Server
-here](https://medium.com/biosyntax/run-seurat-an-r-package-in-a-notebook-interface-on-a-server-without-root-65d6365311c3).
+here](https://www.yccbio.net/post/run-seurat-an-r-package-in-a-notebook-interface-on-a-server-without-root/).
 Here’s a brief note of how I did it.
 
 First, I connect to the server via SSH, and then run `jupyter notebook --no-browser --port 8889` (as [this nice tutorial
