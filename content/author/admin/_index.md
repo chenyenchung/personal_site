@@ -37,6 +37,8 @@ user_groups:
 - Visitors
 ---
 
-Yen-Chung Chen is a PhD student in biology at New York University. His research 
-interests include how neuronal fate is further specified into different subtypes 
-to confer precise wiring and other function.
+Yen-Chung Chen is a PhD student in the Desplan lab at New York University. My 
+research interests include how neuronal fate is specified into different 
+subtypes and how cell fate leads to the establishment and maintenance of 
+distinct features like precise selection of synaptic partners, the use of 
+neurotransmitters, and unique firing patterns.
