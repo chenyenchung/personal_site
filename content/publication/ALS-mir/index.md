@@ -3,7 +3,7 @@ title = "Mir-17∼92 Confers Motor Neuron Subtype Differential Resistance to ALS
 date = 2019-05-30T00:00:00
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Ying-Tsen Tung", "Kuan-Chih Peng", "Yen-Chung Chen", "Ya-Ping Yen", "Mien Chang", "Sebastian Thams", "Jun-An Chen"] 
+authors = ["Ying-Tsen Tung*", "Kuan-Chih Peng*", "Yen-Chung Chen", "Ya-Ping Yen", "Mien Chang", "Sebastian Thams", "Jun-An Chen"] 
 
 # Publication type.
 # Legend:
@@ -66,7 +66,7 @@ math = false
 # To use, add an image named `featured.jpg/png` to your page's folder. 
 [image]
   # Caption (optional)
-  caption = "Image credit: Tung et al."
+  caption = "Cover artwork by Ya-Yin Tsai"
 
   # Focal point (optional)
   # Options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
