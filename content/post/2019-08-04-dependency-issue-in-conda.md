@@ -56,8 +56,8 @@ without any additional adjustments.
 The morale of the story:
 
 1. Dependencies should always be managed and documented when possible. It's 
-much harder, if not possible, to trace it from error messages. I was able to 
-find `dask` causing segmentation faults was sheer luck when I tried to start 
+much harder, if possible at all, to trace it down from error messages. I was able to 
+find `dask` causing segmentation faults, but it was sheer luck that I tried to start 
 everything over with a clean environment and finally opted in to use `conda`.
 
 2. Even with dependencies provided (like a `conda` environment file), there 
