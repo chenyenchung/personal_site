@@ -41,7 +41,7 @@ StackOverflow for an explanation of this, and found
 in which Philip Kearns kindly pointed out that `psutil` is not always 
 respecting `CC`.
 
-With this information, I was finally able to fix things (in a the ugly way 
+With this information, I was finally able to fix things (in an ugly way 
 though). I have `$HOME/.local/bin` in my `$PATH` and it is prior to `/usr/bin`, 
 so I was able to make a symbolic link (
 `ln -s /usr/bin/gcc $HOME/.local/bin/icc` in `$HOME/.local/bin` to fool 
@@ -49,7 +49,7 @@ so I was able to make a symbolic link (
 
 This did solve the issue. 
 
-I still don't know why `psutil` is ignoring `CC`, or why it tried to find `icc` 
+I still don't know why `psutil` ignores `CC`, or why it tries to find `icc` 
 instead of `cc` or something else, but I did learn that dependency and 
 environment variables for compiling should not be taken for granted. Even one 
 line of code ignoring the convention and hard-coded something that was not 
