@@ -66,7 +66,7 @@ math = false
 # To use, add an image named `featured.jpg/png` to your page's folder. 
 [image]
   # Caption (optional)
-  caption = ""
+  caption = "Cover Credit: [2020 Elsevier Inc](https://www.sciencedirect.com/bookseries/current-topics-in-developmental-biology/vol/139/suppl/C)"
 
   # Focal point (optional)
   # Options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
