@@ -17,6 +17,10 @@ weight = 20
   name = "About me"
   url = "#about"
   weight = 30
+
+[[main]]
+  name = "CV"
+  url = "/cv/2020_June.pdf"
   
 # [[main]]
 # name = "Full Publications"
