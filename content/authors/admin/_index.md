@@ -1,16 +1,22 @@
 ---
 authors:
 - admin
-bio: >
-  Yen is a graduate student interested in developmental biology, neurobiology 
-  and bioinformatics.
-education: []
+bio: A graduate student interested in developmental biology, neurobiology and bioinformatics.
+
+# education:
+#   courses:
+#   - course: MD
+#     institution: National Taiwan University
+
 email: "ycc520@nyu.edu"
+
 interests:
 - Developmental biology
 - Neurobiology
 - Bioinformatics
+
 name: Yen-Chung Chen
+
 organizations:
 - name: New York University
   url: ""
@@ -31,6 +37,7 @@ social:
 - icon: orcid
   icon_pack: ai
   link: https://orcid.org/0000-0002-8529-1251
+  
 superuser: true
 user_groups:
 - Researchers
