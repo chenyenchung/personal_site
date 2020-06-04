@@ -54,7 +54,7 @@ that found like this:
 Now, I could not wait to find what are the specs of these models! Let’s
 load the table and do some analysis!
 
-    candidate_models <- read.csv(file = "../../static/post/2019_03_28_table.csv", 
+    candidate_models <- read.csv(file = "example.csv", 
                                  header = TRUE)
     print(candidate_models)
 

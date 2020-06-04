@@ -63,7 +63,7 @@ here is to **print a user-defined variable *k*, and then print every
 entry of the result of** `ls -l` **as long as its owner is root.**
 
 ![A minimal awk command for me to get acquainted
-with](/img/2018_06_28_awk_ex1.png)
+with](img/2018_06_28_awk_ex1.png)
 
 ```
 # Command for easy copy and paste
@@ -85,7 +85,7 @@ brackets after it would only be run once *before the file* ***begin***
 *k*, which is 3, before everything.
 
 ![Fields in awk are referred to
-as $N](/img/2018_06_28_awk_ex2.png)
+as $N](img/2018_06_28_awk_ex2.png)
 
 When `awk` reads a file, it automatically separates every row of the
 file into fields. A field is pretty similar to the idea of a column of a

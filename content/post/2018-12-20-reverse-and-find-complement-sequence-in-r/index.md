@@ -151,4 +151,4 @@ converted independently, so no extra work should be introduced with a
 longer length.
 
 ![Time spent is linear for this
-function](/img/2018_12_20_running_time.png)
+function](img/2018_12_20_running_time.png)
