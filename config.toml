@@ -22,13 +22,6 @@ copyright = "&copy; Yen-Chung Chen 2015 - {year}"
 # Enable analytics by entering your Google Analytics tracking ID
 googleAnalytics = "UA-137049484-1"
 
-[privacy]
-  [privacy.googleAnalytics]
-    anonymizeIP = true
-    disable = false
-    respectDoNotTrack = true
-    useSessionStorage = false
-
 ############################
 ## Advanced options below ##
 ############################
@@ -119,3 +112,10 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
   [[related.indices]]
     name = "authors"
     weight = 20.0
+
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    disable = false
+    respectDoNotTrack = true
+    useSessionStorage = false
