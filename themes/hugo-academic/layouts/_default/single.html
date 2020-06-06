@@ -10,11 +10,9 @@
       {{ .Content }}
     </div>
     
-    <div class="article-container"></div>
-      {{ partial "comments.html" . }}
-    </div>
-
     {{ partial "page_footer" . }}
+    
+    {{ partial "comments.html" . }}
 
   </div>
 </article>
