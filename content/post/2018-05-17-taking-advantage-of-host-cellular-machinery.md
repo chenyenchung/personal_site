@@ -14,7 +14,7 @@ image:
 > Original Article:  
 > Jha, S. *et al.* [Trans-kingdom mimicry underlies ribosome
 > customization by a poxvirus
-> kinase](https://doi.org/10.1038/nature22814). *Nature* **546,**651–655
+> kinase](https://doi.org/10.1038/nature22814). *Nature* 546,651–655
 > (2017).
 
 This is a story about how poxvirus turns human translation machinery in

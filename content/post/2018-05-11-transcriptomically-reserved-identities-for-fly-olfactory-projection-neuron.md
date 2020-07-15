@@ -15,7 +15,7 @@ image:
 > Li, H. *et al.* [Classifying Drosophila Olfactory Projection Neuron
 > Subtypes by Single-Cell RNA
 > Sequencing](https://doi.org/10.1016/j.cell.2017.10.019). *Cell*
-> **171,**1206.e22–1207 (2017).
+> 171,1206.e22–1207 (2017).
 
 The complexity of the nervous system has fascinated scientists for
 centries. We knew that injuring different part of the brain or spinal
@@ -49,9 +49,8 @@ Are the identities identified in the study real? The authors again
 turned to their prior knowledge and showed the clustering identities
 corresponded to known populations of projection neurons. Then, with the
 powerful genetic tools in fly, they identified a gene marking a
-population that looked like the DC2 neurons, and another*,* which mapped
-to 4 clusters, and two of them might represent DC3 and VA1d neurons *in
-vivo*. Trying to find more genes that separate these two clusters was
+population that looked like the DC2 neurons, and another, which mapped
+to 4 clusters, and two of them might represent DC3 and VA1d neurons *in vivo*. Trying to find more genes that separate these two clusters was
 not completely fruitful: Genes found were able to distinguish the
 populations of interest, but they were also expressed in other
 projection neurons, which greatly complicated the identification of each
