@@ -82,7 +82,7 @@ Basic assumption of the simulated subjects is described as:
 
 
 
-[gene expression] = [disease] × A + [sex] × B + [age] × C + [other factors] × D + [noise]
+$$[gene\;expression] = [disease] × A + [sex] × B + [age] × C + [other\;factors] × D + [noise]$$
 
 Then, the expression of “genes” are calculated considering the age, sex,
 other confounding factors combined, and technical variation represented
