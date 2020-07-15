@@ -80,7 +80,9 @@ factors is represented by a random number between 0–1.
 
 Basic assumption of the simulated subjects is described as:
 
-\[*g**e**n**e* *e**x**p**r**e**s**s**i**o**n*\] = \[*d**i**s**e**a**s**e*\] × *A* + \[*s**e**x*\] × *B* + \[*a**g**e*\] × *C* + \[*o**t**h**e**r* *f**a**c**t**o**r**s*\] × *D* + \[*n**o**i**s**e*\]
+
+
+[gene expression] = [disease] × A + [sex] × B + [age] × C + [other factors] × D + [noise]
 
 Then, the expression of “genes” are calculated considering the age, sex,
 other confounding factors combined, and technical variation represented
