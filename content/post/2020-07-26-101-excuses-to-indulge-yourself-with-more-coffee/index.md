@@ -1,8 +1,8 @@
 ---
-title: 101 excuses to endulge yourself with more coffee
+title: 101 excuses to indulge yourself with more coffee
 author: Yen-Chung Chen
 date: '2020-07-26'
-slug: 101-excuses-to-endulge-yourself-with-more-coffee
+slug: 101-excuses-to-indulge-yourself-with-more-coffee
 categories:
   - Random thoughts
 tags:
