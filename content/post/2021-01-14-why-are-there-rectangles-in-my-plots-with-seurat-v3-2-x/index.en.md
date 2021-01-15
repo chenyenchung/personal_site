@@ -20,7 +20,7 @@ image:
   preview_only: no
 projects: []
 ---
-![A close-in to a rasterized UMAP](img/featureplot_raster_close.png "UMAP plot will look different if you updated Seurat recently.")
+![A close-in to a rasterized UMAP](img/featureplot_raster_close.png)
 
 If you updated [Seurat](https://satijalab.org/seurat/) recently, you might find your `FeaturePlot()` and `DimPlot()` giving plots that look pixelated instead of the circular dots we are used to.
 
