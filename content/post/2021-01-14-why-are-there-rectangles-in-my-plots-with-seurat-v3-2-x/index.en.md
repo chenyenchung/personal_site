@@ -62,7 +62,7 @@ Here's an example of a vector image. The dots look circular no matter how close 
 
 While vector images are great for zooming, because they are redrawn only when they are displayed, it requires your computer to do some computation. This is usually fine with modern computers that often more powerful than necessary, but it represents a unique challenge for single-cell data analysis.
 
-If there's a hundred thousand cells in your data, there are a hundred thosand objects in a feature plot. It could be even worse for heatmaps, where each gene plotted for each cell makes a tile. A heatmap with a hundred genes for a hundred thousand cells results in a million objects.
+If there's a hundred thousand cells in your data, there are a hundred thosand objects in a feature plot. It could be even worse for heatmaps, where each gene plotted for each cell makes a tile. A heatmap with a hundred genes for a hundred thousand cells results in ten million objects (!).
 
 This is why when we are working with large datasets, the plots take longer to open. This might also be why some paper, when you scroll down, the part of the figure containing a UMAP might be blank for seconds before it finally appears. In short, our computers make a tremendous effort to draw objects one by one, but oftentimes, we don't really need the UMAPs or feature plots to be look that well when zoomed in.
 
