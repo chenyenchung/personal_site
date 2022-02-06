@@ -44,8 +44,8 @@ user_groups:
 - Visitors
 ---
 
-Yen-Chung Chen is a PhD student in the Desplan lab at New York University. My 
-research interests include how neuronal fate is specified into different 
-subtypes and how cell fate leads to the establishment and maintenance of 
-distinct features like precise selection of synaptic partners, the use of 
-neurotransmitters, and unique firing patterns.
+# Hello,
+I am a PhD student in the Desplan lab at New York University. I study the genetic 
+programs that specify different kind of neurons in development. With the fly visual 
+system as my model, I aim to learn how important regulators, like those implicated 
+in spatial and temporal patterning, interacts and defines neuronal fates in development.
