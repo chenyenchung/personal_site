@@ -3,7 +3,7 @@ title = "Neuronal diversity and convergence in a visual system developmental atl
 date = 2020-11-04T00:00:00
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Mehmet Neset Özel\*", "Félix Simon\*", "Shadi Jafari", "Isabel Holguera", "Yen-Chung Chen", "Najate Benhra", "Rana Naja El-Danaf","Katarina Kapuralin", "Jennifer Amy Malin", "Konstantinides, Nikolaos", "Claude Desplan"] 
+authors = ["Mehmet Neset Özel\*", "Félix Simon\*", "Shadi Jafari", "Isabel Holguera", "Yen-Chung Chen", "Najate Benhra", "Rana Naja El-Danaf","Katarina Kapuralin", "Jennifer Amy Malin", "Nikolaos Konstantinides", "Claude Desplan"] 
 
 # Publication type.
 # Legend:
