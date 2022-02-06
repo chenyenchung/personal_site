@@ -1,1 +1,11 @@
 // Override this file to add your own SCSS styling.
+.dropdown-menu,
+nav#navbar-main li.nav-item {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar-brand {
+  font-size: 32px;
+  font-weight: bold;
+}

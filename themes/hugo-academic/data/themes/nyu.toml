@@ -1,0 +1,19 @@
+# Theme metadata
+name = "NYU"
+
+# Is theme light or dark?
+light = true
+
+# Primary
+primary = "#57068c"
+
+# Menu
+menu_primary = "#eee6f3"
+menu_text = "#404040"
+menu_text_active = "#e00f78"
+menu_title = "#57068c"
+
+# Home sections
+home_section_odd = "#ffffff"
+home_section_even = "#f2f2f2"
+
