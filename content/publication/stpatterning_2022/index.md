@@ -1,6 +1,6 @@
 +++
-title = "Gene Regulatory Networks During the Development of the Drosophila Visual System"
-date = 2020-04-07T00:00:00
+title = "Integration of Spatial and Temporal Patterning in the Invertebrate and Vertebrate Nervous System"
+date = 2022-03-22T00:00:00
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Yen-Chung Chen*", "Nikolaos Konstantinides*"] 
