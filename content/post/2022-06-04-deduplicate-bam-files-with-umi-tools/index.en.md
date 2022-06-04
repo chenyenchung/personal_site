@@ -1,5 +1,5 @@
 ---
-title: Deduplicate BAM files with UMI-tools
+title: Resource usage to deduplicate BAM files with UMI-tools
 author: Yen-Chung Chen
 date: '2022-06-04'
 slug: deduplicate-bam-files-with-umi-tools
