@@ -145,7 +145,7 @@ message `killed`).
 My solution here is to draw sample to generate a list of picked lines
 first, and then for every line, we check if it is picked. If it is, we
 write it to a file. After that, we do aforementioned step 4 to extract
-the fields into sepearate fastq files.
+the fields into separate fastq files.
 
 ```
 paste forward.fastq reverse.fastq |\
@@ -157,8 +157,14 @@ for(i = 1; i <=847098706 ; i++) { s= i<=k?i-1:int(rand()*i);\
 if(s<k) R[s]=i}; n=asort(R)}\
 
 # Check the line numbers
-{if(NR==1) co=1; if(NR == R[co]) {print $0 >> "temp.fastq";co++}'
+{if(NR==1) co=1; if(NR == R[co]) {print $0 >> "temp.fastq";co++}}'
 
 # Reformat the subsampled file
 awk -F"\t" '{print $1"\n"$3"\n"$5"\n"$7 > "forward_sub.fastq";\print $2"\n"$4"\n"$6"\n"$8 > "reverse_sub.fastq"}' temp.fastq
 ```
+
+---
+
+Last update: 2022-06-04
+
+Special thanks to Tien Du for catching a syntax error in this post!
