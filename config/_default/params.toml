@@ -135,7 +135,7 @@ twitter = "ycchen_tw"
 
 # Date and time format (refer to https://sourcethemes.com/academic/docs/customization/#date-format )
 #   Examples: "Mon, Jan 2, 2006" or "2006-01-02"
-date_format = "Jan 2, 2006"
+date_format = "2006-01-02"
 #   Examples: "3:04 pm" or "15:04"
 time_format = "3:04 PM"
 
@@ -219,8 +219,10 @@ plugins_js  = []
   #   0: Disabled
   #   1: Disqus (https://disqus.com)
   #   2: Commento (https://commento.io)
-  engine = 0
-
+  #   3: Utterances (https://utteranc.es/)
+  
+  engine = 3
+  
   # Which page types are commentable?
   commentable = {page = false, post = true, docs = false, project = false, publication = true, talk = false}
 
@@ -233,6 +235,13 @@ plugins_js  = []
   [comments.commento]
     # If self-hosting Commento, enter its URL here (e.g. "https://commento.?.com"), otherwise leave empty.
     url = ""
+    
+  # Configuration of Utterances
+  [comments.utterances]
+    repo = "chenyenchung/personal_site"
+    issue_term = "url"
+    label = "comment💬"
+    theme = "github-light"
 
 ############################
 ## Search
