@@ -27,7 +27,7 @@ abstract = "How neurons are generated and diversified has long puzzled developme
 # summary = ""
 
 # Digital Object Identifier (DOI)
-doi = "https://doi.org/10.1016/bs.ctdb.2020.02.010"
+doi = "https://doi.org/10.1038/s41586-020-2879-3"
 
 # Is this a featured publication? (true/false)
 featured = true
