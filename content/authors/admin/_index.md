@@ -20,7 +20,7 @@ name: Yen-Chung Chen
 organizations:
 - name: New York University
   url: ""
-role: PhD Student
+role: PhD Candidate
 social:
 - icon: envelope
   icon_pack: fas
@@ -45,7 +45,7 @@ user_groups:
 ---
 
 # Hello,
-I am a PhD student in the Desplan lab at New York University. I study the genetic 
-programs that specify different kind of neurons in development. With the fly visual 
+I am a PhD candidate in the Desplan lab at New York University. I study genetic 
+programs that specify different kind of neurons in development. Using fly visual 
 system as my model, I aim to learn how important regulators, like those implicated 
 in spatial and temporal patterning, interacts and defines neuronal fates in development.
