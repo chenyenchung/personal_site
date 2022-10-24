@@ -101,10 +101,10 @@ if field 3 ($3) is “root”, print that row for us.
 **Subsampling a fastq file**
 
 When I was googling, I found [a kind
-tutorial](https://www.notion.so/yenchungchen/Downsampling-fastq-for-verification-of-impact-of-sample-size-aafe40dd66704b1e957faee7ccc00a1e#fe176c935900425195fc68f3e55a907a)
+tutorial](https://userweb.eng.gla.ac.uk/umer.ijaz/bioinformatics/subsampling_reads.pdf)
 on how to do this. Thanks to it, I got a thing to start from and watch
 in awe how smart [reservoir
-sampling](http://Reservoir%20sampling%20-%20Wikipedia) is.
+sampling](https://en.wikipedia.org/wiki/Reservoir_sampling) is.
 
 The original command from the tutorial is:
 
