@@ -21,11 +21,11 @@ header:
 
 *Ph.D student in the Desplan Lab at NYU*
 
-#### Training Program in Stem Cell and Regenerative Biology (2022 -- 2023)
-*NYSTEM*
-
 #### Taiwanese Government Scholarship to Study Abroad (2022 -- 2024)
 *Ministry of Education, Taiwan*
+
+#### Training Program in Stem Cell and Regenerative Biology (2022 -- 2023)
+*NYSTEM*
 
 #### The Kopac Teaching Award II (2022)
 *Department of Biology, New York University*
@@ -40,9 +40,9 @@ header:
 
 *Research assistant in the JAC Lab at Academia Sinica*
 
-#### Taiwanese Government Fellowship for Study Overseas (2017, declined)
-*Ministry of Education, Taiwan*
-
 #### Best Poster Award (2018)
 *International Conference of Developmental Biology, Stem Cells and Regenerative
 Medicine*
+
+#### Taiwanese Government Fellowship for Study Overseas (2017, declined)
+*Ministry of Education, Taiwan*
