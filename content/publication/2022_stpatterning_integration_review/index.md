@@ -18,7 +18,7 @@ publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
 publication = "In *Frontiers in Neuroscience*"
-publication_short = "In *Front. Neurosci.*"
+publication_short = "In *Front. Neurosci*"
 
 # Abstract.
 abstract = "The nervous system is one of the most sophisticated animal tissues, consisting of thousands of interconnected cell types. How the nervous system develops its diversity from a few neural stem cells remains a challenging question. Spatial and temporal patterning mechanisms provide an efficient model through which diversity can be generated. The molecular mechanism of spatiotemporal patterning has been studied extensively in Drosophila melanogaster, where distinct sets of transcription factors define the spatial domains and temporal windows that give rise to different cell types. Similarly, in vertebrates, spatial domains defined by transcription factors produce different types of neurons in the brain and neural tube. At the same time, different cortical neuronal types are generated within the same cell lineage with a specific birth order. However, we still do not understand how the orthogonal information of spatial and temporal patterning is integrated into the progenitor and post-mitotic cells to combinatorially give rise to different neurons. In this review, after introducing spatial and temporal patterning in Drosophila and mice, we discuss possible mechanisms that neural progenitors may use to integrate spatial and temporal information. We finally review the functional implications of spatial and temporal patterning and conclude envisaging how small alterations of these mechanisms can lead to the evolution of new neuronal cell types."
@@ -66,7 +66,7 @@ math = false
 # To use, add an image named `featured.jpg/png` to your page's folder. 
 [image]
   # Caption (optional)
-  caption = "Chen YC and Konstantinides N (2022)[https://doi.org/10.3389/fnins.2022.854422]"
+  caption = "Figure 1 from [Chen YC and Konstantinides N (2022)](https://doi.org/10.3389/fnins.2022.854422)"
 
   # Focal point (optional)
   # Options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
