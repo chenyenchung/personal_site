@@ -1,0 +1,19 @@
+# Theme metadata
+name = "rose_pine"
+
+# Is theme light or dark?
+light = true
+
+# Primary
+primary ="#907aa9"
+
+# Menu
+menu_primary = "#f2e9e1"
+menu_text = "#575279"
+menu_text_active = "#797593"
+menu_title = "#286983"
+
+# Home sections
+home_section_odd = "#faf4ed"
+home_section_even = "#fffaf3"
+
