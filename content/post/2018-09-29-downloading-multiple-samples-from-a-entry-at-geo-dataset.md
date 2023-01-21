@@ -82,7 +82,7 @@ accession number is listed in this file.
 selector.](https://cdn-images-1.medium.com/max/800/1*irtRTFfxm11vAGJgOARvzA.png)
 
 With the list (and
-[SRA-tools](https://www.ncbi.nlm.nih.gov/sra/docs/toolkitsoft/)), you
+[SRA-tools](https://github.com/ncbi/sra-tools)), you
 should be able to download raw data as .fastq (or other file format
 SRA-tools support) with a little help with `awk`.
 

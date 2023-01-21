@@ -28,7 +28,7 @@ authors are very aware of this and kindly re-implemented it in Python, which
 is approximately more efficient by two orders of magnitude in my case.
 
 Everything should be smooth in theory, but in practice, I encountered [a 
-dependency issue](post/psutil-python-and-icc/) at the first step when I 
+dependency issue]({{< ref "/post/2019-04-05-psutil-python-and-icc" >}}) at the first step when I 
 `pip install`ed the package.
 
 After finding a way out of the compilation issue, I experienced repeated 

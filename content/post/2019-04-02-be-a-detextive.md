@@ -42,7 +42,7 @@ and stay in my comfort zone with R. Though
 with FontAwesome, `lualatex("cv.tex", bib_engine = "biber")` succeeded in 
 giving a pdf after a few tweaks:
 
-- In awesome-cv.cls: [`\newfontfamily\FA[Path=\@fontdir]{FontAwesome}`](https://github.com/chenyenchung/Awesome-CV/blob/0db3500198eb362410e8fa56826134ad769e896f/awesome-cv.cls#L164) needs 
+- In awesome-cv.cls: [`\newfontfamily\FA[Path=\@fontdir]{FontAwesome}`](https://github.com/chenyenchung/AwesomeCV/blob/18789f5f0e190c7bdb810d5ff3918face6b1c589/awesome-cv.cls#L163) needs 
 to be edited to `\setfontfamily\FA[Path=\@fontdir]{FontAwesome}`, because `\FA` 
 is already defined in `fontawesome.sty`.
 
