@@ -30,7 +30,7 @@ summary = "In this article, we demonstrated that a long non-coding RNA, _Meg3_, 
 doi = "https://doi.org/10.7554/eLife.38080"
 
 # Is this a featured publication? (true/false)
-featured = true
+featured = false
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
