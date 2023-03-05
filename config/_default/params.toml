@@ -249,7 +249,7 @@ plugins_js  = []
     repo = "chenyenchung/personal_site"
     repo_id = "MDEwOlJlcG9zaXRvcnkxNzc5MTQzOTE="
     category = "Comment"
-    category_id = "DIC_kwDOCprCF84CUqmq"
+    category_id = "DIC_kwDOCprCF84CUqvF"
     data_mapping = "pathname"
     theme = "light_protanopia"
 
