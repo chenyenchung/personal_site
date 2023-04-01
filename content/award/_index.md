@@ -21,6 +21,9 @@ header:
 
 *Ph.D student in the Desplan Lab at NYU*
 
+#### Dean's Outstanding Graduate Student Teaching Award (2023)
+*Graduate School of Arts & Science, New York University*
+
 #### Taiwanese Government Scholarship to Study Abroad (2022 -- 2024)
 *Ministry of Education, Taiwan*
 
