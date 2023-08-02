@@ -6,7 +6,7 @@ slug: 101-excuses-to-indulge-yourself-with-more-coffee
 categories:
   - Random thoughts
 tags:
-  - coffee
+  - Coffee
 subtitle: ''
 summary: ''
 authors: []

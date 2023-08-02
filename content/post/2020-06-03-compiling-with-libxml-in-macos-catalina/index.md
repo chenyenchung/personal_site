@@ -7,8 +7,7 @@ categories:
   - R
   - Software
 tags:
-  - compile
-  - dependency
+  - Dependency
   - macOS
   - R
 image:

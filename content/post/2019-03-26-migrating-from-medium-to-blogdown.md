@@ -5,7 +5,7 @@ date: '2019-03-26'
 slug: migrating-from-medium-to-blogdown
 categories:
   - R
-  - Tricks
+  - Command line tricks
 tags:
   - R
   - markdown

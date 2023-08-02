@@ -4,7 +4,7 @@ author: Yen-Chung Chen
 date: '2018-08-30'
 slug: appending-a-string-before-the-url-of-a-current-tab
 categories:
-  - Tricks
+  - Command line tricks
 tags: []
 image:
   caption: ''

@@ -7,8 +7,8 @@ categories:
   - R
 tags:
   - R
-  - k-means
-  - statistics
+  - K-means
+  - Statistics
 image:
   caption: 'Photo by [v2osk](https://unsplash.com/@v2osk) on [Unsplash](https://unsplash.com/)'
   focal_point: ''
