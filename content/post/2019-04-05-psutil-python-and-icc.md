@@ -7,7 +7,7 @@ categories:
   - HPC
 tags:
   - Python
-  - compile
+  - Dependency
 image:
   caption: ''
   focal_point: ''

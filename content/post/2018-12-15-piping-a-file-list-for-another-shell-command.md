@@ -4,7 +4,7 @@ author: Yen-Chung Chen
 date: '2018-12-15'
 slug: piping-a-file-list-for-another-shell-command
 categories:
-  - Tricks
+  - Command line tricks
 tags:
   - Linux
 image:

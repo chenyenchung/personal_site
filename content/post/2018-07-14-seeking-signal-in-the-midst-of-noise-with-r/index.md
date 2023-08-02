@@ -6,8 +6,8 @@ slug: seeking-signal-in-the-midst-of-noise-with-r
 categories:
   - R
 tags:
-  - statistics
-  - genomics
+  - Statistics
+  - Genomics
 image:
   caption: 'Photo by [Anton Scherbakov](https://unsplash.com/@scherbakovx) on [Unsplash](https://unsplash.com/)'
   focal_point: ''

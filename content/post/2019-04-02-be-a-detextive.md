@@ -4,7 +4,7 @@ author: Yen-Chung Chen
 date: '2019-04-02'
 slug: playing-detextive
 categories:
-  - Tricks
+  - Command line tricks
 tags: []
 image:
   caption: ''

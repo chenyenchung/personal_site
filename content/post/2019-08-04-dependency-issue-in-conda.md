@@ -6,6 +6,7 @@ slug: dependency-issue-in-conda
 categories: 
   - HPC
 tags:
+  - Dependency
   - Python
   - Conda
 image:

@@ -6,7 +6,7 @@ slug: transcriptomically-reserved-identities-for-fly-olfactory-projection-neuron
 categories:
   - Journal club
 tags:
-  - cell type diverisity
+  - Neural diversity
 image:
   caption: ''
   focal_point: ''

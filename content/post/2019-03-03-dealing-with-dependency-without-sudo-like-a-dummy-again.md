@@ -7,8 +7,7 @@ categories:
   - R
 tags:
   - R
-  - compile
-  - dependency
+  - Dependency
 image:
   caption: ''
   focal_point: ''

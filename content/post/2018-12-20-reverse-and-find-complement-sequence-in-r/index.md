@@ -7,7 +7,6 @@ categories:
   - R
 tags:
   - R
-  - sequence
 image:
   caption: 'Photo by [Emile Perron](https://unsplash.com/@emilep) on [Unsplash](https://unsplash.com/)'
   focal_point: ''

@@ -6,8 +6,8 @@ slug: deduplicate-bam-files-with-umi-tools
 categories:
   - NGS
 tags:
-  - genomics
-  - benchmark
+  - Applied genomics
+  - Benchmark
 subtitle: ''
 summary: ''
 authors: []

@@ -6,7 +6,6 @@ slug: taking-advantage-of-host-cellular-machinery
 categories:
   - Journal club
 tags:
-  - cell biology
 image:
   caption: ''
   focal_point: ''
