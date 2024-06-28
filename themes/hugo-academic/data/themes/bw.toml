@@ -1,0 +1,19 @@
+# Theme metadata
+name = "bw"
+
+# Is theme light or dark?
+light = true
+
+# Primary
+primary = "#202020"
+
+# Menu
+menu_primary = "#202020"
+menu_text = "#bfbfbf"
+menu_text_active = "#dfdfdf"
+menu_title = "#ffffff"
+
+# Home sections
+home_section_odd = "#dfdfdf"
+home_section_even = "#fdfdfd"
+
