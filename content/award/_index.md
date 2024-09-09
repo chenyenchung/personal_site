@@ -21,6 +21,9 @@ header:
 
 *Ph.D student in the Desplan Lab at NYU*
 
+#### The Charlotte A. Pann Memorial Research Award (2024)
+*Department of Biology, New York University*
+
 #### Dean's Outstanding Graduate Student Teaching Award (2023)
 *Graduate School of Arts & Science, New York University*
 
