@@ -3,21 +3,13 @@ title = "Yen-Chung Chen"
 copyright = "&copy; Yen-Chung Chen 2015 - {year}"
 
 defaultContentLanguage = "en"
-hasCJKLanguage = true
 removePathAccents = true
 summaryLength = 30
-enableEmoji = true
 enableRobotsTXT = true
-footnoteReturnLinkContents = "<sup>^</sup>"
-ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
 disableKinds = ["taxonomy", "term"]
-
-[pagination]
-  pagerSize = 10
 
 [permalinks]
   posts = "/posts/:slug/"
-  publications = "/publications/:slug/"
   projects = "/projects/:slug/"
   talks = "/talks/:slug/"
   courses = "/courses/:slug/"
@@ -45,10 +37,14 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
   description = "Developmental biology, neurobiology, and bioinformatics."
-  author = "Yen-Chung Chen"
-  email = "ycc520@nyu.edu"
   date_format = "2006-01-02"
   avatar = "img/avatar.jpg"
+
+  [params.fonts]
+    body = "\"Literata\", Georgia, Cambria, \"Times New Roman\", serif"
+    google_stylesheets = [
+      "https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400..800;1,7..72,400..700&display=swap"
+    ]
 
 [[menu.main]]
   name = "About"

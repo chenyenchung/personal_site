@@ -9,6 +9,7 @@
   --red: #a34035;
   --blue: #246a78;
   --shadow: 0 10px 28px rgba(31, 34, 29, 0.08);
+  --font-body: Georgia, Cambria, "Times New Roman", serif;
   color-scheme: light;
 }
 
@@ -24,7 +25,8 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
   line-height: 1.65;
 }
 
