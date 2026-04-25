@@ -5,11 +5,6 @@
       <p class="eyebrow">Developmental biology / Neurobiology / Bioinformatics</p>
       <h1>Yen-Chung Chen</h1>
       <p>{{ with $about }}{{ .Params.summary }}{{ else }}Developmental biology, neurobiology, and bioinformatics.{{ end }}</p>
-      <div class="action-row">
-        <a class="button primary" href="{{ "/about/" | relURL }}">About</a>
-        <a class="button" href="{{ "/publications/" | relURL }}">Publications</a>
-        <a class="button" href="{{ "/cv/current_cv.pdf" | relURL }}">CV</a>
-      </div>
       {{ partial "profile-links.html" . }}
     </div>
     {{ with .Site.Params.avatar }}

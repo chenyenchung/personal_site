@@ -37,6 +37,7 @@
       {{ block "main" . }}{{ end }}
     </main>
     {{ partial "site-footer.html" . }}
+    <script src="{{ "js/navigation.js" | relURL }}" defer></script>
     {{ block "scripts" . }}{{ end }}
   </body>
 </html>

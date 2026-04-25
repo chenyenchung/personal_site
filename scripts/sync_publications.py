@@ -170,6 +170,7 @@ def build_record(source: dict, message: dict) -> dict:
         "featured": bool(source.get("featured", False)),
         "image": source.get("image", ""),
         "full_text": source.get("full_text", ""),
+        "bts": source.get("bts", ""),
     }
 
 

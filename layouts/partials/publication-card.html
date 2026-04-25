@@ -30,6 +30,6 @@
       {{ end }}
     </p>
     {{ partial "publication-project-badges.html" (dict "projects" $pub.projects "site" $site) }}
-    {{ partial "publication-links.html" (dict "publication" $pub) }}
+    {{ partial "publication-links.html" (dict "publication" $pub "site" $site) }}
   </div>
 </article>

@@ -1,4 +1,5 @@
 # label is local-only for editing this file; rendered publication metadata comes from DOI sync.
+# Optional bts links to a behind-the-scenes post. Use a post slug, site path, or external URL.
 - slug: 2026_patterning_selector
   label: A model of how spatial, temporal, and Notch cues instruct selector expression
   doi: 10.1038/s41593-026-02256-6

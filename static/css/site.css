@@ -59,6 +59,14 @@ img {
   backdrop-filter: blur(10px);
 }
 
+.site-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+}
+
 .site-title {
   flex: 0 0 auto;
   color: var(--text);
@@ -74,12 +82,16 @@ img {
   min-width: 0;
 }
 
+.site-header-tools[hidden] {
+  display: none;
+}
+
 .site-nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.35rem 0.8rem;
-  font-size: 0.92rem;
+  font-size: 1.15rem;
 }
 
 .site-nav a {
@@ -112,6 +124,61 @@ img {
   border-color: var(--green);
   outline: 2px solid var(--green-soft);
   outline-offset: 1px;
+}
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.3rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--text);
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+  border-color: var(--green);
+}
+
+.menu-toggle:focus {
+  outline: 2px solid var(--green-soft);
+  outline-offset: 1px;
+}
+
+.menu-toggle-icon,
+.menu-toggle-icon::before,
+.menu-toggle-icon::after {
+  display: block;
+  width: 1rem;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.menu-toggle-icon {
+  position: relative;
+}
+
+.menu-toggle-icon::before,
+.menu-toggle-icon::after {
+  position: absolute;
+  left: 0;
+  content: "";
+}
+
+.menu-toggle-icon::before {
+  top: -0.34rem;
+}
+
+.menu-toggle-icon::after {
+  top: 0.34rem;
 }
 
 .site-main {
@@ -571,14 +638,33 @@ img {
     flex-direction: column;
   }
 
+  .site-header {
+    gap: 0.75rem;
+  }
+
+  .site-header-bar {
+    width: 100%;
+  }
+
+  .has-js .menu-toggle {
+    display: inline-flex;
+  }
+
   .site-header-tools {
     align-items: flex-start;
     justify-content: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
     width: 100%;
   }
 
   .site-nav {
     justify-content: flex-start;
+  }
+
+  .header-search {
+    flex: 0 0 auto;
+    width: min(100%, 20rem);
   }
 
   .home-hero {
@@ -617,13 +703,4 @@ img {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .site-header-tools {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .header-search {
-    flex: 0 0 auto;
-    width: min(100%, 20rem);
-  }
 }

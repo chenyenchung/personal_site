@@ -1,9 +1,25 @@
 {{ $pub := .publication }}
-<div class="link-row">
-  {{ with $pub.doi_url }}
-    <a href="{{ . }}">DOI</a>
+{{ $site := .site }}
+{{ $btsURL := "" }}
+{{ with $pub.bts }}
+  {{ $bts := . }}
+  {{ if or (hasPrefix $bts "http://") (hasPrefix $bts "https://") (hasPrefix $bts "/") }}
+    {{ $btsURL = $bts }}
+  {{ else }}
+    {{ with $site.GetPage (printf "posts/%s" $bts) }}
+      {{ $btsURL = .RelPermalink }}
+    {{ else }}
+      {{ $btsURL = (printf "/posts/%s/" $bts) | relURL }}
+    {{ end }}
   {{ end }}
+{{ end }}
+{{ if or $pub.full_text $btsURL }}
+  <div class="link-row">
   {{ with $pub.full_text }}
     <a href="{{ . }}">Full text</a>
   {{ end }}
-</div>
+  {{ with $btsURL }}
+    <a href="{{ . }}">Behind the scenes</a>
+  {{ end }}
+  </div>
+{{ end }}
