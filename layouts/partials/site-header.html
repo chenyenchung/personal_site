@@ -1,0 +1,31 @@
+<header class="site-header">
+  <a class="site-title" href="{{ "/" | relURL }}" aria-label="{{ .Site.Title }} home">{{ .Site.Title }}</a>
+  <div class="site-header-tools">
+    <nav class="site-nav" aria-label="Main navigation">
+      {{ $current := .RelPermalink }}
+      {{ range .Site.Menus.main }}
+        {{ $hide := false }}
+        {{ if eq .URL "/courses/" }}
+          {{ $courses := $.Site.GetPage "courses" }}
+          {{ if not $courses }}
+            {{ $hide = true }}
+          {{ else if eq (len $courses.Pages) 0 }}
+            {{ $hide = true }}
+          {{ end }}
+        {{ end }}
+        {{ if not $hide }}
+        {{ $url := .URL | relURL }}
+        {{ $active := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+        {{ if and (not $active) (ne .URL "/") (hasPrefix $current $url) }}
+          {{ $active = true }}
+        {{ end }}
+        <a class="{{ if $active }}is-active{{ end }}" href="{{ $url }}">{{ .Name }}</a>
+        {{ end }}
+      {{ end }}
+    </nav>
+    <form class="header-search" action="{{ "/search/" | relURL }}" method="get" role="search">
+      <label class="sr-only" for="header-search-query">Search</label>
+      <input id="header-search-query" name="q" type="search" autocomplete="off" placeholder="Search" enterkeyhint="search">
+    </form>
+  </div>
+</header>

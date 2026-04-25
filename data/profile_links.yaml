@@ -1,0 +1,49 @@
+# Public profile/contact links. Items with enabled: false or no url are not rendered.
+- key: email
+  icon: mail
+  name: Email
+  handle: ycc520@nyu.edu
+  url: mailto:ycc520@nyu.edu
+  enabled: true
+
+- key: google_scholar
+  icon: scholar
+  name: Google Scholar
+  handle: JtsGxWEAAAAJ
+  url: https://scholar.google.com/citations?user=JtsGxWEAAAAJ
+  enabled: true
+
+- key: github
+  icon: github
+  name: GitHub
+  handle: chenyenchung
+  url: https://github.com/chenyenchung
+  enabled: true
+
+- key: bluesky
+  icon: bluesky
+  name: Bluesky
+  handle: ""
+  url: ""
+  enabled: false
+
+- key: twitter
+  icon: twitter
+  name: Twitter
+  handle: ycchen_tw
+  url: https://twitter.com/ycchen_tw
+  enabled: true
+
+- key: mastodon
+  icon: mastodon
+  name: Mastodon
+  handle: ycchen_tw@drosophila.social
+  url: https://drosophila.social/@ycchen_tw
+  enabled: true
+
+- key: orcid
+  icon: orcid
+  name: ORCID
+  handle: 0000-0002-8529-1251
+  url: https://orcid.org/0000-0002-8529-1251
+  enabled: true

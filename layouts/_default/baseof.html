@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{- $desc := .Site.Params.description -}}
+    {{- with .Description -}}
+      {{- $desc = . -}}
+    {{- else -}}
+      {{- with .Params.summary -}}
+        {{- $desc = . -}}
+      {{- else -}}
+        {{- with .Summary -}}{{- $desc = . -}}{{- end -}}
+      {{- end -}}
+    {{- end }}
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ $desc | plainify | truncate 160 }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="stylesheet" href="{{ "css/site.css" | relURL }}">
+    {{ with .OutputFormats.Get "RSS" -}}
+      <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ $.Site.Title }}">
+    {{- end }}
+  </head>
+  <body class="section-{{ .Section | default "home" }} kind-{{ .Kind }}">
+    {{ partial "site-header.html" . }}
+    <main class="site-main">
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "site-footer.html" . }}
+    {{ block "scripts" . }}{{ end }}
+  </body>
+</html>
+

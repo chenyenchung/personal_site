@@ -1,0 +1,14 @@
+{{ $site := .Site }}
+{{ with .Params.projects }}
+  <div class="badge-row">
+    {{ range . }}
+      {{ $project := $site.GetPage (printf "projects/%s" .) }}
+      {{ if $project }}
+        <a class="badge" href="{{ $project.RelPermalink }}">{{ $project.Title }}</a>
+      {{ else }}
+        <span class="badge">{{ . | humanize }}</span>
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}
+

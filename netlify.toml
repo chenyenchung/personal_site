@@ -1,7 +1,7 @@
 [build]
-  command = "hugo --minify -b $URL"
+  command = "hugo --gc --minify --printPathWarnings -b $URL"
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.100.2"
+  HUGO_VERSION = "0.160.1"
   HUGO_ENABLEGITINFO = "true"

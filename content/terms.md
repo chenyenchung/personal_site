@@ -5,6 +5,7 @@ draft: false
 share: false
 commentable: false
 editable: false
+exclude_search: true
 
 # Optional header image (relative to `static/img/` folder).
 header:

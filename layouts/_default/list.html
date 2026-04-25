@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <section class="page-shell">
+    <header class="page-heading">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+      {{ if eq .Section "about" }}
+        {{ partial "profile-links.html" . }}
+      {{ end }}
+    </header>
+    {{ with .Content }}
+      <div class="prose">{{ . }}</div>
+    {{ end }}
+    {{ $pages := .Pages.ByDate.Reverse }}
+    {{ if $pages }}
+      <div class="item-list">
+        {{ range $pages }}
+          {{ partial "page-card.html" . }}
+        {{ end }}
+      </div>
+    {{ end }}
+  </section>
+{{ end }}

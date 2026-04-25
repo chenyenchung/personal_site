@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <article class="page-shell prose-page">
+    <header class="page-heading">
+      <h1>{{ .Title }}</h1>
+      {{ partial "page-meta.html" . }}
+      {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+      {{ with .Params.slides }}
+        <div class="action-row">
+          <a class="button primary" href="{{ . | relURL }}">Slides</a>
+        </div>
+      {{ end }}
+    </header>
+    <div class="prose">{{ .Content }}</div>
+  </article>
+{{ end }}
+

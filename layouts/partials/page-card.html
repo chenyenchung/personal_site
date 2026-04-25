@@ -1,0 +1,16 @@
+{{ $image := .Resources.GetMatch "featured.*" }}
+<article class="item-card{{ if not $image }} no-image{{ end }}">
+  {{ with $image }}
+    <a class="item-card-image" href="{{ $.RelPermalink }}" aria-label="{{ $.Title }}">
+      <img src="{{ .RelPermalink }}" alt="">
+    </a>
+  {{ end }}
+  <div class="item-card-body">
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    {{ partial "page-meta.html" . }}
+    {{ $summary := .Params.summary | default .Summary }}
+    {{ with $summary }}
+      <p>{{ . | plainify | truncate 220 }}</p>
+    {{ end }}
+  </div>
+</article>

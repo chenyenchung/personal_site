@@ -13,3 +13,12 @@ http://www.yccbio.net/*       https://www.yenchungchen.com/:splat   301!
 # Force https
 http://www.yenchungchen.com/* https://www.yenchungchen.com/:splat   301!
 
+# Content migrations from the former Academic/blogdown URL scheme
+/post/                         /posts/                         301
+/post/:slug/                   /posts/:slug/                   301
+/publication/                  /publications/                  301
+/publication/:slug/            /publications/                  301
+/publications/:slug/           /publications/                  301
+/award/                        /awards/                        301
+/award/:slug/                  /awards/:slug/                  301
+/:year/:month/:day/:slug/      /posts/:slug/                   301

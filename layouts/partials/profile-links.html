@@ -1,0 +1,18 @@
+{{ $links := hugo.Data.profile_links }}
+{{ if $links }}
+  <ul class="profile-links" aria-label="Profile links">
+    {{ range $links }}
+      {{ if and (ne .enabled false) .url }}
+        {{ $external := or (hasPrefix .url "http://") (hasPrefix .url "https://") }}
+        {{ $label := .name }}
+        {{ with .handle }}{{ $label = printf "%s: %s" $label . }}{{ end }}
+        <li>
+          <a href="{{ .url }}" aria-label="{{ $label }}" title="{{ $label }}"{{ if $external }} target="_blank" rel="me noopener"{{ else }} rel="me"{{ end }}>
+            {{ partial "profile-icon.html" (.icon | default .key) }}
+            <span class="sr-only">{{ $label }}</span>
+          </a>
+        </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+{{ end }}

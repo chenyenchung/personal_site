@@ -1,0 +1,413 @@
+[
+  {
+    "slug": "2026_patterning_selector",
+    "doi": "10.1038/s41593-026-02256-6",
+    "doi_url": "https://doi.org/10.1038/s41593-026-02256-6",
+    "title": "Spatial, temporal and Notch determination of terminal selector expression controls neuronal cell fate in the Drosophila optic lobe",
+    "authors": [
+      "Félix Simon",
+      "Isabel Holguera",
+      "Yen-Chung Chen",
+      "Jennifer Malin",
+      "Priscilla Valentino",
+      "Claire Njoo-Deplante",
+      "Rana Naja El-Danaf",
+      "Katarina Kapuralin",
+      "Ted Erclik",
+      "Nikolaos Konstantinides",
+      "Mehmet Neset Özel",
+      "Claude Desplan"
+    ],
+    "journal": "Nature Neuroscience",
+    "journal_short": "Nat Neurosci",
+    "date": "2026-04-16",
+    "year": 2026,
+    "projects": [
+      "visual-system-patterning"
+    ],
+    "featured": true,
+    "image": "",
+    "full_text": ""
+  },
+  {
+    "slug": "2025_dsx_evolution",
+    "doi": "10.1073/pnas.2516083122",
+    "doi_url": "https://doi.org/10.1073/pnas.2516083122",
+    "title": "High-resolution single-cell analyses reveal evolutionary constraints and evolvability of sexual circuits in Drosophila",
+    "authors": [
+      "Justin T. Walsh",
+      "Ian P. Junker",
+      "Yu-Chieh David Chen",
+      "Yen-Chung Chen",
+      "Helena Gifford",
+      "Dawn S. Chen",
+      "Yun Ding"
+    ],
+    "journal": "Proceedings of the National Academy of Sciences",
+    "journal_short": "Proc. Natl. Acad. Sci. U.S.A.",
+    "date": "2025-11-25",
+    "year": 2025,
+    "projects": [
+      "applied-genomics"
+    ],
+    "featured": false,
+    "image": "",
+    "full_text": ""
+  },
+  {
+    "slug": "2025_calcium_waves",
+    "doi": "10.1126/science.ady5541",
+    "doi_url": "https://doi.org/10.1126/science.ady5541",
+    "title": "Retinal calcium waves coordinate uniform tissue patterning of the Drosophila eye",
+    "authors": [
+      "Ben Jiwon Choi",
+      "Yen-Chung Chen",
+      "Claude Desplan"
+    ],
+    "journal": "Science",
+    "journal_short": "Science",
+    "date": "2025-11-20",
+    "year": 2025,
+    "projects": [
+      "visual-system-patterning"
+    ],
+    "featured": true,
+    "image": "",
+    "full_text": ""
+  },
+  {
+    "slug": "2024_dm",
+    "doi": "10.1016/j.devcel.2024.03.004",
+    "doi_url": "https://doi.org/10.1016/j.devcel.2024.03.004",
+    "title": "Spatial patterning controls neuron numbers in the Drosophila visual system",
+    "authors": [
+      "Jennifer A. Malin",
+      "Yen-Chung Chen",
+      "Félix Simon",
+      "Evelyn Keefer",
+      "Claude Desplan"
+    ],
+    "journal": "Developmental Cell",
+    "journal_short": "Developmental Cell",
+    "date": "2024-05-01",
+    "year": 2024,
+    "projects": [
+      "visual-system-patterning"
+    ],
+    "featured": true,
+    "image": "/publications/2024_dm.jpg",
+    "full_text": ""
+  },
+  {
+    "slug": "2023_split_G4",
+    "doi": "10.1073/pnas.2307451120",
+    "doi_url": "https://doi.org/10.1073/pnas.2307451120",
+    "title": "Using single-cell RNA sequencing to generate predictive cell-type-specific split-GAL4 reagents throughout development",
+    "authors": [
+      "Yu-Chieh David Chen",
+      "Yen-Chung Chen",
+      "Raghuvanshi Rajesh",
+      "Nathalie Shoji",
+      "Maisha Jacy",
+      "Haluk Lacin",
+      "Ted Erclik",
+      "Claude Desplan"
+    ],
+    "journal": "Proceedings of the National Academy of Sciences",
+    "journal_short": "Proc. Natl. Acad. Sci. U.S.A.",
+    "date": "2023-08-08",
+    "year": 2023,
+    "projects": [
+      "visual-system-patterning"
+    ],
+    "featured": true,
+    "image": "/publications/2023_split_G4.jpg",
+    "full_text": ""
+  },
+  {
+    "slug": "2023_agingFCA",
+    "doi": "10.1126/science.adg0934",
+    "doi_url": "https://doi.org/10.1126/science.adg0934",
+    "title": "Aging Fly Cell Atlas identifies exhaustive aging features at cellular resolution",
+    "authors": [
+      "Tzu-Chiao Lu",
+      "Maria Brbić",
+      "Ye-Jin Park",
+      "Tyler Jackson",
+      "Jiaye Chen",
+      "Sai Saroja Kolluru",
+      "Yanyan Qi",
+      "Nadja Sandra Katheder",
+      "Xiaoyu Tracy Cai",
+      "Seungjae Lee",
+      "Yen-Chung Chen",
+      "Niccole Auld",
+      "Chung-Yi Liang",
+      "Sophia H. Ding",
+      "Doug Welsch",
+      "Samuel D’Souza",
+      "Angela Oliveira Pisco",
+      "Robert C. Jones",
+      "Jure Leskovec",
+      "Eric C. Lai",
+      "Hugo J. Bellen",
+      "Liqun Luo",
+      "Heinrich Jasper",
+      "Stephen R. Quake",
+      "Hongjie Li"
+    ],
+    "journal": "Science",
+    "journal_short": "Science",
+    "date": "2023-06-16",
+    "year": 2023,
+    "projects": [
+      "applied-genomics"
+    ],
+    "featured": false,
+    "image": "/publications/2023_agingFCA.jpg",
+    "full_text": ""
+  },
+  {
+    "slug": "2023_SMA",
+    "doi": "10.1016/j.omtn.2023.03.005",
+    "doi_url": "https://doi.org/10.1016/j.omtn.2023.03.005",
+    "title": "MiR34 contributes to spinal muscular atrophy and AAV9-mediated delivery of MiR34a ameliorates the motor deficits in SMA mice",
+    "authors": [
+      "Tai-Heng Chen",
+      "Shih-Hsin Chang",
+      "Yu-Fu Wu",
+      "Ya-Ping Yen",
+      "Fang-Yu Hsu",
+      "Yen-Chung Chen",
+      "Yang Ming",
+      "Ho-Chiang Hsu",
+      "Yi-Ching Su",
+      "Sheng-Tang Wong",
+      "Jui-Hung Hung",
+      "Shih-Hwa Chiou",
+      "Yuh-Jyh Jong",
+      "Jun-An Chen"
+    ],
+    "journal": "Molecular Therapy - Nucleic Acids",
+    "journal_short": "Molecular Therapy - Nucleic Acids",
+    "date": "2023-06-01",
+    "year": 2023,
+    "projects": [
+      "spinal-motor-neuron-development"
+    ],
+    "featured": false,
+    "image": "/publications/2023_SMA.jpg",
+    "full_text": ""
+  },
+  {
+    "slug": "2023_scMN",
+    "doi": "10.1038/s41467-022-35574-x",
+    "doi_url": "https://doi.org/10.1038/s41467-022-35574-x",
+    "title": "Single-cell transcriptomic analysis reveals diversity within mammalian spinal motor neurons",
+    "authors": [
+      "Ee Shan Liau",
+      "Suoqin Jin",
+      "Yen-Chung Chen",
+      "Wei-Szu Liu",
+      "Maëliss Calon",
+      "Stéphane Nedelec",
+      "Qing Nie",
+      "Jun-An Chen"
+    ],
+    "journal": "Nature Communications",
+    "journal_short": "Nat Commun",
+    "date": "2023-01-03",
+    "year": 2023,
+    "projects": [
+      "spinal-motor-neuron-development"
+    ],
+    "featured": false,
+    "image": "/publications/2023_scMN.png",
+    "full_text": ""
+  },
+  {
+    "slug": "2022_APA",
+    "doi": "10.1038/s41467-022-32305-0",
+    "doi_url": "https://doi.org/10.1038/s41467-022-32305-0",
+    "title": "Diverse cell-specific patterns of alternative polyadenylation in Drosophila",
+    "authors": [
+      "Seungjae Lee",
+      "Yen-Chung Chen",
+      "FCA Consortium",
+      "Austin E. Gillen",
+      "J. Matthew Taliaferro",
+      "Bart Deplancke",
+      "Hongjie Li",
+      "Eric C. Lai"
+    ],
+    "journal": "Nature Communications",
+    "journal_short": "Nat Commun",
+    "date": "2022-09-13",
+    "year": 2022,
+    "projects": [
+      "applied-genomics"
+    ],
+    "featured": false,
+    "image": "/publications/2022_APA.jpg",
+    "full_text": ""
+  },
+  {
+    "slug": "2022_ttf_scL3",
+    "doi": "10.1038/s41586-022-04564-w",
+    "doi_url": "https://doi.org/10.1038/s41586-022-04564-w",
+    "title": "A complete temporal transcription factor series in the fly visual system",
+    "authors": [
+      "Nikolaos Konstantinides",
+      "Isabel Holguera",
+      "Anthony M. Rossi",
+      "Aristides Escobar",
+      "Liébaut Dudragne",
+      "Yen-Chung Chen",
+      "Thinh N. Tran",
+      "Azalia M. Martínez Jaimes",
+      "Mehmet Neset Özel",
+      "Félix Simon",
+      "Zhiping Shao",
+      "Nadejda M. Tsankova",
+      "John F. Fullard",
+      "Uwe Walldorf",
+      "Panos Roussos",
+      "Claude Desplan"
+    ],
+    "journal": "Nature",
+    "journal_short": "Nature",
+    "date": "2022-04-14",
+    "year": 2022,
+    "projects": [
+      "visual-system-patterning"
+    ],
+    "featured": false,
+    "image": "/publications/2022_ttf_scL3.png",
+    "full_text": ""
+  },
+  {
+    "slug": "2022_stpatterning_integration_review",
+    "doi": "10.3389/fnins.2022.854422",
+    "doi_url": "https://doi.org/10.3389/fnins.2022.854422",
+    "title": "Integration of Spatial and Temporal Patterning in the Invertebrate and Vertebrate Nervous System",
+    "authors": [
+      "Yen-Chung Chen",
+      "Nikolaos Konstantinides"
+    ],
+    "journal": "Frontiers in Neuroscience",
+    "journal_short": "Front. Neurosci.",
+    "date": "2022-03-22",
+    "year": 2022,
+    "projects": [
+      "visual-system-patterning"
+    ],
+    "featured": true,
+    "image": "/publications/2022_stpatterning_integration_review.png",
+    "full_text": ""
+  },
+  {
+    "slug": "2021_scdev_opticlobe",
+    "doi": "10.1038/s41586-020-2879-3",
+    "doi_url": "https://doi.org/10.1038/s41586-020-2879-3",
+    "title": "Neuronal diversity and convergence in a visual system developmental atlas",
+    "authors": [
+      "Mehmet Neset Özel",
+      "Félix Simon",
+      "Shadi Jafari",
+      "Isabel Holguera",
+      "Yen-Chung Chen",
+      "Najate Benhra",
+      "Rana Naja El-Danaf",
+      "Katarina Kapuralin",
+      "Jennifer Amy Malin",
+      "Nikolaos Konstantinides",
+      "Claude Desplan"
+    ],
+    "journal": "Nature",
+    "journal_short": "Nature",
+    "date": "2021-01-07",
+    "year": 2021,
+    "projects": [
+      "visual-system-patterning"
+    ],
+    "featured": false,
+    "image": "/publications/2021_scdev_opticlobe.png",
+    "full_text": ""
+  },
+  {
+    "slug": "2020_Fly_vis_grn_review",
+    "doi": "10.1016/bs.ctdb.2020.02.010",
+    "doi_url": "https://doi.org/10.1016/bs.ctdb.2020.02.010",
+    "title": "Gene regulatory networks during the development of the Drosophila visual system",
+    "authors": [
+      "Yen-Chung Chen",
+      "Claude Desplan"
+    ],
+    "journal": "Current Topics in Developmental Biology",
+    "journal_short": "",
+    "date": "2020-01-01",
+    "year": 2020,
+    "projects": [
+      "visual-system-patterning"
+    ],
+    "featured": false,
+    "image": "/publications/2020_Fly_vis_grn_review.jpg",
+    "full_text": ""
+  },
+  {
+    "slug": "2019_ALS_mir",
+    "doi": "10.1016/j.stem.2019.04.016",
+    "doi_url": "https://doi.org/10.1016/j.stem.2019.04.016",
+    "title": "Mir-17∼92 Confers Motor Neuron Subtype Differential Resistance to ALS-Associated Degeneration",
+    "authors": [
+      "Ying-Tsen Tung",
+      "Kuan-Chih Peng",
+      "Yen-Chung Chen",
+      "Ya-Ping Yen",
+      "Mien Chang",
+      "Sebastian Thams",
+      "Jun-An Chen"
+    ],
+    "journal": "Cell Stem Cell",
+    "journal_short": "Cell Stem Cell",
+    "date": "2019-08-01",
+    "year": 2019,
+    "projects": [
+      "spinal-motor-neuron-development"
+    ],
+    "featured": false,
+    "image": "/publications/2019_ALS_mir.jpg",
+    "full_text": ""
+  },
+  {
+    "slug": "2018_Meg3_Hox",
+    "doi": "10.7554/eLife.38080",
+    "doi_url": "https://doi.org/10.7554/eLife.38080",
+    "title": "Dlk1-Dio3 locus-derived lncRNAs perpetuate postmitotic motor neuron cell fate and subtype identity",
+    "authors": [
+      "Ya-Ping Yen",
+      "Wen-Fu Hsieh",
+      "Ya-Yin Tsai",
+      "Ya-Lin Lu",
+      "Ee Shan Liau",
+      "Ho-Chiang Hsu",
+      "Yen-Chung Chen",
+      "Ting-Chun Liu",
+      "Mien Chang",
+      "Joye Li",
+      "Shau-Ping Lin",
+      "Jui-Hung Hung",
+      "Jun-An Chen"
+    ],
+    "journal": "eLife",
+    "journal_short": "",
+    "date": "2018-10-12",
+    "year": 2018,
+    "projects": [
+      "spinal-motor-neuron-development"
+    ],
+    "featured": false,
+    "image": "/publications/2018_Meg3_Hox.jpg",
+    "full_text": ""
+  }
+]

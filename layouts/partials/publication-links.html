@@ -1,0 +1,9 @@
+{{ $pub := .publication }}
+<div class="link-row">
+  {{ with $pub.doi_url }}
+    <a href="{{ . }}">DOI</a>
+  {{ end }}
+  {{ with $pub.full_text }}
+    <a href="{{ . }}">Full text</a>
+  {{ end }}
+</div>

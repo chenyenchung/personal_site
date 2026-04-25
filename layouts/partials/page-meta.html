@@ -1,0 +1,19 @@
+{{ $authors := .Params.authors }}
+{{ if not $authors }}
+  {{ with .Params.author }}{{ $authors = slice . }}{{ end }}
+{{ end }}
+{{ $hasDate := not .Date.IsZero }}
+{{ if or $hasDate $authors .Params.tags }}
+  <div class="page-meta">
+    {{ if $hasDate }}
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format (.Site.Params.date_format | default "2006-01-02") }}</time>
+    {{ end }}
+    {{ with $authors }}
+      <span>{{ delimit . ", " }}</span>
+    {{ end }}
+    {{ with .Params.tags }}
+      <span>{{ delimit . ", " }}</span>
+    {{ end }}
+  </div>
+{{ end }}
+

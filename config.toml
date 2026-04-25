@@ -1,75 +1,39 @@
-# Configuration of Hugo
-# Guide: https://sourcethemes.com/academic/docs/get-started/
-# Hugo Documentation: https://gohugo.io/getting-started/configuration/#all-configuration-settings
-#
-# This file is formatted using TOML syntax - learn more at https://learnxinyminutes.com/docs/toml/
-# Each configuration section is defined by a name in square brackets (e.g. `[outputs]`).
-
-# Title of your site
+baseURL = "https://www.yenchungchen.com/"
 title = "Yen-Chung Chen"
-
-# The URL of your site.
-# End your URL with a `/` trailing slash, e.g. `https://example.com/`.
-baseurl = "https://www.yenchungchen.com/"
-
-# Enter a copyright notice to display in the site footer.
-# To display a copyright symbol, type `&copy;`. For current year, type `{year}`.
-
 copyright = "&copy; Yen-Chung Chen 2015 - {year}"
 
-
-# Enable analytics by entering your Google Analytics tracking ID
-googleAnalytics = "UA-137049484-1"
-
-############################
-## Advanced options below ##
-############################
-
-# Name of Academic theme folder in `themes/`.
-theme = "hugo-academic"
-
-# Get last modified date for content from Git?
-enableGitInfo = false
-
-# Default language to use (if you setup multilingual support)
 defaultContentLanguage = "en"
-hasCJKLanguage = true  # Set `true` for Chinese/Japanese/Korean languages.
-defaultContentLanguageInSubdir = false
-removePathAccents = true  # Workaround for https://github.com/gohugoio/hugo/issues/5687
-
-summaryLength = 30  # Listing summary length in words. Also, see `abstract_length` in `params.toml`.
-paginate = 10  # Number of items per page in paginated lists.
+hasCJKLanguage = true
+removePathAccents = true
+summaryLength = 30
 enableEmoji = true
-footnotereturnlinkcontents = "<sup>^</sup>"
+enableRobotsTXT = true
+footnoteReturnLinkContents = "<sup>^</sup>"
 ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
+disableKinds = ["taxonomy", "term"]
 
-# Workaround Hugo publishing taxonomy URLs as plurals - consistently use singular across Academic.
+[pagination]
+  pagerSize = 10
+
 [permalinks]
-  authors = "/author/:slug/"
-  tags = "/tag/:slug/"
-  categories = "/category/:slug/"
-  publication_types = "/publication-type/:slug/"
-  post = "/:year/:month/:day/:slug/"
+  posts = "/posts/:slug/"
+  publications = "/publications/:slug/"
+  projects = "/projects/:slug/"
+  talks = "/talks/:slug/"
+  courses = "/courses/:slug/"
 
 [outputs]
-  home = [ "HTML", "RSS", "JSON", "WebAppManifest" ]
-  section = [ "HTML", "RSS" ]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
 
-[mediaTypes."application/manifest+json"]
-  suffixes = ["webmanifest"]
-
-[outputFormats.WebAppManifest]
-  mediaType = "application/manifest+json"
-  rel = "manifest"
-
-# Configure the Markdown renderer.
 [markup]
   defaultMarkdownHandler = "goldmark"
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true  # Enable user to embed HTML snippets in Markdown content.
+      unsafe = true
   [markup.highlight]
-    codeFences = false  # Disable Hugo's code highlighter as it conflicts with Academic's highligher.
+    codeFences = true
+    style = "github"
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 3
@@ -77,44 +41,51 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
 [imaging]
   resampleFilter = "lanczos"
   quality = 90
-  anchor = "smart"  # Anchor for cropping. Options include Smart and Center.
+  anchor = "smart"
 
-# Taxonomies.
-[taxonomies]
-  tag = "tags"
-  category = "categories"
-  publication_type = "publication_types"
-  author = "authors"
+[params]
+  description = "Developmental biology, neurobiology, and bioinformatics."
+  author = "Yen-Chung Chen"
+  email = "ycc520@nyu.edu"
+  date_format = "2006-01-02"
+  avatar = "img/avatar.jpg"
 
-# Related content.
-[related]
-  threshold = 80.0
-  includeNewer = true
-  toLower = true
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 10
 
-  [[related.indices]]
-    name = "title"
-    weight = 60.0
+[[menu.main]]
+  name = "Posts"
+  url = "/posts/"
+  weight = 20
 
-  [[related.indices]]
-    name = "summary"
-    weight = 50.0
+[[menu.main]]
+  name = "Publications"
+  url = "/publications/"
+  weight = 30
 
-  [[related.indices]]
-    name = "tags"
-    weight = 80.0
+[[menu.main]]
+  name = "Projects"
+  url = "/projects/"
+  weight = 40
 
-  [[related.indices]]
-    name = "categories"
-    weight = 70.0
+[[menu.main]]
+  name = "Awards"
+  url = "/awards/"
+  weight = 50
 
-  [[related.indices]]
-    name = "authors"
-    weight = 20.0
+[[menu.main]]
+  name = "Talks"
+  url = "/talks/"
+  weight = 60
 
-[privacy]
-  [privacy.googleAnalytics]
-    anonymizeIP = true
-    disable = false
-    respectDoNotTrack = true
-    useSessionStorage = false
+[[menu.main]]
+  name = "Courses"
+  url = "/courses/"
+  weight = 70
+
+[[menu.main]]
+  name = "CV"
+  url = "/cv/current_cv.pdf"
+  weight = 90

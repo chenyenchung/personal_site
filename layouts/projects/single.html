@@ -1,0 +1,37 @@
+{{ define "main" }}
+  {{ $slug := .Params.project_slug | default .Slug }}
+  {{ $publications := sort (where hugo.Data.publications_generated "projects" "intersect" (slice $slug)) "date" "desc" }}
+  {{ $postSection := .Site.GetPage "posts" }}
+  <article class="page-shell prose-page">
+    <header class="page-heading">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+    </header>
+    <div class="prose">{{ .Content }}</div>
+
+    {{ if $publications }}
+      <section class="related-section">
+        <h2>Publications</h2>
+        <div class="publication-list">
+          {{ range $publications }}
+            {{ partial "publication-card.html" (dict "publication" . "site" $.Site) }}
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+
+    {{ with $postSection }}
+      {{ $posts := where .Pages "Params.projects" "intersect" (slice $slug) }}
+      {{ if $posts }}
+        <section class="related-section">
+          <h2>Posts</h2>
+          <div class="item-list compact">
+            {{ range $posts.ByDate.Reverse }}
+              {{ partial "page-card.html" . }}
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+    {{ end }}
+  </article>
+{{ end }}

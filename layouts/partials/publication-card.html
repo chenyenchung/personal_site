@@ -1,0 +1,35 @@
+{{ $pub := .publication }}
+{{ $site := .site }}
+{{ $target := $pub.full_text | default $pub.doi_url }}
+{{ $image := $pub.image }}
+<article class="publication-card{{ if not $image }} no-image{{ end }}">
+  {{ with $image }}
+    <a class="publication-image" href="{{ $target }}" aria-label="{{ $pub.title }}">
+      <img src="{{ . | relURL }}" alt="">
+    </a>
+  {{ end }}
+  <div class="publication-body">
+    <h2>
+      {{ if $target }}
+        <a href="{{ $target }}">{{ $pub.title }}</a>
+      {{ else }}
+        {{ $pub.title }}
+      {{ end }}
+    </h2>
+    {{ with $pub.authors }}
+      {{ $displayAuthors := . }}
+      {{ if ge (len .) 5 }}
+        {{ $displayAuthors = (first 4 .) | append "et al." }}
+      {{ end }}
+      <p class="authors" title="{{ delimit . ", " }}">{{ delimit $displayAuthors ", " }}</p>
+    {{ end }}
+    <p class="publication-venue">
+      {{ with $pub.year }}<span>{{ . }}</span>{{ end }}
+      {{ with ($pub.journal_short | default $pub.journal) }}
+        <span>{{ . }}</span>
+      {{ end }}
+    </p>
+    {{ partial "publication-project-badges.html" (dict "projects" $pub.projects "site" $site) }}
+    {{ partial "publication-links.html" (dict "publication" $pub) }}
+  </div>
+</article>

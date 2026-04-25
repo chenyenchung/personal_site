@@ -1,0 +1,18 @@
+{{ define "main" }}
+  <article class="page-shell prose-page">
+    <header class="page-heading">
+      <h1>{{ .Title }}</h1>
+      {{ partial "page-meta.html" . }}
+      {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+    </header>
+    {{ with .Resources.GetMatch "featured.*" }}
+      <figure class="page-featured-image">
+        <img src="{{ .RelPermalink }}" alt="">
+      </figure>
+    {{ end }}
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}
+
