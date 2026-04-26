@@ -1,0 +1,47 @@
+{{ define "main" }}
+  {{ $config := partial "macademia/section-config.html" (dict "site" .Site "section" .Section) }}
+  {{ $class := $config.class | default "post" }}
+  {{ $profile := .Site.Params.macademia.profile | default dict }}
+  <section class="page-shell">
+    <header class="page-heading">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+      {{ if in ($profile.show_on_sections | default (slice "about")) .Section }}
+        {{ partial "profile-links.html" . }}
+      {{ end }}
+    </header>
+    {{ with .Content }}
+      <div class="prose">{{ . }}</div>
+    {{ end }}
+
+    {{ if eq $class "page" }}
+    {{ else if eq $class "publications" }}
+      {{ $pages := .Pages.ByDate.Reverse }}
+      {{ if $pages }}
+        <div class="publication-list">
+          {{ range $pages }}
+            {{ partial "publication-card.html" . }}
+          {{ end }}
+        </div>
+      {{ end }}
+    {{ else if eq $class "supertag" }}
+      {{ $pages := .Pages.ByWeight }}
+      {{ if $pages }}
+        <div class="project-grid">
+          {{ range $pages }}
+            {{ partial "page-card.html" . }}
+          {{ end }}
+        </div>
+      {{ end }}
+    {{ else }}
+      {{ $pages := .Pages.ByDate.Reverse }}
+      {{ if $pages }}
+        <div class="item-list">
+          {{ range $pages }}
+            {{ partial "page-card.html" . }}
+          {{ end }}
+        </div>
+      {{ end }}
+    {{ end }}
+  </section>
+{{ end }}

@@ -1,0 +1,26 @@
+{{ $btsURL := "" }}
+{{ with .Params.bts }}
+  {{ $bts := . }}
+  {{ if or (hasPrefix $bts "http://") (hasPrefix $bts "https://") (hasPrefix $bts "/") }}
+    {{ $btsURL = $bts }}
+  {{ else }}
+    {{ with $.Site.GetPage (printf "posts/%s" $bts) }}
+      {{ $btsURL = .RelPermalink }}
+    {{ else }}
+      {{ $btsURL = (printf "/posts/%s/" $bts) | relURL }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ if or .Params.full_text .Params.doi_url $btsURL }}
+  <div class="link-row">
+  {{ with .Params.full_text }}
+    <a href="{{ . }}">Full text</a>
+  {{ end }}
+  {{ if and (not .Params.full_text) .Params.doi_url }}
+    <a href="{{ .Params.doi_url }}">DOI</a>
+  {{ end }}
+  {{ with $btsURL }}
+    <a href="{{ . }}">Behind the scenes</a>
+  {{ end }}
+  </div>
+{{ end }}

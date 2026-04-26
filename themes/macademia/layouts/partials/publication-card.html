@@ -1,0 +1,33 @@
+{{ $target := .RelPermalink }}
+{{ $image := .Params.image }}
+<article class="publication-card{{ if not $image }} no-image{{ end }}">
+  {{ with $image }}
+    <a class="publication-image" href="{{ $target }}" aria-label="{{ $.Title }}">
+      <img src="{{ . | relURL }}" alt="">
+    </a>
+  {{ end }}
+  <div class="publication-body">
+    <h2>
+      {{ if $target }}
+        <a href="{{ $target }}">{{ .Title }}</a>
+      {{ else }}
+        {{ .Title }}
+      {{ end }}
+    </h2>
+    {{ with .Params.authors }}
+      {{ $displayAuthors := . }}
+      {{ if ge (len .) 5 }}
+        {{ $displayAuthors = (first 4 .) | append "et al." }}
+      {{ end }}
+      <p class="authors" title="{{ delimit . ", " }}">{{ delimit $displayAuthors ", " }}</p>
+    {{ end }}
+    <p class="publication-venue">
+      {{ with .Params.year }}<span>{{ . }}</span>{{ end }}
+      {{ with (.Params.journal_short | default .Params.journal) }}
+        <span>{{ . }}</span>
+      {{ end }}
+    </p>
+    {{ partial "project-badges.html" . }}
+    {{ partial "publication-links.html" . }}
+  </div>
+</article>

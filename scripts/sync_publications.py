@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch publication metadata from Crossref for the local Hugo data file."""
+"""Fetch publication metadata and write Hugo publication pages."""
 
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ from pathlib import Path
 
 
 SOURCE = Path("data/publications.yaml")
-OUTPUT = Path("data/publications_generated.json")
+CONTENT_DIR = Path("content/publications")
 CROSSREF_WORKS_URL = "https://api.crossref.org/works/"
 
 
@@ -174,10 +174,107 @@ def build_record(source: dict, message: dict) -> dict:
     }
 
 
+def build_record_from_cache(source: dict, cached: dict) -> dict:
+    doi = normalize_doi(str(source["doi"]))
+    record = {
+        "slug": source["slug"],
+        "doi": doi,
+        "doi_url": doi_url(doi),
+        "title": cached.get("title", ""),
+        "authors": cached.get("authors", []),
+        "journal": cached.get("journal", ""),
+        "journal_short": cached.get("journal_short", ""),
+        "date": cached.get("date", ""),
+        "year": cached.get("year"),
+        "projects": cached.get("projects", []),
+        "featured": bool(cached.get("featured", False)),
+        "image": cached.get("image", ""),
+        "full_text": cached.get("full_text", ""),
+        "bts": cached.get("bts", ""),
+    }
+    for key in ("title", "authors", "journal", "journal_short", "projects", "image", "full_text", "bts"):
+        if source.get(key):
+            record[key] = source[key]
+    if "featured" in source:
+        record["featured"] = bool(source["featured"])
+    return record
+
+
+def load_cache(path: Path | None) -> dict[str, dict]:
+    if not path:
+        return {}
+    records = json.loads(path.read_text(encoding="utf-8"))
+    return {str(record["slug"]): record for record in records}
+
+
+def existing_body(path: Path) -> str:
+    if not path.exists():
+        return ""
+    text = path.read_text(encoding="utf-8")
+    match = re.match(r"^---\s*\n.*?\n---\s*\n?(.*)$", text, flags=re.DOTALL)
+    if match:
+        return match.group(1).rstrip() + "\n" if match.group(1).strip() else ""
+    return text.rstrip() + "\n" if text.strip() else ""
+
+
+def yaml_scalar(value) -> str:
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, (int, float)):
+        return str(value)
+    return json.dumps(str(value), ensure_ascii=False)
+
+
+def front_matter(record: dict) -> str:
+    fields = [
+        ("title", record.get("title")),
+        ("slug", record.get("slug")),
+        ("date", record.get("date")),
+        ("summary", f"{record.get('year') or ''} {record.get('journal_short') or record.get('journal') or ''}".strip()),
+        ("authors", record.get("authors")),
+        ("doi", record.get("doi")),
+        ("doi_url", record.get("doi_url")),
+        ("journal", record.get("journal")),
+        ("journal_short", record.get("journal_short")),
+        ("year", record.get("year")),
+        ("projects", record.get("projects")),
+        ("featured", record.get("featured", False)),
+        ("image", record.get("image")),
+        ("full_text", record.get("full_text")),
+        ("bts", record.get("bts")),
+    ]
+    lines = ["---"]
+    for key, value in fields:
+        if value is None or value == "" or value == []:
+            continue
+        if isinstance(value, list):
+            lines.append(f"{key}:")
+            for item in value:
+                lines.append(f"  - {yaml_scalar(item)}")
+        else:
+            lines.append(f"{key}: {yaml_scalar(value)}")
+    lines.append("---")
+    return "\n".join(lines) + "\n"
+
+
+def write_publication_page(record: dict, content_dir: Path) -> Path:
+    page_dir = content_dir / str(record["slug"])
+    page_path = page_dir / "index.md"
+    page_dir.mkdir(parents=True, exist_ok=True)
+    body = existing_body(page_path)
+    page_path.write_text(front_matter(record) + ("\n" + body if body else ""), encoding="utf-8")
+    return page_path
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", type=Path, default=SOURCE)
-    parser.add_argument("--output", type=Path, default=OUTPUT)
+    parser.add_argument("--content-dir", type=Path, default=CONTENT_DIR)
+    parser.add_argument(
+        "--metadata-cache",
+        type=Path,
+        help="Optional existing generated JSON metadata to seed pages without Crossref requests.",
+    )
     parser.add_argument(
         "--mailto",
         default=os.environ.get("CROSSREF_MAILTO", "ycc520@nyu.edu"),
@@ -188,21 +285,25 @@ def main() -> int:
     args = parser.parse_args()
 
     sources = parse_source(args.source)
-    generated = []
+    cache = load_cache(args.metadata_cache)
     failures = []
 
     for source in sources:
         slug = source.get("slug", "<missing slug>")
         try:
-            message = fetch_crossref(str(source["doi"]), args.mailto, args.timeout)
-            record = build_record(source, message)
+            if slug in cache:
+                record = build_record_from_cache(source, cache[slug])
+            else:
+                message = fetch_crossref(str(source["doi"]), args.mailto, args.timeout)
+                record = build_record(source, message)
+                time.sleep(args.sleep)
             if not record["title"] or not record["authors"]:
-                failures.append(f"{slug}: Crossref record is missing title or authors")
-            generated.append(record)
-            print(f"synced {slug}", file=sys.stderr)
+                failures.append(f"{slug}: record is missing title or authors")
+                continue
+            page_path = write_publication_page(record, args.content_dir)
+            print(f"wrote {page_path}", file=sys.stderr)
         except (KeyError, urllib.error.URLError, TimeoutError, ValueError) as exc:
             failures.append(f"{slug}: {exc}")
-        time.sleep(args.sleep)
 
     if failures:
         print("Publication sync failed:", file=sys.stderr)
@@ -210,11 +311,6 @@ def main() -> int:
             print(f"  - {failure}", file=sys.stderr)
         return 1
 
-    args.output.write_text(
-        json.dumps(generated, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
-    print(f"wrote {args.output}", file=sys.stderr)
     return 0
 
 

@@ -4,7 +4,7 @@ slug: external-collaborations
 aliases:
   - /projects/applied-genomics/
 summary: External collaborations using single-cell and transcriptomic analyses across tissues, species, and biological questions.
-project_slug: applied-genomics
+supertag_key: applied-genomics
 weight: 30
 featured: false
 ---

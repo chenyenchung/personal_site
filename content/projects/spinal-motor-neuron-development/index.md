@@ -1,7 +1,7 @@
 ---
 title: Spinal Motor Neuron Development
 summary: Development, identity, and degeneration of spinal motor neuron subtypes.
-project_slug: spinal-motor-neuron-development
+supertag_key: spinal-motor-neuron-development
 weight: 20
 featured: true
 ---

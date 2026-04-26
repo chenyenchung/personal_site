@@ -1,0 +1,21 @@
+{{ define "main" }}
+  {{ $search := .Site.Params.macademia.search | default dict }}
+  <section class="page-shell search-shell">
+    <header class="page-heading">
+      <h1>{{ .Title }}</h1>
+    </header>
+    <form id="site-search" class="search-panel" data-index-url="{{ "index.json" | relURL }}">
+      <label for="search-query">Search</label>
+      <div class="search-row">
+        <input id="search-query" name="q" type="search" autocomplete="off" placeholder="{{ $search.placeholder | default "Search" }}">
+        <button class="button primary" type="submit">Search</button>
+      </div>
+    </form>
+    <p id="search-status" class="search-status" role="status"></p>
+    <div id="search-results" class="search-results"></div>
+  </section>
+{{ end }}
+
+{{ define "scripts" }}
+  <script src="{{ "js/search.js" | relURL }}" defer></script>
+{{ end }}

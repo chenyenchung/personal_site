@@ -1,0 +1,5 @@
+{{- $key := .Params.supertag_key | default .Slug -}}
+{{- if and (not $key) .File -}}
+  {{- $key = path.Base (path.Dir .File.Path) -}}
+{{- end -}}
+{{- return $key -}}

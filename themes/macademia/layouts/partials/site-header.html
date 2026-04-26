@@ -1,0 +1,46 @@
+<header class="site-header">
+  {{ $macademia := .Site.Params.macademia | default dict }}
+  {{ $search := $macademia.search | default dict }}
+  {{ $navigation := $macademia.navigation | default dict }}
+  <div class="site-header-bar">
+    <a class="site-title" href="{{ "/" | relURL }}" aria-label="{{ .Site.Title }} home">{{ .Site.Title }}</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+      <span class="menu-toggle-icon" aria-hidden="true"></span>
+      <span>Menu</span>
+    </button>
+  </div>
+  <div class="site-header-tools" id="site-menu" data-site-menu>
+    <nav class="site-nav" aria-label="Main navigation">
+      {{ $current := .RelPermalink }}
+      {{ range .Site.Menus.main }}
+        {{ $hide := false }}
+        {{ if ne $navigation.hide_empty_sections false }}
+          {{ $path := replaceRE "^/|/$" "" .URL }}
+          {{ $parts := split $path "/" }}
+          {{ $section := index $parts 0 }}
+          {{ with $.Site.GetPage $section }}
+            {{ $sectionConfig := partial "macademia/section-config.html" (dict "site" $.Site "section" $section) }}
+            {{ $class := $sectionConfig.class | default "post" }}
+            {{ if and (ne $class "page") (eq (len .Pages) 0) }}
+              {{ $hide = true }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ if not $hide }}
+        {{ $url := .URL | relURL }}
+        {{ $active := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+        {{ if and (not $active) (ne .URL "/") (hasPrefix $current $url) }}
+          {{ $active = true }}
+        {{ end }}
+        <a class="{{ if $active }}is-active{{ end }}" href="{{ $url }}">{{ .Name }}</a>
+        {{ end }}
+      {{ end }}
+    </nav>
+    {{ if ne $search.enabled false }}
+      <form class="header-search" action="{{ "/search/" | relURL }}" method="get" role="search">
+        <label class="sr-only" for="header-search-query">Search</label>
+        <input id="header-search-query" name="q" type="search" autocomplete="off" placeholder="Search" enterkeyhint="search">
+      </form>
+    {{ end }}
+  </div>
+</header>

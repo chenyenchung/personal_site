@@ -1,0 +1,12 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>{{ replace .Site.Copyright "{year}" (now.Format "2006") | safeHTML }}</p>
+    {{ with .Site.Params.macademia.footer.links }}
+      <nav aria-label="Footer navigation">
+        {{ range . }}
+          <a href="{{ .url | relURL }}">{{ .name }}</a>
+        {{ end }}
+      </nav>
+    {{ end }}
+  </div>
+</footer>

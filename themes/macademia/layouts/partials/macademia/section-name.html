@@ -1,0 +1,4 @@
+{{- $config := partial "macademia/section-config.html" . -}}
+{{- $section := .section -}}
+{{- return ($config.name | default ($section | humanize | title)) -}}
+

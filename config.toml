@@ -1,6 +1,7 @@
 baseURL = "https://www.yenchungchen.com/"
 title = "Yen-Chung Chen"
 copyright = "&copy; Yen-Chung Chen 2015 - {year}"
+theme = "macademia"
 
 defaultContentLanguage = "en"
 removePathAccents = true
@@ -13,6 +14,7 @@ enableRobotsTXT = true
 [permalinks]
   posts = "/posts/:slug/"
   projects = "/projects/:slug/"
+  publications = "/publications/:slug/"
   talks = "/talks/:slug/"
   courses = "/courses/:slug/"
 
@@ -47,6 +49,125 @@ enableRobotsTXT = true
     google_stylesheets = [
       "https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400..800;1,7..72,400..700&display=swap"
     ]
+
+  [params.macademia.home]
+    eyebrow = "Developmental biology / Neurobiology / Bioinformatics"
+    avatar_alt = "Portrait of Yen-Chung Chen"
+    summary_section = "about"
+    publications_section = "publications"
+    publications_title = "Featured Publications"
+    publications_link_label = "All publications"
+    publications_count = 4
+    supertag_section = "projects"
+    supertag_title = "Projects"
+    supertag_link_label = "All projects"
+    posts_section = "posts"
+    posts_title = "Recent Posts"
+    posts_link_label = "All posts"
+    posts_count = 4
+
+  [params.macademia.navigation]
+    hide_empty_sections = true
+
+  [params.macademia.search]
+    enabled = true
+    sections = ["about", "posts", "projects", "awards", "talks", "courses", "publications"]
+    placeholder = "Search posts, publications, projects"
+
+  [params.macademia.profile]
+    show_on_sections = ["about"]
+
+  [[params.macademia.profile.links]]
+    key = "email"
+    icon = "mail"
+    name = "Email"
+    handle = "ycc520@nyu.edu"
+    url = "mailto:ycc520@nyu.edu"
+    enabled = true
+
+  [[params.macademia.profile.links]]
+    key = "google_scholar"
+    icon = "scholar"
+    name = "Google Scholar"
+    handle = "JtsGxWEAAAAJ"
+    url = "https://scholar.google.com/citations?user=JtsGxWEAAAAJ"
+    enabled = true
+
+  [[params.macademia.profile.links]]
+    key = "github"
+    icon = "github"
+    name = "GitHub"
+    handle = "chenyenchung"
+    url = "https://github.com/chenyenchung"
+    enabled = true
+
+  [[params.macademia.profile.links]]
+    key = "bluesky"
+    icon = "bluesky"
+    name = "Bluesky"
+    handle = "ycchentw.bsky.social"
+    url = "https://bsky.app/profile/ycchentw.bsky.social"
+    enabled = false
+
+  [[params.macademia.profile.links]]
+    key = "twitter"
+    icon = "twitter"
+    name = "Twitter"
+    handle = "ycchen_tw"
+    url = "https://twitter.com/ycchen_tw"
+    enabled = true
+
+  [[params.macademia.profile.links]]
+    key = "mastodon"
+    icon = "mastodon"
+    name = "Mastodon"
+    handle = "ycchen_tw@drosophila.social"
+    url = "https://drosophila.social/@ycchen_tw"
+    enabled = true
+
+  [[params.macademia.profile.links]]
+    key = "orcid"
+    icon = "orcid"
+    name = "ORCID"
+    handle = "0000-0002-8529-1251"
+    url = "https://orcid.org/0000-0002-8529-1251"
+    enabled = true
+
+  [params.macademia.theme]
+    custom_css = []
+
+  [params.macademia.labels]
+    slides = "Slides"
+
+  [[params.macademia.footer.links]]
+    name = "Privacy"
+    url = "/privacy/"
+
+  [[params.macademia.footer.links]]
+    name = "Terms"
+    url = "/terms/"
+
+  [params.macademia.sections.posts]
+    class = "post"
+    name = "Posts"
+
+  [params.macademia.sections.talks]
+    class = "post"
+    name = "Talks"
+
+  [params.macademia.sections.projects]
+    class = "supertag"
+    name = "Projects"
+    field = "projects"
+    include_sections = ["posts", "talks", "publications"]
+
+  [params.macademia.sections.publications]
+    class = "publications"
+    name = "Publications"
+
+  [params.macademia.sections.awards]
+    class = "page"
+    name = "Awards"
 
 [[menu.main]]
   name = "About"

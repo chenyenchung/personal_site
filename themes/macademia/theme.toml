@@ -1,0 +1,5 @@
+name = "Macademia"
+license = "MIT"
+description = "A local Hugo theme for academic portfolio sites."
+min_version = "0.160.1"
+

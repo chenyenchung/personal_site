@@ -1,7 +1,7 @@
 ---
 title: Visual System Patterning
 summary: Spatial and temporal patterning mechanisms that generate neuronal diversity in the Drosophila visual system.
-project_slug: visual-system-patterning
+supertag_key: visual-system-patterning
 weight: 10
 featured: true
 ---

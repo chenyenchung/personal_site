@@ -1,0 +1,5 @@
+{{- $site := .site -}}
+{{- $section := .section -}}
+{{- $sections := $site.Params.macademia.sections | default dict -}}
+{{- return (index $sections $section | default dict) -}}
+

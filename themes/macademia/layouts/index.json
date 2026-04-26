@@ -1,0 +1,50 @@
+{{- $macademia := .Site.Params.macademia | default dict -}}
+{{- $search := $macademia.search | default dict -}}
+{{- $allowed := $search.sections | default (slice "about" "posts" "projects" "awards" "talks" "courses" "publications") -}}
+{{- $sections := $macademia.sections | default dict -}}
+{{- $supertagFields := dict -}}
+{{- range $section, $config := $sections -}}
+  {{- if eq ($config.class | default "") "supertag" -}}
+    {{- $field := $config.field | default $section -}}
+    {{- $supertagFields = merge $supertagFields (dict $field $section) -}}
+  {{- end -}}
+{{- end -}}
+{{- $items := slice -}}
+{{- range .Site.Pages -}}
+  {{- $page := . -}}
+  {{- $section := .Section -}}
+  {{- if and (in $allowed $section) (not .Draft) (not .Params.private) (not .Params.exclude_search) (ne .Kind "home") -}}
+    {{- $authors := .Params.authors -}}
+    {{- if not $authors -}}
+      {{- with .Params.author -}}{{- $authors = slice . -}}{{- end -}}
+    {{- end -}}
+    {{- $supertags := slice -}}
+    {{- range $field, $supertagSection := $supertagFields -}}
+      {{- with (index $page.Params $field) -}}
+        {{- range . -}}
+          {{- $title := partial "macademia/supertag-title.html" (dict "site" $.Site "section" $supertagSection "key" .) -}}
+          {{- $supertags = $supertags | append . | append $title -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $summary := .Params.summary | default .Params.abstract | default .Summary -}}
+    {{- $date := "" -}}
+    {{- if not .Date.IsZero -}}{{- $date = .Date.Format "2006-01-02" -}}{{- end -}}
+    {{- $content := delimit (slice .Plain .Params.journal .Params.journal_short .Params.doi (delimit $supertags " ")) " " -}}
+    {{- $item := dict
+      "title" .Title
+      "summary" ($summary | plainify)
+      "content" ($content | plainify | truncate 4000)
+      "authors" $authors
+      "tags" .Params.tags
+      "categories" .Params.categories
+      "supertags" $supertags
+      "section" $section
+      "type" .Type
+      "date" $date
+      "permalink" .RelPermalink
+    -}}
+    {{- $items = $items | append $item -}}
+  {{- end -}}
+{{- end -}}
+{{- $items | jsonify -}}

@@ -1,0 +1,36 @@
+{{ $site := .Site }}
+{{ $sections := $site.Params.macademia.sections | default dict }}
+{{ $supertagSections := dict }}
+{{ range $section, $config := $sections }}
+  {{ if eq ($config.class | default "") "supertag" }}
+    {{ $field := $config.field | default $section }}
+    {{ $supertagSections = merge $supertagSections (dict $field $section) }}
+  {{ end }}
+{{ end }}
+{{ $badges := slice }}
+{{ range $field, $section := $supertagSections }}
+  {{ with (index $.Params $field) }}
+    {{ range . }}
+      {{ $badges = $badges | append (dict "field" $field "section" $section "key" .) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ if $badges }}
+  <div class="badge-row">
+    {{ range $badges }}
+      {{ $key := .key }}
+      {{ $matched := false }}
+      {{ with $site.GetPage .section }}
+        {{ range .Pages }}
+          {{ if eq (partial "macademia/supertag-key.html" .) $key }}
+            <a class="badge" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ $matched = true }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ if not $matched }}
+        <span class="badge">{{ $key | humanize }}</span>
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}
