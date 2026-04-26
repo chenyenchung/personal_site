@@ -1,0 +1,14 @@
+---
+title: Navigating Cellular Diversity with Actionable Clusters
+date: 2025-03-21
+summary: An algorithm of finding actionable marker combinations at single-cell level (DROS25 Workshop)
+authors:
+  - Yen-Chung Chen
+tags:
+  - Genomics
+  - Statistics
+---
+
+Recent advances in high-throughput profiling have revolutionized our understanding of cellular diversity with unprecedented resolution. Numerous novel cell types have been discovered in health and diseases. Genetic access to these ever-expanding molecular cell types is essential not only for visualizing these cell types in vivo but also for deciphering the functions of genes expressed in these cell types. While the wealth of genetic tools available in Drosophila has enabled sophisticated cell-type-specific genetic manipulation, it is still challenging to target novel cell types that are only defined by transcriptome: First, genetic drivers based on enhancers do not always reproduce the expression of a specific gene and therefore hard to select based on gene expression. Secondly, genetic drivers like the Gal4/UAS system are binary and might not reflect quantitative differences of gene expression. Finally, one marker is rarely sufficient to identify a unique cell type and instead labels multiple cell types. There is therefore a need for a method that finds single or combinations of binary markers that are predictable from single-cell transcriptomic datasets and optimized for their joint specificity when used in intersection.
+ 
+We previously reported a method to predict marker combinations for neuronal types in the developing fly visual system. We generated genetic drivers and showed that specific neurons are targeted as predicted across developmental stages. While the method performed similarly well with many datasets, we noticed that it had difficulties with datasets with mixed clusters containing multiple cell types because it considers each cluster as a homogenous sample. To make the algorithm applicable to all single-cell transcriptomic datasets, we refined the method to model expression state at the single-cell level instead of at the cluster level. This allowed the algorithm to perform consistently regardless of the number of clusters and be robust to clusters with mixed cell types. Users can select for optimal clustering resolution based on experimental results with marker combinations defined at different resolutions. Our marker finding method is available as an R package with step-by-step documentation. We also devised a web application to interactively visualize and explore marker combinations and host a repository of existing gene-specific split-Gal4 reagents to streamline resource sharing and collaboration. The cell-type-specific markers identified using our approach will enable the design of split-GAL4 and Flp-out lines for the genetic manipulations of specific cell-types.

@@ -1,6 +1,6 @@
 ---
 title: About
-summary: I study how genetic programs specify neuronal diversity during development, combining developmental biology, neurobiology, and bioinformatics.
+summary: I study how transient cues confer durable cell fates by reading the same genome differently.
 authors:
   - Yen-Chung Chen
 ---

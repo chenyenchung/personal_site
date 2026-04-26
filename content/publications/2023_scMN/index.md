@@ -21,4 +21,5 @@ projects:
   - "spinal-motor-neuron-development"
 featured: false
 image: "/publications/2023_scMN.png"
+cofirst: "2"
 ---

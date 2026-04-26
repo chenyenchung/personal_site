@@ -35,7 +35,7 @@ journal: "Science"
 journal_short: "Science"
 year: 2023
 projects:
-  - "applied-genomics"
+  - "collaborations"
 featured: false
 image: "/publications/2023_agingFCA.jpg"
 ---

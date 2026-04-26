@@ -1,5 +1,13 @@
 # label is local-only for editing this file; rendered publication metadata comes from DOI sync.
 # Optional bts links to a behind-the-scenes post. Use a post slug, site path, or external URL.
+- slug: 2026_temporal_flyem
+  label: Temporal and Notch patterning determines innervation depth in the visual system
+  doi: 10.1101/2025.01.06.631439
+  projects:
+    - visual-system-patterning
+  cofirst: 2
+  featured: true
+
 - slug: 2026_patterning_selector
   label: A model of how spatial, temporal, and Notch cues instruct selector expression
   doi: 10.1038/s41593-026-02256-6
@@ -7,11 +15,18 @@
     - visual-system-patterning
   featured: true
 
+- slug: 2025_mosquito_atlas
+  label: A single-nucleus transcriptomic atlas of the adult Aedes aegypti mosquito
+  doi: 10.1016/j.cell.2025.10.008 
+  projects:
+    - collaborations
+  featured: false
+
 - slug: 2025_dsx_evolution
   label: High-resolution single-cell analyses of sexual circuits in Drosophila
   doi: 10.1073/pnas.2516083122
   projects:
-    - applied-genomics
+    - collaborations
   featured: false
 
 - slug: 2025_calcium_waves
@@ -41,16 +56,17 @@
   label: Aging Fly Cell Atlas
   doi: 10.1126/science.adg0934
   projects:
-    - applied-genomics
+    - collaborations
   featured: false
   image: /publications/2023_agingFCA.jpg
 
 - slug: 2023_SMA
-  label: MiR34 contributes to spinal muscular atrophy
+  label: MiR34 dysregulation contributes to spinal muscular atrophy
   doi: 10.1016/j.omtn.2023.03.005
   projects:
     - spinal-motor-neuron-development
   featured: false
+  cofirst: 3
   image: /publications/2023_SMA.jpg
 
 - slug: 2023_scMN
@@ -59,15 +75,21 @@
   projects:
     - spinal-motor-neuron-development
   featured: false
+  cofirst: 2
   image: /publications/2023_scMN.png
 
 - slug: 2022_APA
   label: Alternative polyadenylation in Drosophila
   doi: 10.1038/s41467-022-32305-0
   projects:
-    - applied-genomics
+    - collaborations
   featured: false
   image: /publications/2022_APA.jpg
+
+- slug: 2022_rec_4_early_career
+  label: Improving research culture as early-career researchers
+  doi: 10.1371/journal.pbio.3001680
+  featured: false
 
 - slug: 2022_ttf_scL3
   label: Complete temporal transcription factor series in the fly visual system
@@ -75,6 +97,7 @@
   projects:
     - visual-system-patterning
   featured: false
+  cofirst: 3
   image: /publications/2022_ttf_scL3.png
 
 - slug: 2022_stpatterning_integration_review
@@ -86,11 +109,12 @@
   image: /publications/2022_stpatterning_integration_review.png
 
 - slug: 2021_scdev_opticlobe
-  label: Visual system developmental atlas
+  label: Visual system developmental atlas in Drosophila melanogaster
   doi: 10.1038/s41586-020-2879-3
   projects:
     - visual-system-patterning
   featured: false
+  cofirst: 2
   image: /publications/2021_scdev_opticlobe.png
 
 - slug: 2020_Fly_vis_grn_review
@@ -107,6 +131,7 @@
 - slug: 2019_ALS_mir
   label: Mir-17-92 and motor neuron resistance to ALS-associated degeneration
   doi: 10.1016/j.stem.2019.04.016
+  cofirst: 2
   projects:
     - spinal-motor-neuron-development
   featured: false

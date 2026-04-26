@@ -18,7 +18,7 @@ journal: "Nature Communications"
 journal_short: "Nat Commun"
 year: 2022
 projects:
-  - "applied-genomics"
+  - "collaborations"
 featured: false
 image: "/publications/2022_APA.jpg"
 ---

@@ -51,16 +51,16 @@ enableRobotsTXT = true
     ]
 
   [params.macademia]
-    selfAuthor = "Yen-Chung Chen"
+    selfAuthor = ["Yen-Chung Chen", "Y-C. Chen"]
 
   [params.macademia.home]
-    eyebrow = "Developmental biology / Neurobiology / Bioinformatics"
+    eyebrow = "Developmental neurobiology / Gene Regulation / Machine Learning"
     avatar_alt = "Portrait of Yen-Chung Chen"
     summary_section = "about"
     publications_section = "publications"
     publications_title = "Featured Publications"
     publications_link_label = "All publications"
-    publications_count = 4
+    publications_count = 5
     supertag_section = "projects"
     supertag_title = "Projects"
     supertag_link_label = "All projects"
@@ -110,7 +110,7 @@ enableRobotsTXT = true
     name = "Bluesky"
     handle = "ycchentw.bsky.social"
     url = "https://bsky.app/profile/ycchentw.bsky.social"
-    enabled = false
+    enabled = true
 
   [[params.macademia.profile.links]]
     key = "twitter"
