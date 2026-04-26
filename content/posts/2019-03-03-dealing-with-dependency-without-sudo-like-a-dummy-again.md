@@ -3,11 +3,10 @@ title: Dealing with dependency without sudo like a dummy (again)
 author: Yen-Chung Chen
 date: '2019-03-03'
 slug: dealing-with-dependency-without-sudo-like-a-dummy-again
-categories:
-  - R
 tags:
   - R
-  - Dependency
+  - Dependency management
+  - HPC
 image:
   caption: ''
   focal_point: ''

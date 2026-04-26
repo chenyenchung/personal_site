@@ -3,10 +3,9 @@ title: Transcriptomically reserved identities for fly olfactory projection neuro
 author: Yen-Chung Chen
 date: '2018-05-11'
 slug: transcriptomically-reserved-identities-for-fly-olfactory-projection-neuron
-categories:
-  - Journal club
 tags:
-  - Neural diversity
+  - Neurobiology
+  - Genomics
 image:
   caption: ''
   focal_point: ''

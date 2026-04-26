@@ -12,8 +12,9 @@
       <span>{{ delimit . ", " }}</span>
     {{ end }}
     {{ with .Params.tags }}
-      <span>{{ delimit . ", " }}</span>
+      <span class="meta-tags">
+        {{ range $index, $tag := . }}{{ if $index }}, {{ end }}<a href="{{ printf "/tags/%s/" ($tag | urlize) | relURL }}">{{ $tag }}</a>{{ end }}
+      </span>
     {{ end }}
   </div>
 {{ end }}
-

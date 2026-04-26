@@ -3,11 +3,9 @@ title: Remote connection to Jupyter Notebook
 author: Yen-Chung Chen
 date: '2018-05-13'
 slug: remote-connection-to-jupyter-notebook
-categories:
-  - HPC
 tags:
-  - Linux
-  - R
+  - HPC
+  - Shell
 image:
   caption: ''
   focal_point: ''

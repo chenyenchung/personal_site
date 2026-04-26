@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <section class="page-shell">
+    <header class="page-heading">
+      <h1>{{ .Title }}</h1>
+      <p>{{ len .Pages }} {{ cond (eq (len .Pages) 1) "entry" "entries" }} tagged {{ .Title }}.</p>
+    </header>
+    <div class="item-list">
+      {{ range .Pages.ByDate.Reverse }}
+        {{ partial "page-card.html" . }}
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

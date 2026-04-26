@@ -3,9 +3,8 @@ title: Seeking signal in the midst of noise with R
 author: Yen-Chung Chen
 date: '2018-07-14'
 slug: seeking-signal-in-the-midst-of-noise-with-r
-categories:
-  - R
 tags:
+  - R
   - Statistics
   - Genomics
 image:

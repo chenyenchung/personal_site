@@ -3,12 +3,11 @@ title: Run Seurat (an R Package) in a notebook interface on a server without roo
 author: Yen-Chung Chen
 date: '2018-05-04'
 slug: run-seurat-an-r-package-in-a-notebook-interface-on-a-server-without-root
-categories:
-  - R
 tags:
   - R
-  - Linux
-  - Dependency
+  - HPC
+  - Dependency management
+  - Genomics
 image:
   caption: ''
   focal_point: ''

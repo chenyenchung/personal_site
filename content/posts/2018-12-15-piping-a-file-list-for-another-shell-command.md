@@ -3,10 +3,8 @@ title: Piping a file list for another shell command
 author: Yen-Chung Chen
 date: '2018-12-15'
 slug: piping-a-file-list-for-another-shell-command
-categories:
-  - Command line tricks
 tags:
-  - Linux
+  - Shell
 image:
   caption: ''
   focal_point: ''

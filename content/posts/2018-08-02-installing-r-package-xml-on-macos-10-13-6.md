@@ -3,10 +3,9 @@ title: Installing R package XML on MacOS 10.13.6
 author: Yen-Chung Chen
 date: '2018-08-02'
 slug: installing-r-package-xml-on-macos-10-13-6
-categories:
-  - R
 tags:
   - R
+  - Dependency management
 image:
   caption: ''
   focal_point: ''

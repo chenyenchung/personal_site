@@ -3,13 +3,9 @@ title: 'Compiling with libxml in MacOS Catalina'
 author: Yen-Chung Chen
 date: '2020-06-03'
 slug: libxml-in-MacOS
-categories: 
-  - R
-  - Software
 tags:
-  - Dependency
-  - macOS
   - R
+  - Dependency management
 image:
   caption: 'Photo by [Ben Stern](https://unsplash.com/@benst287) on [Unsplash](https://unsplash.com)'
   focal_point: ''

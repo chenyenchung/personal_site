@@ -3,11 +3,10 @@ title: psutil, python, and icc
 author: Yen-Chung Chen
 date: '2019-04-05'
 slug: psutil-python-and-icc
-categories:
-  - HPC
 tags:
   - Python
-  - Dependency
+  - Dependency management
+  - HPC
 image:
   caption: ''
   focal_point: ''

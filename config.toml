@@ -6,7 +6,9 @@ defaultContentLanguage = "en"
 removePathAccents = true
 summaryLength = 30
 enableRobotsTXT = true
-disableKinds = ["taxonomy", "term"]
+
+[taxonomies]
+  tag = "tags"
 
 [permalinks]
   posts = "/posts/:slug/"

@@ -3,10 +3,9 @@ title: Reverse and find complement sequence in R
 author: Yen-Chung Chen
 date: '2018-12-20'
 slug: reverse-and-find-complement-sequence-in-r
-categories:
-  - R
 tags:
   - R
+  - Genomics
 image:
   caption: 'Photo by [Emile Perron](https://unsplash.com/@emilep) on [Unsplash](https://unsplash.com/)'
   focal_point: ''

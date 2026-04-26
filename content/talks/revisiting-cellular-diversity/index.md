@@ -6,9 +6,8 @@ authors:
   - Yen-Chung Chen
 slides: /slides/20230810_marker_combo/slidedeck.html
 tags:
-  - Single-cell genomics
-  - Neural diversity
+  - Genomics
+  - Neurobiology
 ---
 
 Slides for a talk revisiting how marker combinations can be used to reason about cellular diversity.
-

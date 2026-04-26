@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <section class="page-shell">
+    <header class="page-heading">
+      <h1>{{ .Title }}</h1>
+      <p>Browse posts and talks by tag.</p>
+    </header>
+    <div class="tag-grid">
+      {{ range .Data.Terms.Alphabetical }}
+        <a class="tag-card" href="{{ .Page.RelPermalink }}">
+          <span>{{ .Page.Title }}</span>
+          <small>{{ .Count }}</small>
+        </a>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

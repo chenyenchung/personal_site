@@ -3,12 +3,11 @@ title: 'Dependency issue: In Conda, with SCENIC'
 author: Yen-Chung Chen
 date: '2019-08-04'
 slug: dependency-issue-in-conda
-categories: 
-  - HPC
 tags:
-  - Dependency
   - Python
-  - Conda
+  - Dependency management
+  - HPC
+  - Genomics
 image:
   caption: ''
   focal_point: ''

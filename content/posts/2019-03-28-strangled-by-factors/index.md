@@ -3,8 +3,6 @@ title: Strangled by factors
 author: Yen-Chung Chen
 date: '2019-03-28'
 slug: strangled-by-factors
-categories:
-  - R
 tags:
   - R
 image:

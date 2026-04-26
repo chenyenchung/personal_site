@@ -3,11 +3,10 @@ title: Using Limma to find differentially expressed genes
 author: Yen-Chung Chen
 date: '2018-05-19'
 slug: using-limma-to-find-differentially-expressed-genes
-categories:
-  - R
 tags:
-  - NGS
   - R
+  - Statistics
+  - Genomics
 image:
   caption: 'Photo by [National Cancer Institute](https://unsplash.com/@nci) on [Unsplash](https://unsplash.com)'
   focal_point: ''

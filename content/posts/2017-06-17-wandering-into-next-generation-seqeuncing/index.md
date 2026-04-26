@@ -3,10 +3,9 @@ title: Wandering into next-generation seqeuncing
 author: Yen-Chung Chen
 date: '2017-06-17'
 slug: wandering-into-next-generation-seqeuncing
-categories:
-  - Random thoughts
 tags:
-  - NGS
+  - Genomics
+  - Personal
 image:
   caption: 'Photo by [National Cancer Institute](https://unsplash.com/@nci) on [Unsplash](https://unsplash.com/)'
   focal_point: ''

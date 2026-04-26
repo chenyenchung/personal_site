@@ -3,11 +3,9 @@ title: Resource usage to deduplicate BAM files with UMI-tools
 author: Yen-Chung Chen
 date: '2022-06-04'
 slug: deduplicate-bam-files-with-umi-tools
-categories:
-  - NGS
 tags:
-  - Applied genomics
-  - Benchmark
+  - Genomics
+  - HPC
 subtitle: ''
 summary: ''
 authors:
@@ -79,5 +77,4 @@ All jobs were run with one core as [`umi-tools` does not natively support
 multithreading yet](https://umi-tools.readthedocs.io/en/latest/faq.html). 
 It should be possible to de-duplicate each 
 chromosome manually if running the whole BAM proves to be intractable though.
-
 

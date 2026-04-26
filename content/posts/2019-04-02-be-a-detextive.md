@@ -3,9 +3,9 @@ title: Be a deTeXtive
 author: Yen-Chung Chen
 date: '2019-04-02'
 slug: playing-detextive
-categories:
-  - Command line tricks
-tags: []
+tags:
+  - Academia
+  - Shell
 image:
   caption: ''
   focal_point: ''

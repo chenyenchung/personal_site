@@ -3,9 +3,8 @@ title: Taking advantage of host cellular machinery
 author: Yen-Chung Chen
 date: '2018-05-17'
 slug: taking-advantage-of-host-cellular-machinery
-categories:
-  - Journal club
 tags:
+  - Neurobiology
 image:
   caption: ''
   focal_point: ''

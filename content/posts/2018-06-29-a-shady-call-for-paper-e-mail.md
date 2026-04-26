@@ -3,9 +3,8 @@ title: A shady “call for paper” e-mail
 author: Yen-Chung Chen
 date: '2018-06-29'
 slug: a-shady-call-for-paper-e-mail
-categories:
-  - Random thoughts
-tags: []
+tags:
+  - Academia
 image:
   caption: ''
   focal_point: ''

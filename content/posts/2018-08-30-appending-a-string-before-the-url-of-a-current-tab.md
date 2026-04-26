@@ -3,9 +3,8 @@ title: Appending a string before the URL of a current tab
 author: Yen-Chung Chen
 date: '2018-08-30'
 slug: appending-a-string-before-the-url-of-a-current-tab
-categories:
-  - Command line tricks
-tags: []
+tags:
+  - Shell
 image:
   caption: ''
   focal_point: ''

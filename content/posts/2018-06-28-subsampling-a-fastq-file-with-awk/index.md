@@ -3,12 +3,9 @@ title: Subsampling a fastq file with awk
 author: Yen-Chung Chen
 date: '2018-06-28'
 slug: subsampling-a-fastq-file-with-awk
-categories:
-  - NGS
 tags:
-  - NGS
-  - Linux
-  - awk
+  - Shell
+  - Genomics
 image:
   caption: ''
   focal_point: ''

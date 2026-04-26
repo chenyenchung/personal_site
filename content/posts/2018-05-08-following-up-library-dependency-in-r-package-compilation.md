@@ -3,11 +3,9 @@ title: Following up library dependency in R package compilation
 author: Yen-Chung Chen
 date: '2018-05-08'
 slug: following-up-library-dependency-in-r-package-compilation
-categories:
-  - R
 tags:
   - R
-  - Dependency
+  - Dependency management
 image:
   caption: ''
   focal_point: ''

@@ -3,11 +3,8 @@ title: K-means exercise in R language
 author: Yen-Chung Chen
 date: '2018-06-07'
 slug: k-means-exercise-in-r-language
-categories:
-  - R
 tags:
   - R
-  - K-means
   - Statistics
 image:
   caption: 'Photo by [v2osk](https://unsplash.com/@v2osk) on [Unsplash](https://unsplash.com/)'

@@ -3,12 +3,9 @@ title: Migrating from Medium to Blogdown
 author: Yen-Chung Chen
 date: '2019-03-26'
 slug: migrating-from-medium-to-blogdown
-categories:
-  - R
-  - Command line tricks
 tags:
   - R
-  - markdown
+  - Academia
 image:
   caption: ''
   focal_point: ''

@@ -3,11 +3,9 @@ title: Downloading multiple samples from a entry at GEO Dataset
 author: Yen-Chung Chen
 date: '2018-09-29'
 slug: downloading-multiple-samples-from-a-entry-at-geo-dataset
-categories:
-  - NGS
 tags:
-  - NCBI
-  - Linux
+  - Shell
+  - Genomics
 image:
   caption: ''
   focal_point: ''

@@ -3,8 +3,6 @@ title: 'Single or double?: AND operator and OR operator in R'
 author: Yen-Chung Chen
 date: '2018-09-21'
 slug: single-or-double-and-operator-and-or-operator-in-r
-categories:
-  - R
 tags:
   - R
 image:

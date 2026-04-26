@@ -3,12 +3,9 @@ title: Why are there rectangles in my plots with Seurat v3.2.x?
 author: Yen-Chung Chen
 date: '2021-01-14'
 slug: why-rectangles-in-my-plots-with-Seurat 
-categories:
-  - R
-  - Software
 tags:
   - R
-  - Seurat
+  - Genomics
 subtitle: ''
 summary: ''
 authors:
@@ -72,4 +69,3 @@ This is why when we are working with large datasets, the plots take longer to op
 To avoid long loading time and file size for plots with a larger cell number, the authors of `Seurat` decides to raster plots by default. This could save some time for exploratory analysis, and most of the time, when we read these plots, we are reading patterns, so how each dot look should not matter especially when the dataset contains a huge number of cells.
 
 Saying so, I do wish rasterization could be performed with a higher resolution than 256*256, so the figures in some papers will not be that sluggish to load.
-

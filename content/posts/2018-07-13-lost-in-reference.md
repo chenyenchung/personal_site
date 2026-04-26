@@ -3,9 +3,8 @@ title: Lost in reference
 author: Yen-Chung Chen
 date: '2018-07-13'
 slug: lost-in-reference
-categories:
-  - Software
-tags: []
+tags:
+  - Academia
 image:
   caption: ''
   focal_point: ''
