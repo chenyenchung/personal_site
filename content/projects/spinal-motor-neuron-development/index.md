@@ -2,6 +2,8 @@
 title: Spinal Motor Neuron Development
 summary: Development, identity, and degeneration of spinal motor neuron subtypes.
 project_slug: spinal-motor-neuron-development
+weight: 20
+featured: true
 ---
 
 This project follows the molecular programs that establish and maintain spinal motor neuron identity, including subtype differences relevant to disease vulnerability.

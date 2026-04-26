@@ -6,10 +6,9 @@
     </header>
     {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
     <div class="project-grid">
-      {{ range .Pages.ByTitle }}
+      {{ range .Pages.ByWeight }}
         {{ partial "page-card.html" . }}
       {{ end }}
     </div>
   </section>
 {{ end }}
-

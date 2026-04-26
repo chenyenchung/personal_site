@@ -32,13 +32,18 @@
 
   {{ $projectSection := .Site.GetPage "projects" }}
   {{ with $projectSection }}
+    {{ $projects := .Pages.ByWeight }}
+    {{ $featuredProjects := where $projects "Params.featured" true }}
+    {{ if not $featuredProjects }}
+      {{ $featuredProjects = $projects }}
+    {{ end }}
     <section class="home-section">
       <div class="section-title-row">
         <h2>Projects</h2>
         <a href="{{ "/projects/" | relURL }}">All projects</a>
       </div>
       <div class="project-grid">
-        {{ range .Pages.ByTitle }}
+        {{ range $featuredProjects }}
           {{ partial "page-card.html" . }}
         {{ end }}
       </div>
