@@ -1,4 +1,10 @@
 ---
 title: Publications
-summary: Journal articles, reviews, and collaborative research outputs.
+summary: Peer-reviewed work, most recent first.
+cascade:
+  - target:
+      kind: page
+    build:
+      render: never
+      list: local
 ---

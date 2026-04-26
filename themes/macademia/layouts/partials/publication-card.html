@@ -1,33 +1,69 @@
-{{ $target := .RelPermalink }}
-{{ $image := .Params.image }}
-<article class="publication-card{{ if not $image }} no-image{{ end }}">
-  {{ with $image }}
-    <a class="publication-image" href="{{ $target }}" aria-label="{{ $.Title }}">
-      <img src="{{ . | relURL }}" alt="">
-    </a>
+{{ $titleHref := .Params.doi_url }}
+{{ $venue := .Params.journal_short | default .Params.journal }}
+{{ $projectLabel := "" }}
+{{ $projectURL := "" }}
+{{ with .Params.projects }}
+  {{ $key := index . 0 }}
+  {{ with $.Site.GetPage "projects" }}
+    {{ range .Pages }}
+      {{ if eq (partial "macademia/supertag-key.html" .) $key }}
+        {{ $projectLabel = .Title }}
+        {{ $projectURL = .RelPermalink }}
+      {{ end }}
+    {{ end }}
   {{ end }}
-  <div class="publication-body">
-    <h2>
-      {{ if $target }}
-        <a href="{{ $target }}">{{ .Title }}</a>
+  {{ if not $projectLabel }}
+    {{ $projectLabel = $key | humanize }}
+  {{ end }}
+{{ end }}
+<article class="publication-row">
+  {{ with .Params.year }}
+    <div class="pub-year">{{ . }}</div>
+  {{ else }}
+    <div class="pub-year">{{ .Date.Format "2006" }}</div>
+  {{ end }}
+  <div class="pub-body">
+    <h2 class="pub-title">
+      {{ if $titleHref }}
+        <a href="{{ $titleHref }}" target="_blank" rel="noopener">{{ .Title }}</a>
       {{ else }}
         {{ .Title }}
       {{ end }}
     </h2>
     {{ with .Params.authors }}
       {{ $displayAuthors := . }}
-      {{ if ge (len .) 5 }}
-        {{ $displayAuthors = (first 4 .) | append "et al." }}
+      {{ $selfAuthor := $.Site.Params.macademia.selfAuthor }}
+      {{ $coFirst := $.Params.cofirst | default 0 }}
+      {{ if ge (len .) 6 }}
+        {{ $displayAuthors = (first 5 .) | append "et al." }}
       {{ end }}
-      <p class="authors" title="{{ delimit . ", " }}">{{ delimit $displayAuthors ", " }}</p>
+      <p class="pub-authors" title="{{ delimit . ", " }}">
+        {{- range $i, $name := $displayAuthors -}}
+          {{- if $i -}}<span class="pub-author-sep">, </span>{{- end -}}
+          {{- if and $selfAuthor (in $selfAuthor $name) -}}
+            <strong class="self-author">{{ $name }}</strong>
+          {{- else -}}
+            {{ $name }}
+          {{- end -}}
+          {{- if and $coFirst (lt $i $coFirst) -}}<sup title="Co-first author">*</sup>{{- end -}}
+        {{- end -}}
+      </p>
     {{ end }}
-    <p class="publication-venue">
-      {{ with .Params.year }}<span>{{ . }}</span>{{ end }}
-      {{ with (.Params.journal_short | default .Params.journal) }}
-        <span>{{ . }}</span>
-      {{ end }}
-    </p>
-    {{ partial "project-badges.html" . }}
+    {{ if or $venue $projectLabel }}
+      <p class="pub-venue">
+        {{ with $venue }}<span class="pub-venue-name">{{ . }}</span>{{ end }}
+        {{ if and $venue $projectLabel }}<span class="pub-sep" aria-hidden="true">·</span>{{ end }}
+        {{ with $projectLabel }}
+          {{ if $projectURL }}
+            <a class="pub-project" href="{{ $projectURL }}">{{ . }}</a>
+          {{ else }}
+            <span class="pub-project">{{ . }}</span>
+          {{ end }}
+        {{ end }}
+      </p>
+    {{ end }}
+  </div>
+  <div class="pub-actions">
     {{ partial "publication-links.html" . }}
   </div>
 </article>

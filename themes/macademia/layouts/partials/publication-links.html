@@ -1,26 +1,25 @@
+{{ $fullText := .Params.fulltext | default .Params.full_text }}
+{{ $btsRaw := .Params.behind_the_scene | default .Params.bts }}
 {{ $btsURL := "" }}
-{{ with .Params.bts }}
-  {{ $bts := . }}
-  {{ if or (hasPrefix $bts "http://") (hasPrefix $bts "https://") (hasPrefix $bts "/") }}
-    {{ $btsURL = $bts }}
+{{ with $btsRaw }}
+  {{ $val := . }}
+  {{ if or (hasPrefix $val "http://") (hasPrefix $val "https://") (hasPrefix $val "/") }}
+    {{ $btsURL = $val }}
   {{ else }}
-    {{ with $.Site.GetPage (printf "posts/%s" $bts) }}
+    {{ with $.Site.GetPage (printf "posts/%s" $val) }}
       {{ $btsURL = .RelPermalink }}
     {{ else }}
-      {{ $btsURL = (printf "/posts/%s/" $bts) | relURL }}
+      {{ $btsURL = (printf "/posts/%s/" $val) | relURL }}
     {{ end }}
   {{ end }}
 {{ end }}
-{{ if or .Params.full_text .Params.doi_url $btsURL }}
+{{ if or $fullText $btsURL }}
   <div class="link-row">
-  {{ with .Params.full_text }}
-    <a href="{{ . }}">Full text</a>
-  {{ end }}
-  {{ if and (not .Params.full_text) .Params.doi_url }}
-    <a href="{{ .Params.doi_url }}">DOI</a>
-  {{ end }}
-  {{ with $btsURL }}
-    <a href="{{ . }}">Behind the scenes</a>
-  {{ end }}
+    {{ with $fullText }}
+      <a class="link-pill primary" href="{{ . | relURL }}" target="_blank" rel="noopener">Full text <span class="pill-arrow" aria-hidden="true">↗</span></a>
+    {{ end }}
+    {{ with $btsURL }}
+      <a class="link-pill ghost" href="{{ . }}">Behind the Scene <span class="pill-arrow" aria-hidden="true">→</span></a>
+    {{ end }}
   </div>
 {{ end }}

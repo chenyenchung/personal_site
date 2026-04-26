@@ -1,0 +1,10 @@
+{{ $label := .label }}
+{{ $href := .href }}
+{{ $linkLabel := .linkLabel }}
+<div class="section-divider">
+  <span class="section-divider-label">{{ $label }}</span>
+  <span class="section-divider-rule" aria-hidden="true"></span>
+  {{ with $href }}
+    <a class="section-divider-link" href="{{ . }}">{{ $linkLabel }} <span aria-hidden="true">→</span></a>
+  {{ end }}
+</div>

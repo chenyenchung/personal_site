@@ -45,10 +45,13 @@ enableRobotsTXT = true
   avatar = "img/avatar.jpg"
 
   [params.fonts]
-    body = "\"Literata\", Georgia, Cambria, \"Times New Roman\", serif"
+    body = "\"EB Garamond\", Georgia, Cambria, \"Times New Roman\", serif"
     google_stylesheets = [
-      "https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400..800;1,7..72,400..700&display=swap"
+      "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap"
     ]
+
+  [params.macademia]
+    selfAuthor = "Yen-Chung Chen"
 
   [params.macademia.home]
     eyebrow = "Developmental biology / Neurobiology / Bioinformatics"
@@ -164,6 +167,10 @@ enableRobotsTXT = true
   [params.macademia.sections.publications]
     class = "publications"
     name = "Publications"
+
+  [params.macademia.sections.about]
+    class = "page"
+    name = "About"
 
   [params.macademia.sections.awards]
     class = "page"

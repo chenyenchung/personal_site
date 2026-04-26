@@ -2,33 +2,20 @@
   {{ $home := .Site.Params.macademia.home | default dict }}
   {{ $about := .Site.GetPage ($home.summary_section | default "about") }}
   <section class="home-hero">
+    <div class="home-hero-avatar-wrap">
+      {{ with .Site.Params.avatar }}
+        <img class="home-avatar" src="{{ . | relURL }}" alt="{{ $home.avatar_alt | default $.Site.Title }}">
+      {{ end }}
+    </div>
     <div class="home-hero-copy">
       {{ with $home.eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
-      <h1>{{ .Site.Title }}</h1>
-      <p>{{ with $about }}{{ .Params.summary }}{{ else }}{{ $.Site.Params.description }}{{ end }}</p>
+      <h1 class="home-title">{{ .Site.Title }}<span class="title-period">.</span></h1>
+      {{- $summary := $.Site.Params.description -}}
+      {{- with $about }}{{- with .Params.summary }}{{- $summary = . }}{{- end }}{{- end }}
+      <p class="home-summary">{{ $summary }}</p>
       {{ partial "profile-links.html" . }}
     </div>
-    {{ with .Site.Params.avatar }}
-      <img class="home-avatar" src="{{ . | relURL }}" alt="{{ $home.avatar_alt | default $.Site.Title }}">
-    {{ end }}
   </section>
-
-  {{ with .Site.GetPage ($home.publications_section | default "publications") }}
-    {{ $featured := first ($home.publications_count | default 4) ((where .Pages "Params.featured" true).ByDate.Reverse) }}
-    {{ if $featured }}
-      <section class="home-section">
-        <div class="section-title-row">
-          <h2>{{ $home.publications_title | default "Featured Publications" }}</h2>
-          <a href="{{ .RelPermalink }}">{{ $home.publications_link_label | default "All publications" }}</a>
-        </div>
-        <div class="publication-list">
-          {{ range $featured }}
-            {{ partial "publication-card.html" . }}
-          {{ end }}
-        </div>
-      </section>
-    {{ end }}
-  {{ end }}
 
   {{ $projectSection := .Site.GetPage ($home.supertag_section | default "projects") }}
   {{ with $projectSection }}
@@ -38,10 +25,11 @@
       {{ $featuredProjects = $projects }}
     {{ end }}
     <section class="home-section">
-      <div class="section-title-row">
-        <h2>{{ $home.supertag_title | default "Projects" }}</h2>
-        <a href="{{ .RelPermalink }}">{{ $home.supertag_link_label | default "All projects" }}</a>
-      </div>
+      {{ partial "macademia/section-divider.html" (dict
+        "label" ($home.supertag_title | default "Projects")
+        "href" .RelPermalink
+        "linkLabel" ($home.supertag_link_label | default "All projects")
+      ) }}
       <div class="project-grid">
         {{ range $featuredProjects }}
           {{ partial "page-card.html" . }}
@@ -50,15 +38,34 @@
     </section>
   {{ end }}
 
+  {{ with .Site.GetPage ($home.publications_section | default "publications") }}
+    {{ $featured := first ($home.publications_count | default 4) ((where .Pages "Params.featured" true).ByDate.Reverse) }}
+    {{ if $featured }}
+      <section class="home-section">
+        {{ partial "macademia/section-divider.html" (dict
+          "label" ($home.publications_title | default "Featured publications")
+          "href" .RelPermalink
+          "linkLabel" ($home.publications_link_label | default "All publications")
+        ) }}
+        <div class="pub-row-list">
+          {{ range $featured }}
+            {{ partial "publication-card.html" . }}
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+  {{ end }}
+
   {{ $postSection := .Site.GetPage ($home.posts_section | default "posts") }}
   {{ with $postSection }}
     {{ $recent := first ($home.posts_count | default 4) .Pages.ByDate.Reverse }}
     {{ if $recent }}
       <section class="home-section">
-        <div class="section-title-row">
-          <h2>{{ $home.posts_title | default "Recent Posts" }}</h2>
-          <a href="{{ .RelPermalink }}">{{ $home.posts_link_label | default "All posts" }}</a>
-        </div>
+        {{ partial "macademia/section-divider.html" (dict
+          "label" ($home.posts_title | default "Recent posts")
+          "href" .RelPermalink
+          "linkLabel" ($home.posts_link_label | default "All posts")
+        ) }}
         <div class="item-list compact">
           {{ range $recent }}
             {{ partial "page-card.html" . }}

@@ -4,8 +4,10 @@
   {{ $profile := .Site.Params.macademia.profile | default dict }}
   <section class="page-shell">
     <header class="page-heading">
+      <p class="eyebrow">{{ $config.name | default .Title }}</p>
       <h1>{{ .Title }}</h1>
-      {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+      {{ with .Params.summary }}<p class="page-heading-summary">{{ . }}</p>{{ end }}
+      {{ partial "macademia/brush.html" (dict "width" 120) }}
       {{ if in ($profile.show_on_sections | default (slice "about")) .Section }}
         {{ partial "profile-links.html" . }}
       {{ end }}
@@ -18,7 +20,7 @@
     {{ else if eq $class "publications" }}
       {{ $pages := .Pages.ByDate.Reverse }}
       {{ if $pages }}
-        <div class="publication-list">
+        <div class="pub-row-list">
           {{ range $pages }}
             {{ partial "publication-card.html" . }}
           {{ end }}

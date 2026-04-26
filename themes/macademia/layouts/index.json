@@ -10,10 +10,24 @@
   {{- end -}}
 {{- end -}}
 {{- $items := slice -}}
-{{- range .Site.Pages -}}
+{{- $seen := dict -}}
+{{- $allPages := .Site.Pages -}}
+{{- range $allowed -}}
+  {{- $section := . -}}
+  {{- with $.Site.GetPage $section -}}
+    {{- range .Pages -}}
+      {{- $allPages = $allPages | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- range $allPages -}}
   {{- $page := . -}}
   {{- $section := .Section -}}
-  {{- if and (in $allowed $section) (not .Draft) (not .Params.private) (not .Params.exclude_search) (ne .Kind "home") -}}
+  {{- $filePath := "" -}}
+  {{- with .File -}}{{- $filePath = .Path -}}{{- end -}}
+  {{- $key := printf "%s::%s" $section ($filePath | default .Title) -}}
+  {{- if and (in $allowed $section) (not .Draft) (not .Params.private) (not .Params.exclude_search) (ne .Kind "home") (not (index $seen $key)) -}}
+    {{- $seen = merge $seen (dict $key true) -}}
     {{- $authors := .Params.authors -}}
     {{- if not $authors -}}
       {{- with .Params.author -}}{{- $authors = slice . -}}{{- end -}}
@@ -31,6 +45,10 @@
     {{- $date := "" -}}
     {{- if not .Date.IsZero -}}{{- $date = .Date.Format "2006-01-02" -}}{{- end -}}
     {{- $content := delimit (slice .Plain .Params.journal .Params.journal_short .Params.doi (delimit $supertags " ")) " " -}}
+    {{- $permalink := .RelPermalink -}}
+    {{- if and (eq $section "publications") (eq .Kind "page") -}}
+      {{- $permalink = .Params.doi_url | default .Params.fulltext | default .Params.full_text | default .RelPermalink -}}
+    {{- end -}}
     {{- $item := dict
       "title" .Title
       "summary" ($summary | plainify)
@@ -42,7 +60,7 @@
       "section" $section
       "type" .Type
       "date" $date
-      "permalink" .RelPermalink
+      "permalink" $permalink
     -}}
     {{- $items = $items | append $item -}}
   {{- end -}}

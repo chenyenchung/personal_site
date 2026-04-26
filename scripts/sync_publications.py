@@ -171,6 +171,7 @@ def build_record(source: dict, message: dict) -> dict:
         "image": source.get("image", ""),
         "full_text": source.get("full_text", ""),
         "bts": source.get("bts", ""),
+        "cofirst": source.get("cofirst"),
     }
 
 
@@ -197,6 +198,8 @@ def build_record_from_cache(source: dict, cached: dict) -> dict:
             record[key] = source[key]
     if "featured" in source:
         record["featured"] = bool(source["featured"])
+    if "cofirst" in source:
+        record["cofirst"] = source["cofirst"]
     return record
 
 
@@ -242,6 +245,7 @@ def front_matter(record: dict) -> str:
         ("image", record.get("image")),
         ("full_text", record.get("full_text")),
         ("bts", record.get("bts")),
+        ("cofirst", record.get("cofirst")),
     ]
     lines = ["---"]
     for key, value in fields:

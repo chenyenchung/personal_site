@@ -1,0 +1,15 @@
+{{ $width := .width | default 100 }}
+{{ $height := mul $width 0.12 }}
+{{ $id := printf "brush-%s" (substr (md5 (printf "%v-%v" $width now.UnixNano)) 0 8) }}
+<svg class="brushstroke" viewBox="0 0 100 12" width="{{ $width }}" height="{{ $height }}" aria-hidden="true">
+  <defs>
+    <linearGradient id="{{ $id }}" x1="0" x2="1">
+      <stop offset="0" stop-color="var(--matcha)" stop-opacity="0" />
+      <stop offset=".06" stop-color="var(--matcha)" stop-opacity=".4" />
+      <stop offset=".5" stop-color="var(--matcha)" stop-opacity=".95" />
+      <stop offset=".88" stop-color="var(--matcha)" stop-opacity=".7" />
+      <stop offset="1" stop-color="var(--matcha)" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <path d="M2 7 C 18 4, 38 9, 56 6 S 88 5, 98 7" stroke="url(#{{ $id }})" stroke-width="3.2" stroke-linecap="round" fill="none" />
+</svg>
