@@ -23,8 +23,8 @@
 - key: bluesky
   icon: bluesky
   name: Bluesky
-  handle: ""
-  url: ""
+  handle: ycchentw.bsky.social
+  url: https://bsky.app/profile/ycchentw.bsky.social
   enabled: false
 
 - key: twitter
