@@ -1176,6 +1176,24 @@ a.badge:hover {
     width: min(100% - 1rem, var(--shell-max));
   }
 
+  .section-divider {
+    flex-wrap: wrap;
+    gap: 0.35rem 0.65rem;
+  }
+
+  .section-divider-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+  }
+
+  .section-divider-rule {
+    min-width: 2rem;
+  }
+
+  .section-divider-link {
+    flex-basis: 100%;
+  }
+
   .publication-row {
     grid-template-columns: minmax(0, 1fr);
     gap: 0.5rem;
