@@ -34,7 +34,7 @@ doi_url: "https://doi.org/10.1126/science.adg0934"
 journal: "Science"
 journal_short: "Science"
 year: 2023
-projects:
+tags:
   - "collaborations"
 featured: false
 image: "/publications/2023_agingFCA.jpg"

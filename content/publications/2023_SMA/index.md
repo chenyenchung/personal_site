@@ -23,7 +23,7 @@ doi_url: "https://doi.org/10.1016/j.omtn.2023.03.005"
 journal: "Molecular Therapy - Nucleic Acids"
 journal_short: "Molecular Therapy - Nucleic Acids"
 year: 2023
-projects:
+tags:
   - "spinal-motor-neuron-development"
 featured: false
 image: "/publications/2023_SMA.jpg"

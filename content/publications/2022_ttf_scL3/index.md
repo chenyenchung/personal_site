@@ -25,7 +25,7 @@ doi_url: "https://doi.org/10.1038/s41586-022-04564-w"
 journal: "Nature"
 journal_short: "Nature"
 year: 2022
-projects:
+tags:
   - "visual-system-patterning"
 featured: false
 image: "/publications/2022_ttf_scL3.png"

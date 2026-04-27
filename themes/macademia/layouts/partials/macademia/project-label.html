@@ -1,0 +1,5 @@
+{{- $site := .site -}}
+{{- $tag := .tag -}}
+{{- $projects := $site.Params.macademia.projects | default dict -}}
+{{- $labels := $projects.labels | default dict -}}
+{{- return ((index $labels $tag) | default ($tag | humanize | title)) -}}

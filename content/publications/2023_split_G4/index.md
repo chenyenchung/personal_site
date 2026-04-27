@@ -17,7 +17,7 @@ doi_url: "https://doi.org/10.1073/pnas.2307451120"
 journal: "Proceedings of the National Academy of Sciences"
 journal_short: "Proc. Natl. Acad. Sci. U.S.A."
 year: 2023
-projects:
+tags:
   - "visual-system-patterning"
 featured: true
 image: "/publications/2023_split_G4.jpg"

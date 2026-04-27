@@ -16,7 +16,7 @@ doi_url: "https://doi.org/10.1016/j.stem.2019.04.016"
 journal: "Cell Stem Cell"
 journal_short: "Cell Stem Cell"
 year: 2019
-projects:
+tags:
   - "spinal-motor-neuron-development"
 featured: false
 image: "/publications/2019_ALS_mir.jpg"

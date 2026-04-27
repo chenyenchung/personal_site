@@ -6,8 +6,13 @@
     </header>
     <div class="tag-grid">
       {{ range .Data.Terms.Alphabetical }}
+        {{ $tag := path.Base .Page.RelPermalink }}
+        {{ $label := .Page.Title }}
+        {{ if partial "macademia/project-is-tag.html" (dict "site" $.Site "tag" $tag) }}
+          {{ $label = partial "macademia/project-label.html" (dict "site" $.Site "tag" $tag) }}
+        {{ end }}
         <a class="tag-card" href="{{ .Page.RelPermalink }}">
-          <span>{{ .Page.Title }}</span>
+          <span>{{ $label }}</span>
           <small>{{ .Count }}</small>
         </a>
       {{ end }}

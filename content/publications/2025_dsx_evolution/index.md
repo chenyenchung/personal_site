@@ -16,7 +16,7 @@ doi_url: "https://doi.org/10.1073/pnas.2516083122"
 journal: "Proceedings of the National Academy of Sciences"
 journal_short: "Proc. Natl. Acad. Sci. U.S.A."
 year: 2025
-projects:
+tags:
   - "collaborations"
 featured: false
 ---

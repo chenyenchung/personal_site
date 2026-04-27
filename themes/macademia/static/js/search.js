@@ -16,7 +16,7 @@
     var title = normalize(item.title);
     var summary = normalize(item.summary);
     var authors = normalize(fieldText(item, "authors"));
-    var tags = normalize(fieldText(item, "tags") + " " + fieldText(item, "categories") + " " + fieldText(item, "supertags") + " " + fieldText(item, "projects"));
+    var tags = normalize(fieldText(item, "tags") + " " + fieldText(item, "categories") + " " + fieldText(item, "projects"));
     var body = normalize([item.content, item.section, item.type, item.date].join(" "));
     var haystack = [title, summary, authors, tags, body].join(" ");
     var score = 0;

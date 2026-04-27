@@ -26,12 +26,12 @@
           {{ end }}
         </div>
       {{ end }}
-    {{ else if eq $class "supertag" }}
-      {{ $pages := .Pages.ByWeight }}
-      {{ if $pages }}
+    {{ else if eq $class "project-tags" }}
+      {{ $projectTags := partial "macademia/project-tags.html" (dict "site" .Site) }}
+      {{ if $projectTags }}
         <div class="project-grid">
-          {{ range $pages }}
-            {{ partial "page-card.html" . }}
+          {{ range $projectTags }}
+            {{ partial "project-card.html" (dict "site" $.Site "tag" .) }}
           {{ end }}
         </div>
       {{ end }}

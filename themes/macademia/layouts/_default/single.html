@@ -1,45 +1,7 @@
 {{ define "main" }}
   {{ $config := partial "macademia/section-config.html" (dict "site" .Site "section" .Section) }}
   {{ $class := $config.class | default "post" }}
-  {{ if eq $class "supertag" }}
-    {{ $key := partial "macademia/supertag-key.html" . }}
-    {{ $field := $config.field | default .Section }}
-    {{ $includeSections := $config.include_sections | default (slice "posts" "publications") }}
-    <article class="page-shell prose-page">
-      <header class="page-heading">
-        <h1>{{ .Title }}</h1>
-        {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
-      </header>
-      <div class="prose">{{ .Content }}</div>
-
-      {{ range $includeSections }}
-        {{ $section := . }}
-        {{ with $.Site.GetPage $section }}
-          {{ $matches := where .Pages (printf "Params.%s" $field) "intersect" (slice $key) }}
-          {{ if $matches }}
-            {{ $childConfig := partial "macademia/section-config.html" (dict "site" $.Site "section" $section) }}
-            {{ $childClass := $childConfig.class | default "post" }}
-            <section class="related-section">
-              <h2>{{ partial "macademia/section-name.html" (dict "site" $.Site "section" $section) }}</h2>
-              {{ if eq $childClass "publications" }}
-                <div class="publication-list">
-                  {{ range $matches.ByDate.Reverse }}
-                    {{ partial "publication-card.html" . }}
-                  {{ end }}
-                </div>
-              {{ else }}
-                <div class="item-list compact">
-                  {{ range $matches.ByDate.Reverse }}
-                    {{ partial "page-card.html" . }}
-                  {{ end }}
-                </div>
-              {{ end }}
-            </section>
-          {{ end }}
-        {{ end }}
-      {{ end }}
-    </article>
-  {{ else if eq $class "publications" }}
+  {{ if eq $class "publications" }}
     <article class="page-shell prose-page">
       <header class="page-heading">
         <h1>{{ .Title }}</h1>

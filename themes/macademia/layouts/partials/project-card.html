@@ -1,0 +1,13 @@
+{{ $site := .site }}
+{{ $tag := .tag }}
+{{ $label := partial "macademia/project-label.html" (dict "site" $site "tag" $tag) }}
+{{ $summary := partial "macademia/project-summary.html" (dict "site" $site "tag" $tag) }}
+{{ $url := partial "macademia/project-url.html" (dict "tag" $tag) }}
+<article class="item-card no-image">
+  <div class="item-card-body">
+    <h2><a href="{{ $url }}">{{ $label }}</a></h2>
+    {{ with $summary }}
+      <p>{{ . }}</p>
+    {{ end }}
+  </div>
+</article>

@@ -3,7 +3,7 @@
 - slug: 2026_temporal_flyem
   label: Temporal and Notch patterning determines innervation depth in the visual system
   doi: 10.1101/2025.01.06.631439
-  projects:
+  tags:
     - visual-system-patterning
   cofirst: 2
   featured: true
@@ -11,35 +11,35 @@
 - slug: 2026_patterning_selector
   label: A model of how spatial, temporal, and Notch cues instruct selector expression
   doi: 10.1038/s41593-026-02256-6
-  projects:
+  tags:
     - visual-system-patterning
   featured: true
 
 - slug: 2025_mosquito_atlas
   label: A single-nucleus transcriptomic atlas of the adult Aedes aegypti mosquito
   doi: 10.1016/j.cell.2025.10.008 
-  projects:
+  tags:
     - collaborations
   featured: false
 
 - slug: 2025_dsx_evolution
   label: High-resolution single-cell analyses of sexual circuits in Drosophila
   doi: 10.1073/pnas.2516083122
-  projects:
+  tags:
     - collaborations
   featured: false
 
 - slug: 2025_calcium_waves
   label: Retinal calcium waves coordinate uniform tissue patterning of the Drosophila eye
   doi: 10.1126/science.ady5541
-  projects:
+  tags:
     - visual-system-patterning
   featured: true
 
 - slug: 2024_dm
   label: Spatial patterning controls neuron numbers in the Drosophila visual system
   doi: 10.1016/j.devcel.2024.03.004
-  projects:
+  tags:
     - visual-system-patterning
   featured: true
   image: /publications/2024_dm.jpg
@@ -47,7 +47,7 @@
 - slug: 2023_split_G4
   label: Predictive cell-type-specific split-GAL4 reagents
   doi: 10.1073/pnas.2307451120
-  projects:
+  tags:
     - visual-system-patterning
   featured: true
   image: /publications/2023_split_G4.jpg
@@ -55,7 +55,7 @@
 - slug: 2023_agingFCA
   label: Aging Fly Cell Atlas
   doi: 10.1126/science.adg0934
-  projects:
+  tags:
     - collaborations
   featured: false
   image: /publications/2023_agingFCA.jpg
@@ -63,7 +63,7 @@
 - slug: 2023_SMA
   label: MiR34 dysregulation contributes to spinal muscular atrophy
   doi: 10.1016/j.omtn.2023.03.005
-  projects:
+  tags:
     - spinal-motor-neuron-development
   featured: false
   cofirst: 3
@@ -72,7 +72,7 @@
 - slug: 2023_scMN
   label: Single-cell transcriptomic analysis of mammalian spinal motor neurons
   doi: 10.1038/s41467-022-35574-x
-  projects:
+  tags:
     - spinal-motor-neuron-development
   featured: false
   cofirst: 2
@@ -81,7 +81,7 @@
 - slug: 2022_APA
   label: Alternative polyadenylation in Drosophila
   doi: 10.1038/s41467-022-32305-0
-  projects:
+  tags:
     - collaborations
   featured: false
   image: /publications/2022_APA.jpg
@@ -94,7 +94,7 @@
 - slug: 2022_ttf_scL3
   label: Complete temporal transcription factor series in the fly visual system
   doi: 10.1038/s41586-022-04564-w
-  projects:
+  tags:
     - visual-system-patterning
   featured: false
   cofirst: 3
@@ -103,7 +103,7 @@
 - slug: 2022_stpatterning_integration_review
   label: Integration of spatial and temporal patterning review
   doi: 10.3389/fnins.2022.854422
-  projects:
+  tags:
     - visual-system-patterning
   featured: true
   image: /publications/2022_stpatterning_integration_review.png
@@ -111,7 +111,7 @@
 - slug: 2021_scdev_opticlobe
   label: Visual system developmental atlas in Drosophila melanogaster
   doi: 10.1038/s41586-020-2879-3
-  projects:
+  tags:
     - visual-system-patterning
   featured: false
   cofirst: 2
@@ -123,7 +123,7 @@
   authors:
     - Yen-Chung Chen
     - Claude Desplan
-  projects:
+  tags:
     - visual-system-patterning
   featured: false
   image: /publications/2020_Fly_vis_grn_review.jpg
@@ -132,7 +132,7 @@
   label: Mir-17-92 and motor neuron resistance to ALS-associated degeneration
   doi: 10.1016/j.stem.2019.04.016
   cofirst: 2
-  projects:
+  tags:
     - spinal-motor-neuron-development
   featured: false
   image: /publications/2019_ALS_mir.jpg
@@ -140,7 +140,7 @@
 - slug: 2018_Meg3_Hox
   label: Dlk1-Dio3 lncRNAs maintain motor neuron fate
   doi: 10.7554/eLife.38080
-  projects:
+  tags:
     - spinal-motor-neuron-development
   featured: false
   image: /publications/2018_Meg3_Hox.jpg

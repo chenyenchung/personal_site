@@ -22,4 +22,4 @@ http://www.yenchungchen.com/* https://www.yenchungchen.com/:splat   301!
 /award/                        /awards/                        301
 /award/:slug/                  /awards/:slug/                  301
 /:year/:month/:day/:slug/      /posts/:slug/                   301
-/projects/applied-genomics/    /projects/external-collaborations/ 301
+/projects/applied-genomics/    /tags/collaborations/          301

@@ -21,7 +21,7 @@ doi_url: "https://doi.org/10.1038/s41593-026-02256-6"
 journal: "Nature Neuroscience"
 journal_short: "Nat Neurosci"
 year: 2026
-projects:
+tags:
   - "visual-system-patterning"
 featured: true
 ---

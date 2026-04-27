@@ -24,7 +24,11 @@
           {{ with $.Site.GetPage $section }}
             {{ $sectionConfig := partial "macademia/section-config.html" (dict "site" $.Site "section" $section) }}
             {{ $class := $sectionConfig.class | default "post" }}
-            {{ if and (ne $class "page") (eq (len .Pages) 0) }}
+            {{ if eq $class "project-tags" }}
+              {{ if eq (len (partial "macademia/project-tags.html" (dict "site" $.Site))) 0 }}
+                {{ $hide = true }}
+              {{ end }}
+            {{ else if and (ne $class "page") (eq (len .Pages) 0) }}
               {{ $hide = true }}
             {{ end }}
           {{ end }}

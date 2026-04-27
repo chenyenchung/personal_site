@@ -2,19 +2,10 @@
 {{ $venue := .Params.journal_short | default .Params.journal }}
 {{ $projectLabel := "" }}
 {{ $projectURL := "" }}
-{{ with .Params.projects }}
+{{ with (partial "macademia/project-tags-from-page.html" (dict "site" .Site "page" .)) }}
   {{ $key := index . 0 }}
-  {{ with $.Site.GetPage "projects" }}
-    {{ range .Pages }}
-      {{ if eq (partial "macademia/supertag-key.html" .) $key }}
-        {{ $projectLabel = .Title }}
-        {{ $projectURL = .RelPermalink }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-  {{ if not $projectLabel }}
-    {{ $projectLabel = $key | humanize }}
-  {{ end }}
+  {{ $projectLabel = partial "macademia/project-label.html" (dict "site" $.Site "tag" $key) }}
+  {{ $projectURL = partial "macademia/project-url.html" (dict "tag" $key) }}
 {{ end }}
 <article class="publication-row">
   {{ with .Params.year }}

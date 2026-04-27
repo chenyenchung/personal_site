@@ -33,7 +33,7 @@ Every top-level content section under `content/` must be declared under `[params
 | -------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | `post`         | Magazine list of `page-card` items (date · author · tags)                  | Prose article with `page-meta` + featured image              |
 | `publications` | Compact `publication-row` list (year · title · authors · venue · actions)  | (typically disabled — see *Disabling single pages* below)    |
-| `supertag`     | Project grid (cards link to project page)                                  | Project page that aggregates related posts/publications/talks via the `field` (default: section name)|
+| `project-tags` | Project grid built from configured tags; cards link to canonical tag pages  | Not used for leaf pages                                      |
 | `page`         | Just the prose; no child enumeration                                       | Standard prose article                                       |
 
 Sections not declared in config default to `class = "post"` and are **hidden from the nav if they have no child pages** (controlled by `params.macademia.navigation.hide_empty_sections`, default `true`). Always declare a section's class — even `class = "page"` — if you want it in the nav without children.
@@ -44,10 +44,20 @@ Sections not declared in config default to `class = "post"` and are **hidden fro
   name  = "Posts"
 
 [params.macademia.sections.projects]
-  class = "supertag"
+  class = "project-tags"
   name  = "Projects"
-  field = "projects"                # frontmatter key on related items
-  include_sections = ["posts", "talks", "publications"]
+
+[params.macademia.projects]
+  tags = ["visual-system-patterning", "spinal-motor-neuron-development", "collaborations"]
+  featured = ["visual-system-patterning", "spinal-motor-neuron-development"]
+
+[params.macademia.projects.labels]
+  visual-system-patterning = "Visual System Patterning"
+  spinal-motor-neuron-development = "Spinal Motor Neuron Development"
+  collaborations = "Collaborations"
+
+[params.macademia.projects.summaries]
+  visual-system-patterning = "Spatial and temporal patterning mechanisms..."
 
 [params.macademia.sections.publications]
   class = "publications"
@@ -71,16 +81,16 @@ The homepage hero pulls from `[params.macademia.home]` plus the `about` section'
   publications_title     = "Featured Publications"
   publications_link_label= "All publications"
   publications_count     = 4
-  supertag_section       = "projects"
-  supertag_title         = "Projects"
-  supertag_link_label    = "All projects"
+  project_section        = "projects"
+  project_title          = "Projects"
+  project_link_label     = "All projects"
   posts_section          = "posts"
   posts_title            = "Recent Posts"
   posts_link_label       = "All posts"
   posts_count            = 4
 ```
 
-The featured-publications list filters child pages where `featured: true`. The project list shows pages with `featured: true`, falling back to all projects if none are flagged.
+The featured-publications list filters child pages where `featured: true`. The project list shows `params.macademia.projects.featured`, falling back to all configured project tags.
 
 ## Profile / social links
 
@@ -119,7 +129,7 @@ doi_url: "https://doi.org/10.xxx/xxx"   # required: title links here (resolves t
 journal: "Developmental Cell"
 journal_short: "Dev Cell"               # preferred for the row meta line
 year: 2024
-projects:                                # array of project keys (matches a project's slug)
+tags:                                    # ordinary tags; configured project tags render as projects
   - "visual-system-patterning"
 featured: true                           # controls homepage featured list
 image: "/publications/2024_dm.jpg"       # optional, currently unused on the row
@@ -148,12 +158,12 @@ cascade:
   - target:
       kind: page
     build:
-      render: never
-      list: local
+      render: link
+      list: always
 ---
 ```
 
-`target.kind: page` scopes the cascade to leaf pages only (the section's own `_index.md` still renders). `list: local` keeps the leaf pages enumerable from `.Pages` so the list view still shows them. The search index handles `render: never` pages explicitly (see below).
+`target.kind: page` scopes the cascade to leaf pages only (the section's own `_index.md` still renders). `render: link` keeps publication leaf pages from emitting detail HTML, while `list: always` keeps them enumerable from section lists, the search index, and tag pages.
 
 ## Search
 
@@ -183,7 +193,7 @@ cascade:
 layouts/
   _default/
     baseof.html      # html shell, font/preconnect, header + footer + JS
-    list.html        # branches by section class (post, publications, supertag, page)
+    list.html        # branches by section class (post, publications, project-tags, page)
     single.html      # branches by section class
     taxonomy.html    # /tags/<tag>/ index
     terms.html       # /tags/ overview
@@ -199,15 +209,20 @@ layouts/
     page-meta.html         # date · authors · tags row
     publication-card.html  # compact publication row
     publication-links.html # Full text + Behind the Scene pills
-    project-badges.html    # supertag badges (resolves project keys to titles)
+    project-badges.html    # project tag badges (resolves configured tags to labels)
+    project-card.html      # project cards for configured project tags
     macademia/
       brush.html             # matcha brushstroke SVG
       hanko.html             # square-seal mark used in nav
       section-divider.html   # caps label · hairline · matcha link
       section-config.html    # lookup helper for section class/name
       section-name.html      # section display name
-      supertag-key.html      # canonical key for a supertag page
-      supertag-title.html    # display title for a supertag key
+      project-is-tag.html        # tests whether a tag is a configured project
+      project-label.html         # display label for a project tag
+      project-summary.html       # summary for a project tag
+      project-tags.html          # configured project tag list
+      project-tags-from-page.html # configured project tags present on a page
+      project-url.html           # canonical /tags/<tag>/ URL
 ```
 
 CSS lives at `static/css/site.css` (single file, no preprocessor). Palette tokens are CSS variables on `:root` — to tweak the theme without touching template logic, override them via a `custom_css` file rather than editing `site.css`.

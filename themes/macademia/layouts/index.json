@@ -1,14 +1,7 @@
 {{- $macademia := .Site.Params.macademia | default dict -}}
 {{- $search := $macademia.search | default dict -}}
 {{- $allowed := $search.sections | default (slice "about" "posts" "projects" "awards" "talks" "courses" "publications") -}}
-{{- $sections := $macademia.sections | default dict -}}
-{{- $supertagFields := dict -}}
-{{- range $section, $config := $sections -}}
-  {{- if eq ($config.class | default "") "supertag" -}}
-    {{- $field := $config.field | default $section -}}
-    {{- $supertagFields = merge $supertagFields (dict $field $section) -}}
-  {{- end -}}
-{{- end -}}
+{{- $projectTags := partial "macademia/project-tags.html" (dict "site" .Site) -}}
 {{- $items := slice -}}
 {{- $seen := dict -}}
 {{- $allPages := .Site.Pages -}}
@@ -32,19 +25,19 @@
     {{- if not $authors -}}
       {{- with .Params.author -}}{{- $authors = slice . -}}{{- end -}}
     {{- end -}}
-    {{- $supertags := slice -}}
-    {{- range $field, $supertagSection := $supertagFields -}}
-      {{- with (index $page.Params $field) -}}
-        {{- range . -}}
-          {{- $title := partial "macademia/supertag-title.html" (dict "site" $.Site "section" $supertagSection "key" .) -}}
-          {{- $supertags = $supertags | append . | append $title -}}
+    {{- $projects := slice -}}
+    {{- with $page.Params.tags -}}
+      {{- range . -}}
+        {{- if in $projectTags . -}}
+          {{- $title := partial "macademia/project-label.html" (dict "site" $.Site "tag" .) -}}
+          {{- $projects = $projects | append . | append $title -}}
         {{- end -}}
       {{- end -}}
     {{- end -}}
     {{- $summary := .Params.summary | default .Params.abstract | default .Summary -}}
     {{- $date := "" -}}
     {{- if not .Date.IsZero -}}{{- $date = .Date.Format "2006-01-02" -}}{{- end -}}
-    {{- $content := delimit (slice .Plain .Params.journal .Params.journal_short .Params.doi (delimit $supertags " ")) " " -}}
+    {{- $content := delimit (slice .Plain .Params.journal .Params.journal_short .Params.doi (delimit $projects " ")) " " -}}
     {{- $permalink := .RelPermalink -}}
     {{- if and (eq $section "publications") (eq .Kind "page") -}}
       {{- $permalink = .Params.doi_url | default .Params.fulltext | default .Params.full_text | default .RelPermalink -}}
@@ -56,7 +49,7 @@
       "authors" $authors
       "tags" .Params.tags
       "categories" .Params.categories
-      "supertags" $supertags
+      "projects" $projects
       "section" $section
       "type" .Type
       "date" $date

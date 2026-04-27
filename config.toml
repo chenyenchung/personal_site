@@ -61,9 +61,9 @@ enableRobotsTXT = true
     publications_title = "Featured Publications"
     publications_link_label = "All publications"
     publications_count = 5
-    supertag_section = "projects"
-    supertag_title = "Projects"
-    supertag_link_label = "All projects"
+    project_section = "projects"
+    project_title = "Projects"
+    project_link_label = "All projects"
     posts_section = "posts"
     posts_title = "Recent Posts"
     posts_link_label = "All posts"
@@ -71,6 +71,20 @@ enableRobotsTXT = true
 
   [params.macademia.navigation]
     hide_empty_sections = true
+
+  [params.macademia.projects]
+    tags = ["visual-system-patterning", "spinal-motor-neuron-development", "collaborations"]
+    featured = ["visual-system-patterning", "spinal-motor-neuron-development"]
+
+    [params.macademia.projects.labels]
+      visual-system-patterning = "Visual System Patterning"
+      spinal-motor-neuron-development = "Spinal Motor Neuron Development"
+      collaborations = "Collaborations"
+
+    [params.macademia.projects.summaries]
+      visual-system-patterning = "Spatial and temporal patterning mechanisms that generate neuronal diversity in the Drosophila visual system."
+      spinal-motor-neuron-development = "Development, identity, and degeneration of spinal motor neuron subtypes."
+      collaborations = "External collaborations using single-cell and transcriptomic analyses across tissues, species, and biological questions."
 
   [params.macademia.search]
     enabled = true
@@ -159,10 +173,8 @@ enableRobotsTXT = true
     name = "Talks"
 
   [params.macademia.sections.projects]
-    class = "supertag"
+    class = "project-tags"
     name = "Projects"
-    field = "projects"
-    include_sections = ["posts", "talks", "publications"]
 
   [params.macademia.sections.publications]
     class = "publications"

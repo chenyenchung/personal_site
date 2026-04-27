@@ -13,7 +13,13 @@
     {{ end }}
     {{ with .Params.tags }}
       <span class="meta-tags">
-        {{ range $index, $tag := . }}{{ if $index }}, {{ end }}<a href="{{ printf "/tags/%s/" ($tag | urlize) | relURL }}">{{ $tag }}</a>{{ end }}
+        {{ range $index, $tag := . }}
+          {{- $label := $tag -}}
+          {{- if partial "macademia/project-is-tag.html" (dict "site" $.Site "tag" $tag) -}}
+            {{- $label = partial "macademia/project-label.html" (dict "site" $.Site "tag" $tag) -}}
+          {{- end -}}
+          {{- if $index }}, {{ end }}<a href="{{ printf "/tags/%s/" ($tag | urlize) | relURL }}">{{ $label }}</a>
+        {{- end }}
       </span>
     {{ end }}
   </div>

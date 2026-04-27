@@ -15,7 +15,7 @@ authors:
 doi: "10.1101/2025.01.06.631439"
 doi_url: "https://doi.org/10.1101/2025.01.06.631439"
 year: 2025
-projects:
+tags:
   - "visual-system-patterning"
 featured: true
 cofirst: "2"

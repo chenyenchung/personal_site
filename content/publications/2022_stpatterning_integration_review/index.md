@@ -11,7 +11,7 @@ doi_url: "https://doi.org/10.3389/fnins.2022.854422"
 journal: "Frontiers in Neuroscience"
 journal_short: "Front. Neurosci."
 year: 2022
-projects:
+tags:
   - "visual-system-patterning"
 featured: true
 image: "/publications/2022_stpatterning_integration_review.png"

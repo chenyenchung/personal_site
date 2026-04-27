@@ -12,7 +12,7 @@ doi_url: "https://doi.org/10.1126/science.ady5541"
 journal: "Science"
 journal_short: "Science"
 year: 2025
-projects:
+tags:
   - "visual-system-patterning"
 featured: true
 ---

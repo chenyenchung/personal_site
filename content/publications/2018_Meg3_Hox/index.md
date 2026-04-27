@@ -21,7 +21,7 @@ doi: "10.7554/eLife.38080"
 doi_url: "https://doi.org/10.7554/eLife.38080"
 journal: "eLife"
 year: 2018
-projects:
+tags:
   - "spinal-motor-neuron-development"
 featured: false
 image: "/publications/2018_Meg3_Hox.jpg"

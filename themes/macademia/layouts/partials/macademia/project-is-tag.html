@@ -1,0 +1,4 @@
+{{- $site := .site -}}
+{{- $tag := .tag -}}
+{{- $tags := partial "macademia/project-tags.html" (dict "site" $site) -}}
+{{- return (in $tags $tag) -}}

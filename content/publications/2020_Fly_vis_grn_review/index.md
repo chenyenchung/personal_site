@@ -10,7 +10,7 @@ doi: "10.1016/bs.ctdb.2020.02.010"
 doi_url: "https://doi.org/10.1016/bs.ctdb.2020.02.010"
 journal: "Current Topics in Developmental Biology"
 year: 2020
-projects:
+tags:
   - "visual-system-patterning"
 featured: false
 image: "/publications/2020_Fly_vis_grn_review.jpg"

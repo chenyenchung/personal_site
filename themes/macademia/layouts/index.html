@@ -17,25 +17,28 @@
     </div>
   </section>
 
-  {{ $projectSection := .Site.GetPage ($home.supertag_section | default "projects") }}
+  {{ $projectSection := .Site.GetPage ($home.project_section | default "projects") }}
   {{ with $projectSection }}
-    {{ $projects := .Pages.ByWeight }}
-    {{ $featuredProjects := where $projects "Params.featured" true }}
+    {{ $projectConfig := $.Site.Params.macademia.projects | default dict }}
+    {{ $projects := partial "macademia/project-tags.html" (dict "site" $.Site) }}
+    {{ $featuredProjects := $projectConfig.featured | default (slice) }}
     {{ if not $featuredProjects }}
       {{ $featuredProjects = $projects }}
     {{ end }}
-    <section class="home-section">
-      {{ partial "macademia/section-divider.html" (dict
-        "label" ($home.supertag_title | default "Projects")
-        "href" .RelPermalink
-        "linkLabel" ($home.supertag_link_label | default "All projects")
-      ) }}
-      <div class="project-grid">
-        {{ range $featuredProjects }}
-          {{ partial "page-card.html" . }}
-        {{ end }}
-      </div>
-    </section>
+    {{ if $featuredProjects }}
+      <section class="home-section">
+        {{ partial "macademia/section-divider.html" (dict
+          "label" ($home.project_title | default "Projects")
+          "href" .RelPermalink
+          "linkLabel" ($home.project_link_label | default "All projects")
+        ) }}
+        <div class="project-grid">
+          {{ range $featuredProjects }}
+            {{ partial "project-card.html" (dict "site" $.Site "tag" .) }}
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
   {{ end }}
 
   {{ with .Site.GetPage ($home.publications_section | default "publications") }}

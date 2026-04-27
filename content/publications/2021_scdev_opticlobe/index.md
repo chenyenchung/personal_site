@@ -20,7 +20,7 @@ doi_url: "https://doi.org/10.1038/s41586-020-2879-3"
 journal: "Nature"
 journal_short: "Nature"
 year: 2021
-projects:
+tags:
   - "visual-system-patterning"
 featured: false
 image: "/publications/2021_scdev_opticlobe.png"

@@ -16,7 +16,6 @@ image:
   caption: ''
   focal_point: ''
   preview_only: no
-projects: []
 ---
 
 While having access to HPC, resource is not infinite, and our HPC reasonably 
@@ -77,4 +76,3 @@ All jobs were run with one core as [`umi-tools` does not natively support
 multithreading yet](https://umi-tools.readthedocs.io/en/latest/faq.html). 
 It should be possible to de-duplicate each 
 chromosome manually if running the whole BAM proves to be intractable though.
-

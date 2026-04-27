@@ -16,7 +16,6 @@ image:
   caption: 'Generated from [Human Glioblastoma Multiforme: 3’v3 Whole Transcriptome Analysis](https://support.10xgenomics.com/single-cell-gene-expression/datasets/4.0.0/Parent_SC3v3_Human_Glioblastoma?) provided by 10X Genomics'
   focal_point: ''
   preview_only: no
-projects: []
 ---
 ![A close-in to a rasterized UMAP](img/featureplot_raster_close.png)
 

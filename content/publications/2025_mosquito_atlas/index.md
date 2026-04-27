@@ -55,7 +55,7 @@ doi_url: "https://doi.org/10.1016/j.cell.2025.10.008"
 journal: "Cell"
 journal_short: "Cell"
 year: 2025
-projects:
+tags:
   - "collaborations"
 featured: false
 ---

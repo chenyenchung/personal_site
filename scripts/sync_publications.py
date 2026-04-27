@@ -166,7 +166,7 @@ def build_record(source: dict, message: dict) -> dict:
         "journal_short": journal_short,
         "date": date,
         "year": year,
-        "projects": source.get("projects", []),
+        "tags": source.get("tags", []),
         "featured": bool(source.get("featured", False)),
         "image": source.get("image", ""),
         "full_text": source.get("full_text", ""),
@@ -187,13 +187,13 @@ def build_record_from_cache(source: dict, cached: dict) -> dict:
         "journal_short": cached.get("journal_short", ""),
         "date": cached.get("date", ""),
         "year": cached.get("year"),
-        "projects": cached.get("projects", []),
+        "tags": cached.get("tags", []),
         "featured": bool(cached.get("featured", False)),
         "image": cached.get("image", ""),
         "full_text": cached.get("full_text", ""),
         "bts": cached.get("bts", ""),
     }
-    for key in ("title", "authors", "journal", "journal_short", "projects", "image", "full_text", "bts"):
+    for key in ("title", "authors", "journal", "journal_short", "tags", "image", "full_text", "bts"):
         if source.get(key):
             record[key] = source[key]
     if "featured" in source:
@@ -240,7 +240,7 @@ def front_matter(record: dict) -> str:
         ("journal", record.get("journal")),
         ("journal_short", record.get("journal_short")),
         ("year", record.get("year")),
-        ("projects", record.get("projects")),
+        ("tags", record.get("tags")),
         ("featured", record.get("featured", False)),
         ("image", record.get("image")),
         ("full_text", record.get("full_text")),

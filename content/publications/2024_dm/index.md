@@ -14,7 +14,7 @@ doi_url: "https://doi.org/10.1016/j.devcel.2024.03.004"
 journal: "Developmental Cell"
 journal_short: "Developmental Cell"
 year: 2024
-projects:
+tags:
   - "visual-system-patterning"
 featured: true
 image: "/publications/2024_dm.jpg"

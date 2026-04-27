@@ -1,0 +1,12 @@
+{{- $site := .site -}}
+{{- $page := .page -}}
+{{- $configured := partial "macademia/project-tags.html" (dict "site" $site) -}}
+{{- $matches := slice -}}
+{{- with $page.Params.tags -}}
+  {{- range . -}}
+    {{- if in $configured . -}}
+      {{- $matches = $matches | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $matches -}}

@@ -17,7 +17,7 @@ doi_url: "https://doi.org/10.1038/s41467-022-32305-0"
 journal: "Nature Communications"
 journal_short: "Nat Commun"
 year: 2022
-projects:
+tags:
   - "collaborations"
 featured: false
 image: "/publications/2022_APA.jpg"

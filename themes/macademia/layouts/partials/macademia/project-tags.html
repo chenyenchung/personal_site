@@ -1,0 +1,3 @@
+{{- $site := .site -}}
+{{- $projects := $site.Params.macademia.projects | default dict -}}
+{{- return ($projects.tags | default (slice)) -}}

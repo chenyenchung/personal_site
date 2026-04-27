@@ -1,13 +1,55 @@
 {{ define "main" }}
+  {{ $tag := path.Base .RelPermalink }}
+  {{ $isProject := partial "macademia/project-is-tag.html" (dict "site" .Site "tag" $tag) }}
+  {{ $title := .Title }}
+  {{ if $isProject }}
+    {{ $title = partial "macademia/project-label.html" (dict "site" .Site "tag" $tag) }}
+  {{ end }}
   <section class="page-shell">
     <header class="page-heading">
-      <h1>{{ .Title }}</h1>
-      <p>{{ len .Pages }} {{ cond (eq (len .Pages) 1) "entry" "entries" }} tagged {{ .Title }}.</p>
-    </header>
-    <div class="item-list">
-      {{ range .Pages.ByDate.Reverse }}
-        {{ partial "page-card.html" . }}
+      <h1>{{ $title }}</h1>
+      {{ if $isProject }}
+        {{ with (partial "macademia/project-summary.html" (dict "site" .Site "tag" $tag)) }}
+          <p>{{ . }}</p>
+        {{ else }}
+          <p>{{ len .Pages }} {{ cond (eq (len .Pages) 1) "entry" "entries" }} tagged {{ $title }}.</p>
+        {{ end }}
+      {{ else }}
+        <p>{{ len .Pages }} {{ cond (eq (len .Pages) 1) "entry" "entries" }} tagged {{ .Title }}.</p>
       {{ end }}
-    </div>
+    </header>
+    {{ if $isProject }}
+      {{ $pages := .Pages }}
+      {{ range (slice "posts" "talks" "publications") }}
+        {{ $section := . }}
+        {{ $matches := where $pages "Section" $section }}
+        {{ if $matches }}
+          {{ $childConfig := partial "macademia/section-config.html" (dict "site" $.Site "section" $section) }}
+          {{ $childClass := $childConfig.class | default "post" }}
+          <section class="related-section">
+            <h2>{{ partial "macademia/section-name.html" (dict "site" $.Site "section" $section) }}</h2>
+            {{ if eq $childClass "publications" }}
+              <div class="pub-row-list">
+                {{ range $matches.ByDate.Reverse }}
+                  {{ partial "publication-card.html" . }}
+                {{ end }}
+              </div>
+            {{ else }}
+              <div class="item-list compact">
+                {{ range $matches.ByDate.Reverse }}
+                  {{ partial "page-card.html" . }}
+                {{ end }}
+              </div>
+            {{ end }}
+          </section>
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      <div class="item-list">
+        {{ range .Pages.ByDate.Reverse }}
+          {{ partial "page-card.html" . }}
+        {{ end }}
+      </div>
+    {{ end }}
   </section>
 {{ end }}

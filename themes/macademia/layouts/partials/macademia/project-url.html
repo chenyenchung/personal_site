@@ -1,0 +1,2 @@
+{{- $tag := .tag -}}
+{{- return (printf "/tags/%s/" ($tag | urlize) | relURL) -}}

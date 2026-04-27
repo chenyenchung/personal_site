@@ -5,6 +5,6 @@ cascade:
   - target:
       kind: page
     build:
-      render: never
-      list: local
+      render: link
+      list: always
 ---

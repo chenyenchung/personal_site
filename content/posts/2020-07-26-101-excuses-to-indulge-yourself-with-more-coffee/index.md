@@ -15,7 +15,6 @@ image:
   caption: 'Image by [Myriam Zilles](https://pixabay.com/users/myriams-fotos-1627417/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2317201) from [Pixabay](https://pixabay.com/) '
   focal_point: ''
   preview_only: no
-projects: []
 ---
 
 I consider myself to be moderately addicted to coffee: I slurp a mug of coffee to start my day, and when in certain days, I take another boosting dose in the afternoon and see my hands trembling. I might not be able to dissect flies on those days, but I do feel better doing other stuffs after that cup.

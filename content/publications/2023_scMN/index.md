@@ -17,7 +17,7 @@ doi_url: "https://doi.org/10.1038/s41467-022-35574-x"
 journal: "Nature Communications"
 journal_short: "Nat Commun"
 year: 2023
-projects:
+tags:
   - "spinal-motor-neuron-development"
 featured: false
 image: "/publications/2023_scMN.png"
